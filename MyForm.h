@@ -54,8 +54,6 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Button^ button9;
 	private: System::Windows::Forms::Button^ button10;
 	private: System::Windows::Forms::Button^ button2;
-
-
 	protected: 
 	void OnPaint(PaintEventArgs^ e) override
 	{
@@ -63,7 +61,9 @@ namespace casinowinForms {
 		Pen^ pen = gcnew Pen(Color::White, 2); 
 		g->DrawLine(pen, 300, 25, 300, 600); 
 		g->DrawLine(pen, 667, 50, 667, 600);
-		g->DrawLine(pen, 350, 190, 1000, 190);
+		g->DrawLine(pen, 350, 185, 1000, 185);
+		g->DrawLine(pen, 350, 328, 1000, 328);
+		g->DrawLine(pen, 350, 473, 1000, 473);
 	}
 
 	private:
