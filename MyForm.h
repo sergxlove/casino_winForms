@@ -45,14 +45,20 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button7;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button9;
-	private: System::Windows::Forms::Button^ button10;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::PictureBox^ pictureBox6;
+	private: System::Windows::Forms::PictureBox^ pictureBox7;
+	private: System::Windows::Forms::PictureBox^ pictureBox8;
+	private: System::Windows::Forms::PictureBox^ pictureBox9;
+	private: System::Windows::Forms::PictureBox^ pictureBox10;
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ button2;
 	protected: 
 	void OnPaint(PaintEventArgs^ e) override
@@ -91,18 +97,22 @@ namespace casinowinForms {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button9 = (gcnew System::Windows::Forms::Button());
-			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -233,77 +243,65 @@ namespace casinowinForms {
 			this->label5->TabIndex = 11;
 			this->label5->Text = L"Доступные режимы";
 			// 
-			// button3
+			// pictureBox5
 			// 
-			this->button3->Location = System::Drawing::Point(461, 67);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(397, 139);
-			this->button3->TabIndex = 12;
-			this->button3->Text = L"wheel";
-			this->button3->UseVisualStyleBackColor = true;
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(449, 67);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(419, 147);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox5->TabIndex = 12;
+			this->pictureBox5->TabStop = false;
 			// 
-			// button4
+			// pictureBox6
 			// 
-			this->button4->Location = System::Drawing::Point(917, 67);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(397, 139);
-			this->button4->TabIndex = 13;
-			this->button4->Text = L"dice";
-			this->button4->UseVisualStyleBackColor = true;
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Location = System::Drawing::Point(921, 67);
+			this->pictureBox6->Name = L"pictureBox6";
+			this->pictureBox6->Size = System::Drawing::Size(419, 147);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox6->TabIndex = 13;
+			this->pictureBox6->TabStop = false;
 			// 
-			// button5
+			// pictureBox7
 			// 
-			this->button5->Location = System::Drawing::Point(461, 248);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(397, 139);
-			this->button5->TabIndex = 14;
-			this->button5->Text = L"tower";
-			this->button5->UseVisualStyleBackColor = true;
+			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
+			this->pictureBox7->Location = System::Drawing::Point(449, 240);
+			this->pictureBox7->Name = L"pictureBox7";
+			this->pictureBox7->Size = System::Drawing::Size(419, 147);
+			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox7->TabIndex = 14;
+			this->pictureBox7->TabStop = false;
 			// 
-			// button6
+			// pictureBox8
 			// 
-			this->button6->Location = System::Drawing::Point(917, 248);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(397, 139);
-			this->button6->TabIndex = 15;
-			this->button6->Text = L"double";
-			this->button6->UseVisualStyleBackColor = true;
+			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
+			this->pictureBox8->Location = System::Drawing::Point(921, 240);
+			this->pictureBox8->Name = L"pictureBox8";
+			this->pictureBox8->Size = System::Drawing::Size(419, 147);
+			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox8->TabIndex = 15;
+			this->pictureBox8->TabStop = false;
 			// 
-			// button7
+			// pictureBox9
 			// 
-			this->button7->Location = System::Drawing::Point(461, 424);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(397, 139);
-			this->button7->TabIndex = 16;
-			this->button7->Text = L"miner";
-			this->button7->UseVisualStyleBackColor = true;
+			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.Image")));
+			this->pictureBox9->Location = System::Drawing::Point(449, 416);
+			this->pictureBox9->Name = L"pictureBox9";
+			this->pictureBox9->Size = System::Drawing::Size(419, 147);
+			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox9->TabIndex = 16;
+			this->pictureBox9->TabStop = false;
 			// 
-			// button8
+			// pictureBox10
 			// 
-			this->button8->Location = System::Drawing::Point(917, 424);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(397, 139);
-			this->button8->TabIndex = 17;
-			this->button8->Text = L"slots";
-			this->button8->UseVisualStyleBackColor = true;
-			// 
-			// button9
-			// 
-			this->button9->Location = System::Drawing::Point(461, 595);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(397, 139);
-			this->button9->TabIndex = 18;
-			this->button9->Text = L"coin";
-			this->button9->UseVisualStyleBackColor = true;
-			// 
-			// button10
-			// 
-			this->button10->Location = System::Drawing::Point(917, 595);
-			this->button10->Name = L"button10";
-			this->button10->Size = System::Drawing::Size(397, 139);
-			this->button10->TabIndex = 19;
-			this->button10->Text = L"bubles";
-			this->button10->UseVisualStyleBackColor = true;
+			this->pictureBox10->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.Image")));
+			this->pictureBox10->Location = System::Drawing::Point(921, 416);
+			this->pictureBox10->Name = L"pictureBox10";
+			this->pictureBox10->Size = System::Drawing::Size(419, 147);
+			this->pictureBox10->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox10->TabIndex = 17;
+			this->pictureBox10->TabStop = false;
 			// 
 			// MyForm
 			// 
@@ -312,14 +310,12 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1396, 771);
-			this->Controls->Add(this->button10);
-			this->Controls->Add(this->button9);
-			this->Controls->Add(this->button8);
-			this->Controls->Add(this->button7);
-			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->pictureBox10);
+			this->Controls->Add(this->pictureBox9);
+			this->Controls->Add(this->pictureBox8);
+			this->Controls->Add(this->pictureBox7);
+			this->Controls->Add(this->pictureBox6);
+			this->Controls->Add(this->pictureBox5);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -337,6 +333,12 @@ namespace casinowinForms {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -345,5 +347,5 @@ namespace casinowinForms {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 	}
-	};
+};
 }
