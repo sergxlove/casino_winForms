@@ -51,6 +51,8 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox8;
 	private: System::Windows::Forms::PictureBox^ pictureBox9;
 	private: System::Windows::Forms::PictureBox^ pictureBox10;
+	private: System::Windows::Forms::PictureBox^ pictureBox11;
+	private: System::Windows::Forms::PictureBox^ pictureBox12;
 
 
 
@@ -103,6 +105,8 @@ namespace casinowinForms {
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox12 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -113,6 +117,8 @@ namespace casinowinForms {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -303,6 +309,26 @@ namespace casinowinForms {
 			this->pictureBox10->TabIndex = 17;
 			this->pictureBox10->TabStop = false;
 			// 
+			// pictureBox11
+			// 
+			this->pictureBox11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.Image")));
+			this->pictureBox11->Location = System::Drawing::Point(449, 596);
+			this->pictureBox11->Name = L"pictureBox11";
+			this->pictureBox11->Size = System::Drawing::Size(419, 147);
+			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox11->TabIndex = 18;
+			this->pictureBox11->TabStop = false;
+			// 
+			// pictureBox12
+			// 
+			this->pictureBox12->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox12.Image")));
+			this->pictureBox12->Location = System::Drawing::Point(921, 596);
+			this->pictureBox12->Name = L"pictureBox12";
+			this->pictureBox12->Size = System::Drawing::Size(419, 147);
+			this->pictureBox12->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox12->TabIndex = 19;
+			this->pictureBox12->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -310,6 +336,8 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1396, 771);
+			this->Controls->Add(this->pictureBox12);
+			this->Controls->Add(this->pictureBox11);
 			this->Controls->Add(this->pictureBox10);
 			this->Controls->Add(this->pictureBox9);
 			this->Controls->Add(this->pictureBox8);
@@ -339,6 +367,8 @@ namespace casinowinForms {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox12))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
