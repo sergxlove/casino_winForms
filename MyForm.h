@@ -1,5 +1,6 @@
+#include "MyForm1.h"
+#include <Windows.h>
 #pragma once
-
 namespace casinowinForms {
 
 	using namespace System;
@@ -8,10 +9,10 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
+	/// MyForm
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -22,7 +23,6 @@ namespace casinowinForms {
 			//TODO: добавьте код конструктора
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -34,7 +34,6 @@ namespace casinowinForms {
 				delete components;
 			}
 		}
-
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
@@ -53,25 +52,24 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox10;
 	private: System::Windows::Forms::PictureBox^ pictureBox11;
 	private: System::Windows::Forms::PictureBox^ pictureBox12;
-
 	private: System::Windows::Forms::Button^ button2;
-	protected: 
-	void OnPaint(PaintEventArgs^ e) override
-	{
-		Graphics^ g = e->Graphics;
-		Pen^ pen = gcnew Pen(Color::White, 2); 
-		g->DrawLine(pen, 300, 25, 300, 600); 
-		g->DrawLine(pen, 667, 50, 667, 600);
-		g->DrawLine(pen, 350, 185, 1000, 185);
-		g->DrawLine(pen, 350, 328, 1000, 328);
-		g->DrawLine(pen, 350, 472, 1000, 472);
-	}
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 300, 25, 300, 600);
+			g->DrawLine(pen, 667, 50, 667, 600);
+			g->DrawLine(pen, 350, 185, 1000, 185);
+			g->DrawLine(pen, 350, 328, 1000, 328);
+			g->DrawLine(pen, 350, 472, 1000, 472);
+		}
 
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -251,6 +249,7 @@ namespace casinowinForms {
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox5->TabIndex = 12;
 			this->pictureBox5->TabStop = false;
+			this->pictureBox5->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox6
 			// 
@@ -261,6 +260,7 @@ namespace casinowinForms {
 			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox6->TabIndex = 13;
 			this->pictureBox6->TabStop = false;
+			this->pictureBox6->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox7
 			// 
@@ -271,6 +271,7 @@ namespace casinowinForms {
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox7->TabIndex = 14;
 			this->pictureBox7->TabStop = false;
+			this->pictureBox7->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox8
 			// 
@@ -281,6 +282,7 @@ namespace casinowinForms {
 			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox8->TabIndex = 15;
 			this->pictureBox8->TabStop = false;
+			this->pictureBox8->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox9
 			// 
@@ -291,6 +293,7 @@ namespace casinowinForms {
 			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox9->TabIndex = 16;
 			this->pictureBox9->TabStop = false;
+			this->pictureBox9->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox10
 			// 
@@ -301,6 +304,7 @@ namespace casinowinForms {
 			this->pictureBox10->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox10->TabIndex = 17;
 			this->pictureBox10->TabStop = false;
+			this->pictureBox10->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox11
 			// 
@@ -311,6 +315,7 @@ namespace casinowinForms {
 			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox11->TabIndex = 18;
 			this->pictureBox11->TabStop = false;
+			this->pictureBox11->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox12
 			// 
@@ -321,6 +326,7 @@ namespace casinowinForms {
 			this->pictureBox12->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox12->TabIndex = 19;
 			this->pictureBox12->TabStop = false;
+			this->pictureBox12->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// MyForm
 			// 
@@ -369,12 +375,14 @@ namespace casinowinForms {
 #pragma endregion
 	private: System::Void swap_mode(System::Object^ sender, System::EventArgs^ e)
 	{
+
 		PictureBox^ clickedPictureBox = dynamic_cast<PictureBox^>(sender);
+		MyForm1^ secondform = gcnew MyForm1();
 		if (clickedPictureBox != nullptr)
 		{
 			if (clickedPictureBox == pictureBox5)
 			{
-
+				secondform->Show();
 			}
 			else if (clickedPictureBox == pictureBox6)
 			{
@@ -406,20 +414,6 @@ namespace casinowinForms {
 			}
 		}
 	}
-};
+	};
+
 }
-class swap_gamemode
-{
-public:
-private:
-
-};
-class game_mode
-{
-public:
-	virtual void choice_mode() = 0;
-};
-class wheel : public game_mode
-{
-
-};
