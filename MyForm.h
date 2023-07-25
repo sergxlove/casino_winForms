@@ -54,13 +54,6 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox11;
 	private: System::Windows::Forms::PictureBox^ pictureBox12;
 
-
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^ button2;
 	protected: 
 	void OnPaint(PaintEventArgs^ e) override
@@ -374,8 +367,59 @@ namespace casinowinForms {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+	private: System::Void swap_mode(System::Object^ sender, System::EventArgs^ e)
+	{
+		PictureBox^ clickedPictureBox = dynamic_cast<PictureBox^>(sender);
+		if (clickedPictureBox != nullptr)
+		{
+			if (clickedPictureBox == pictureBox5)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox6)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox7)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox8)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox9)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox10)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox11)
+			{
+
+			}
+			else if (clickedPictureBox == pictureBox12)
+			{
+
+			}
+		}
 	}
 };
 }
+class swap_gamemode
+{
+public:
+private:
+
+};
+class game_mode
+{
+public:
+	virtual void choice_mode() = 0;
+};
+class wheel : public game_mode
+{
+
+};
