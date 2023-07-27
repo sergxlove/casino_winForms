@@ -1,5 +1,4 @@
 #pragma once
-
 namespace casinowinForms {
 
 	using namespace System;
@@ -360,12 +359,13 @@ namespace casinowinForms {
 			this->button12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button12->ForeColor = System::Drawing::Color::White;
-			this->button12->Location = System::Drawing::Point(763, 578);
+			this->button12->Location = System::Drawing::Point(743, 578);
 			this->button12->Name = L"button12";
-			this->button12->Size = System::Drawing::Size(163, 77);
+			this->button12->Size = System::Drawing::Size(199, 77);
 			this->button12->TabIndex = 19;
 			this->button12->Text = L"Поставить";
 			this->button12->UseVisualStyleBackColor = false;
+			this->button12->Click += gcnew System::EventHandler(this, &MyForm1::button12_Click);
 			// 
 			// button13
 			// 
@@ -441,7 +441,7 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(66, 686);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(0, 39);
+			this->label6->Size = System::Drawing::Size(0, 38);
 			this->label6->TabIndex = 25;
 			// 
 			// label7
@@ -451,7 +451,7 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label7->Location = System::Drawing::Point(218, 686);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(0, 39);
+			this->label7->Size = System::Drawing::Size(0, 38);
 			this->label7->TabIndex = 26;
 			// 
 			// label8
@@ -461,7 +461,7 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(483, 686);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(0, 39);
+			this->label8->Size = System::Drawing::Size(0, 38);
 			this->label8->TabIndex = 27;
 			// 
 			// MyForm1
@@ -510,24 +510,29 @@ namespace casinowinForms {
 
 		}
 #pragma endregion
+
+private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
+	Random^ random = gcnew Random();
+	int num = random->Next(0, 36);
+	if (num == 0)
+	{
+		label5->Text = Convert::ToString(num);
+		label5->BackColor = Color::Green;
+		label5->ForeColor = Color::White;
+	}
+	else if (num % 2 == 0)
+	{
+		label5->Text = Convert::ToString(num);
+		label5->BackColor = Color::Red;
+		label5->ForeColor = Color::Black;
+	}
+	else if (num % 2 == 1)
+	{
+		label5->Text = Convert::ToString(num);
+		label5->BackColor = Color::Black;
+		label5->ForeColor = Color::Red;
+	}
 	
-
-
-
-
-
-
-
-
-
-
-
-private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-
-
-
-
-
 };
 }
