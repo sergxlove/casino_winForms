@@ -61,7 +61,9 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label8; 
+	private: int stavka;
+	
 	protected:
 
 	private:
@@ -163,9 +165,9 @@ namespace casinowinForms {
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label1->Location = System::Drawing::Point(366, 59);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(35, 38);
+			this->label1->Size = System::Drawing::Size(107, 38);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"0";
+			this->label1->Text = L"10000";
 			// 
 			// label2
 			// 
@@ -272,7 +274,7 @@ namespace casinowinForms {
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(436, 77);
 			this->button7->TabIndex = 12;
-			this->button7->Text = L"Чётное";
+			this->button7->Text = L"Чётное (х2)";
 			this->button7->UseVisualStyleBackColor = false;
 			// 
 			// button8
@@ -286,7 +288,7 @@ namespace casinowinForms {
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(436, 77);
 			this->button8->TabIndex = 13;
-			this->button8->Text = L"Нечётное";
+			this->button8->Text = L"Нечётное (х2)";
 			this->button8->UseVisualStyleBackColor = false;
 			// 
 			// button9
@@ -298,9 +300,9 @@ namespace casinowinForms {
 			this->button9->ForeColor = System::Drawing::Color::White;
 			this->button9->Location = System::Drawing::Point(490, 439);
 			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(393, 77);
+			this->button9->Size = System::Drawing::Size(369, 77);
 			this->button9->TabIndex = 14;
-			this->button9->Text = L"Красное";
+			this->button9->Text = L"Красное (х2)";
 			this->button9->UseVisualStyleBackColor = false;
 			// 
 			// button10
@@ -310,11 +312,11 @@ namespace casinowinForms {
 			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button10->ForeColor = System::Drawing::Color::White;
-			this->button10->Location = System::Drawing::Point(991, 439);
+			this->button10->Location = System::Drawing::Point(1015, 439);
 			this->button10->Name = L"button10";
-			this->button10->Size = System::Drawing::Size(393, 77);
+			this->button10->Size = System::Drawing::Size(369, 77);
 			this->button10->TabIndex = 15;
-			this->button10->Text = L"Чёрное";
+			this->button10->Text = L"Чёрное (х2)";
 			this->button10->UseVisualStyleBackColor = false;
 			// 
 			// button11
@@ -324,22 +326,26 @@ namespace casinowinForms {
 			this->button11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button11->ForeColor = System::Drawing::Color::White;
-			this->button11->Location = System::Drawing::Point(898, 439);
+			this->button11->Location = System::Drawing::Point(865, 439);
 			this->button11->Name = L"button11";
-			this->button11->Size = System::Drawing::Size(77, 77);
+			this->button11->Size = System::Drawing::Size(144, 77);
 			this->button11->TabIndex = 16;
-			this->button11->Text = L"0";
+			this->button11->Text = L"0 (х36)";
 			this->button11->UseVisualStyleBackColor = false;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox1->Location = System::Drawing::Point(490, 578);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(247, 77);
 			this->textBox1->TabIndex = 17;
+			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// label4
 			// 
@@ -381,6 +387,7 @@ namespace casinowinForms {
 			this->button13->TabIndex = 20;
 			this->button13->Text = L"х2";
 			this->button13->UseVisualStyleBackColor = false;
+			this->button13->Click += gcnew System::EventHandler(this, &MyForm1::button13_Click);
 			// 
 			// button14
 			// 
@@ -395,6 +402,7 @@ namespace casinowinForms {
 			this->button14->TabIndex = 21;
 			this->button14->Text = L"/2";
 			this->button14->UseVisualStyleBackColor = false;
+			this->button14->Click += gcnew System::EventHandler(this, &MyForm1::button14_Click);
 			// 
 			// button15
 			// 
@@ -409,6 +417,7 @@ namespace casinowinForms {
 			this->button15->TabIndex = 22;
 			this->button15->Text = L"+100";
 			this->button15->UseVisualStyleBackColor = false;
+			this->button15->Click += gcnew System::EventHandler(this, &MyForm1::button15_Click);
 			// 
 			// button16
 			// 
@@ -423,6 +432,7 @@ namespace casinowinForms {
 			this->button16->TabIndex = 23;
 			this->button16->Text = L"+10";
 			this->button16->UseVisualStyleBackColor = false;
+			this->button16->Click += gcnew System::EventHandler(this, &MyForm1::button16_Click);
 			// 
 			// label5
 			// 
@@ -444,6 +454,7 @@ namespace casinowinForms {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(0, 38);
 			this->label6->TabIndex = 25;
+			this->label6->Text = "0000";
 			// 
 			// label7
 			// 
@@ -454,6 +465,7 @@ namespace casinowinForms {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(0, 38);
 			this->label7->TabIndex = 26;
+			this->label7->Text = "0000";
 			// 
 			// label8
 			// 
@@ -464,6 +476,7 @@ namespace casinowinForms {
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(0, 38);
 			this->label8->TabIndex = 27;
+			this->label8->Text = "0000";
 			// 
 			// MyForm1
 			// 
@@ -513,10 +526,18 @@ namespace casinowinForms {
 #pragma endregion
 
 private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
-	Random^ random = gcnew Random();
-	int num = random->Next(0, 36);
-	for (int i = 0;i < 10;i++)
+	int balance_rub = Convert::ToInt32(label1->Text);
+	int balance_dl = Convert::ToInt32(label2->Text);
+	int balance_evro = Convert::ToInt32(label3->Text);
+	stavka = Convert::ToInt32(textBox1->Text);
+	if (stavka > balance_rub)
 	{
+		label8->Text = "недостаточно средств на балансе";
+	}
+	else
+	{
+		Random^ random = gcnew Random();
+		int num = random->Next(0, 36);
 		if (num == 0)
 		{
 			label5->Text = Convert::ToString(num);
@@ -535,9 +556,29 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 			label5->BackColor = Color::Black;
 			label5->ForeColor = Color::Red;
 		}
-		
 	}
 	
+	
+}
+private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka = Convert::ToInt32(textBox1->Text);
+	stavka *= 2;
+	textBox1->Text = Convert::ToString(stavka);
+}
+private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka = Convert::ToInt32(textBox1->Text);
+	stavka /= 2;
+	textBox1->Text = Convert::ToString(stavka);
+}
+private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka = Convert::ToInt32(textBox1->Text);
+	stavka += 10;
+	textBox1->Text = Convert::ToString(stavka);
+}
+private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka = Convert::ToInt32(textBox1->Text);
+	stavka += 100;
+	textBox1->Text = Convert::ToString(stavka);
 }
 };
 }
