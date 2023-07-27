@@ -11,3 +11,4 @@ int main(array <String^>^ args)
 	casinowinForms::MyForm1 form1;
 	Application::Run(% form);
 }
+

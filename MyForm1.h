@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 namespace casinowinForms {
 
 	using namespace System;
@@ -514,23 +515,27 @@ namespace casinowinForms {
 private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
 	Random^ random = gcnew Random();
 	int num = random->Next(0, 36);
-	if (num == 0)
+	for (int i = 0;i < 10;i++)
 	{
-		label5->Text = Convert::ToString(num);
-		label5->BackColor = Color::Green;
-		label5->ForeColor = Color::White;
-	}
-	else if (num % 2 == 0)
-	{
-		label5->Text = Convert::ToString(num);
-		label5->BackColor = Color::Red;
-		label5->ForeColor = Color::Black;
-	}
-	else if (num % 2 == 1)
-	{
-		label5->Text = Convert::ToString(num);
-		label5->BackColor = Color::Black;
-		label5->ForeColor = Color::Red;
+		if (num == 0)
+		{
+			label5->Text = Convert::ToString(num);
+			label5->BackColor = Color::Green;
+			label5->ForeColor = Color::White;
+		}
+		else if (num % 2 == 0)
+		{
+			label5->Text = Convert::ToString(num);
+			label5->BackColor = Color::Red;
+			label5->ForeColor = Color::Black;
+		}
+		else if (num % 2 == 1)
+		{
+			label5->Text = Convert::ToString(num);
+			label5->BackColor = Color::Black;
+			label5->ForeColor = Color::Red;
+		}
+		
 	}
 	
 }
