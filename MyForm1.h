@@ -80,10 +80,12 @@ namespace casinowinForms {
 	private: bool check_third = false;
 	private: bool check_color = false;
 	private: bool check_chet = false;
+	private: bool check_0 = false;
 	private: int stavka_pol;
 	private: int stavka_third;
 	private: int stavka_color;
 	private: int stavka_chet;
+	private: int stavka_0;
 	protected:
 	private:
 		/// <summary>
@@ -255,6 +257,7 @@ namespace casinowinForms {
 			this->button4->TabIndex = 9;
 			this->button4->Text = L"1-12 (х3)";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm1::button4_Click);
 			// 
 			// button5
 			// 
@@ -269,6 +272,7 @@ namespace casinowinForms {
 			this->button5->TabIndex = 10;
 			this->button5->Text = L"13-24 (х3)";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm1::button5_Click);
 			// 
 			// button6
 			// 
@@ -283,6 +287,7 @@ namespace casinowinForms {
 			this->button6->TabIndex = 11;
 			this->button6->Text = L"25-36 (х2)";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm1::button6_Click);
 			// 
 			// button7
 			// 
@@ -297,6 +302,7 @@ namespace casinowinForms {
 			this->button7->TabIndex = 12;
 			this->button7->Text = L"Чётное (х2)";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm1::button7_Click);
 			// 
 			// button8
 			// 
@@ -311,6 +317,7 @@ namespace casinowinForms {
 			this->button8->TabIndex = 13;
 			this->button8->Text = L"Нечётное (х2)";
 			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm1::button8_Click);
 			// 
 			// button9
 			// 
@@ -325,6 +332,7 @@ namespace casinowinForms {
 			this->button9->TabIndex = 14;
 			this->button9->Text = L"Красное (х2)";
 			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Click += gcnew System::EventHandler(this, &MyForm1::button9_Click);
 			// 
 			// button10
 			// 
@@ -339,6 +347,7 @@ namespace casinowinForms {
 			this->button10->TabIndex = 15;
 			this->button10->Text = L"Чёрное (х2)";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &MyForm1::button10_Click);
 			// 
 			// button11
 			// 
@@ -353,6 +362,7 @@ namespace casinowinForms {
 			this->button11->TabIndex = 16;
 			this->button11->Text = L"0 (х36)";
 			this->button11->UseVisualStyleBackColor = false;
+			this->button11->Click += gcnew System::EventHandler(this, &MyForm1::button11_Click);
 			// 
 			// textBox1
 			// 
@@ -614,6 +624,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		check_pol = true;
 		stavka_pol = check_stavka::var_1_18;
+		label8->Text = "ставка принята";
 	}
 	else
 	{
@@ -625,11 +636,109 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		check_pol = true;
 		stavka_pol = check_stavka::var_19_36;
+		label8->Text = "ставка принята";
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
 	}
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_third == false)
+	{
+		check_third = true;
+		stavka_third = check_stavka::var_1_12;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_third == false)
+	{
+		check_third = true;
+		stavka_third = check_stavka::var_13_24;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_third == false)
+	{
+		check_third = true;
+		stavka_third = check_stavka::var_25_36;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_chet == false)
+	{
+		check_chet = true;
+		stavka_chet = check_stavka::var_chet;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_chet == false)
+	{
+		check_chet = true;
+		stavka_chet = check_stavka::var_ne_chet;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_color == false)
+	{
+		check_color = true;
+		stavka_color = check_stavka::var_red;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_color == false)
+	{
+		check_color = true;
+		stavka_color = check_stavka::var_black;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_0 == false)
+	{
+		check_0 = true;
+		stavka_0 = check_stavka::var_0;
+		label8->Text = "ставка принята";
+	}
+	else
+	{
+		label8->Text = "вы уже сделал ставку";
+	}
+
 }
 };
 }
