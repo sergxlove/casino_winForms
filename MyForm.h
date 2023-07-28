@@ -1,4 +1,5 @@
 #pragma once
+#include "MyForm1.h"
 
 namespace casinowinForms {
 
@@ -215,6 +216,7 @@ namespace casinowinForms {
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Обмен валюты";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -229,6 +231,7 @@ namespace casinowinForms {
 			this->button2->TabIndex = 10;
 			this->button2->Text = L"Редактировать";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// label5
 			// 
@@ -251,6 +254,7 @@ namespace casinowinForms {
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox5->TabIndex = 12;
 			this->pictureBox5->TabStop = false;
+			this->pictureBox5->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox6
 			// 
@@ -261,6 +265,7 @@ namespace casinowinForms {
 			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox6->TabIndex = 13;
 			this->pictureBox6->TabStop = false;
+			this->pictureBox6->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox7
 			// 
@@ -271,6 +276,7 @@ namespace casinowinForms {
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox7->TabIndex = 14;
 			this->pictureBox7->TabStop = false;
+			this->pictureBox7->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox8
 			// 
@@ -281,6 +287,7 @@ namespace casinowinForms {
 			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox8->TabIndex = 15;
 			this->pictureBox8->TabStop = false;
+			this->pictureBox8->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox9
 			// 
@@ -291,6 +298,7 @@ namespace casinowinForms {
 			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox9->TabIndex = 16;
 			this->pictureBox9->TabStop = false;
+			this->pictureBox9->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox10
 			// 
@@ -301,6 +309,7 @@ namespace casinowinForms {
 			this->pictureBox10->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox10->TabIndex = 17;
 			this->pictureBox10->TabStop = false;
+			this->pictureBox10->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox11
 			// 
@@ -311,6 +320,7 @@ namespace casinowinForms {
 			this->pictureBox11->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox11->TabIndex = 18;
 			this->pictureBox11->TabStop = false;
+			this->pictureBox11->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// pictureBox12
 			// 
@@ -321,6 +331,7 @@ namespace casinowinForms {
 			this->pictureBox12->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox12->TabIndex = 19;
 			this->pictureBox12->TabStop = false;
+			this->pictureBox12->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
 			// MyForm
 			// 
@@ -350,6 +361,7 @@ namespace casinowinForms {
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -374,7 +386,9 @@ namespace casinowinForms {
 		{
 			if (clickedPictureBox == pictureBox5)
 			{
-
+				MyForm1^ secondform = gcnew MyForm1();
+				secondform->Show();			
+				this->Hide();
 			}
 			else if (clickedPictureBox == pictureBox6)
 			{
@@ -406,20 +420,11 @@ namespace casinowinForms {
 			}
 		}
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
-class swap_gamemode
-{
-public:
-private:
 
-};
-class game_mode
-{
-public:
-	virtual void choice_mode() = 0;
-};
-class wheel : public game_mode
-{
-
-};
