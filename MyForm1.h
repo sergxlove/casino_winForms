@@ -86,6 +86,7 @@ namespace casinowinForms {
 	private: int stavka_color;
 	private: int stavka_chet;
 	private: int stavka_0;
+
 	protected:
 	private:
 		/// <summary>
@@ -492,7 +493,7 @@ namespace casinowinForms {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(218, 686);
+			this->label7->Location = System::Drawing::Point(384, 686);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(89, 38);
 			this->label7->TabIndex = 26;
@@ -552,13 +553,16 @@ namespace casinowinForms {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
+			
 		}
 #pragma endregion
 private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
 	int balance_rub = Convert::ToInt32(label1->Text);
 	int balance_dl = Convert::ToInt32(label2->Text);
 	int balance_evro = Convert::ToInt32(label3->Text);
+	int priz = 0;
+	int lose = 0;
+	int all_stavka = 0;
 	if (textBox1->Text == "")
 	{
 		label8->Text = "сначала сделайте ставку";
@@ -594,46 +598,156 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 			}
 			if (check_0 == true)
 			{
-
+				all_stavka += stavka;
+				if (num == 0)
+				{
+					priz += stavka * 36;
+				}
 			}
 			if (check_chet == true)
 			{
-
+				all_stavka += stavka;
+				if (stavka_chet == check_stavka::var_chet)
+				{
+					if (num % 2 == 0&&num!=0)
+					{
+						priz += stavka * 2;
+					}
+				}
+				if (stavka_chet == check_stavka::var_ne_chet)
+				{
+					if (num % 2 == 1 && num != 0)
+					{
+						priz += stavka * 2;
+					}
+				}
 			}
 			if (check_color == true)
 			{
-
+				all_stavka += stavka;
+				if (stavka_color == check_stavka::var_red)
+				{
+					if (num % 2 == 0 && num != 0)
+					{
+						priz += stavka * 2;
+					}
+				}
+				if (stavka_color == check_stavka::var_black)
+				{
+					if (num % 2 == 1 && num != 0)
+					{
+						priz += stavka * 2;
+					}
+				}
 			}
 			if (check_pol == true)
 			{
-
+				all_stavka += stavka;
+				if (stavka_pol == check_stavka::var_1_18)
+				{
+					if (num >= 1 && num <= 18)
+					{
+						priz += stavka * 2;
+					}
+				}
+				if (stavka_pol == check_stavka::var_19_36)
+				{
+					if (num >= 19 && num <= 36)
+					{
+						priz += stavka * 2;
+					}
+				}
 			}
 			if (check_third == true)
 			{
-				 
+				all_stavka += stavka;
+				if (stavka_third == check_stavka::var_1_12)
+				{
+					if (num >= 1 && num <= 12)
+					{
+						priz += stavka * 3;
+					}
+				}
+				if (stavka_third == check_stavka::var_13_24)
+				{
+					if (num >= 13 && num <= 24)
+					{
+						priz += stavka * 3;
+					}
+				}
+				if (stavka_third == check_stavka::var_25_36)
+				{
+					if (num >= 25 && num <= 36)
+					{
+						priz += stavka * 3;
+					}
+				}
 			}
+			balance_rub -= all_stavka;
+			balance_rub += priz;
+			if (all_stavka <= priz)
+			{
+				label6->Text = "вы выйграли";
+				label7->Text = Convert::ToString(priz);
+			}
+			else
+			{
+				label6->Text = "вы проиграли";
+				label7->Text = Convert::ToString(all_stavka - priz);
+			}
+			label1->Text = Convert::ToString(balance_rub);
+			label2->Text = Convert::ToString(balance_dl);
+			label3->Text = Convert::ToString(balance_evro);
 		}
 	}
 }
 private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
-	stavka = Convert::ToInt32(textBox1->Text);
-	stavka *= 2;
-	textBox1->Text = Convert::ToString(stavka);
+	if (textBox1->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox1->Text);
+		stavka *= 2;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label8->Text = "сначала сделайте ставку";
+	}
 }
 private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
-	stavka = Convert::ToInt32(textBox1->Text);
-	stavka /= 2;
-	textBox1->Text = Convert::ToString(stavka);
+	if (textBox1->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox1->Text);
+		stavka /= 2;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label8->Text = "сначала сделайте ставку";
+	}
 }
 private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
-	stavka = Convert::ToInt32(textBox1->Text);
-	stavka += 10;
-	textBox1->Text = Convert::ToString(stavka);
+	if (textBox1->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox1->Text);
+		stavka += 10;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label8->Text = "сначала сделайте ставку";
+	}
 }
 private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
-	stavka = Convert::ToInt32(textBox1->Text);
-	stavka += 100;
-	textBox1->Text = Convert::ToString(stavka);
+	if (textBox1->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox1->Text);
+		stavka += 100;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label8->Text = "сначала сделайте ставку";
+	}
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (check_pol == false)
