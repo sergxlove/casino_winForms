@@ -86,6 +86,9 @@ namespace casinowinForms {
 	private: int stavka_color;
 	private: int stavka_chet;
 	private: int stavka_0;
+	private: bool wallet_rub = false;
+	private: bool wallet_evr = false;
+	private: bool wallet_dol = false;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Button^ button17;
 	private: System::Windows::Forms::Button^ button18;
@@ -147,8 +150,8 @@ namespace casinowinForms {
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(246)), static_cast<System::Int32>(static_cast<System::Byte>(146)),
+				static_cast<System::Int32>(static_cast<System::Byte>(118)));
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::Color::White;
@@ -209,9 +212,9 @@ namespace casinowinForms {
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label2->Location = System::Drawing::Point(702, 59);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 38);
+			this->label2->Size = System::Drawing::Size(107, 38);
 			this->label2->TabIndex = 5;
-			this->label2->Text = L"0";
+			this->label2->Text = L"10000";
 			// 
 			// label3
 			// 
@@ -221,14 +224,13 @@ namespace casinowinForms {
 			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label3->Location = System::Drawing::Point(1052, 59);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(35, 38);
+			this->label3->Size = System::Drawing::Size(107, 38);
 			this->label3->TabIndex = 6;
-			this->label3->Text = L"0";
+			this->label3->Text = L"10000";
 			// 
 			// button2
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button2->BackColor = System::Drawing::Color::SlateBlue;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->ForeColor = System::Drawing::Color::White;
@@ -242,8 +244,7 @@ namespace casinowinForms {
 			// 
 			// button3
 			// 
-			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button3->BackColor = System::Drawing::Color::SlateBlue;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button3->ForeColor = System::Drawing::Color::White;
@@ -257,8 +258,7 @@ namespace casinowinForms {
 			// 
 			// button4
 			// 
-			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button4->BackColor = System::Drawing::Color::SlateBlue;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button4->ForeColor = System::Drawing::Color::White;
@@ -272,8 +272,7 @@ namespace casinowinForms {
 			// 
 			// button5
 			// 
-			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button5->BackColor = System::Drawing::Color::SlateBlue;
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button5->ForeColor = System::Drawing::Color::White;
@@ -287,8 +286,7 @@ namespace casinowinForms {
 			// 
 			// button6
 			// 
-			this->button6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button6->BackColor = System::Drawing::Color::SlateBlue;
 			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button6->ForeColor = System::Drawing::Color::White;
@@ -302,8 +300,8 @@ namespace casinowinForms {
 			// 
 			// button7
 			// 
-			this->button7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(133)),
+				static_cast<System::Int32>(static_cast<System::Byte>(180)));
 			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button7->ForeColor = System::Drawing::Color::White;
@@ -317,8 +315,8 @@ namespace casinowinForms {
 			// 
 			// button8
 			// 
-			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(206)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button8->ForeColor = System::Drawing::Color::White;
@@ -332,8 +330,8 @@ namespace casinowinForms {
 			// 
 			// button9
 			// 
-			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button9->ForeColor = System::Drawing::Color::White;
@@ -347,8 +345,8 @@ namespace casinowinForms {
 			// 
 			// button10
 			// 
-			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(71)), static_cast<System::Int32>(static_cast<System::Byte>(74)),
+				static_cast<System::Int32>(static_cast<System::Byte>(81)));
 			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button10->ForeColor = System::Drawing::Color::White;
@@ -362,8 +360,8 @@ namespace casinowinForms {
 			// 
 			// button11
 			// 
-			this->button11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(40)), static_cast<System::Int32>(static_cast<System::Byte>(114)),
+				static_cast<System::Int32>(static_cast<System::Byte>(51)));
 			this->button11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button11->ForeColor = System::Drawing::Color::White;
@@ -403,8 +401,8 @@ namespace casinowinForms {
 			// 
 			// button12
 			// 
-			this->button12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(121)),
+				static_cast<System::Int32>(static_cast<System::Byte>(111)));
 			this->button12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button12->ForeColor = System::Drawing::Color::White;
@@ -418,8 +416,8 @@ namespace casinowinForms {
 			// 
 			// button13
 			// 
-			this->button13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button13->ForeColor = System::Drawing::Color::White;
@@ -433,8 +431,8 @@ namespace casinowinForms {
 			// 
 			// button14
 			// 
-			this->button14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button14->ForeColor = System::Drawing::Color::White;
@@ -448,8 +446,8 @@ namespace casinowinForms {
 			// 
 			// button15
 			// 
-			this->button15->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button15->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button15->ForeColor = System::Drawing::Color::White;
@@ -463,8 +461,8 @@ namespace casinowinForms {
 			// 
 			// button16
 			// 
-			this->button16->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button16->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button16->ForeColor = System::Drawing::Color::White;
@@ -494,9 +492,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(66, 686);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(89, 38);
+			this->label6->Size = System::Drawing::Size(0, 38);
 			this->label6->TabIndex = 25;
-			this->label6->Text = L"0000";
 			// 
 			// label7
 			// 
@@ -505,20 +502,19 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label7->Location = System::Drawing::Point(366, 686);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(89, 38);
+			this->label7->Size = System::Drawing::Size(0, 38);
 			this->label7->TabIndex = 26;
-			this->label7->Text = L"0000";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->label8->ForeColor = System::Drawing::Color::Red;
 			this->label8->Location = System::Drawing::Point(825, 529);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(89, 38);
+			this->label8->Size = System::Drawing::Size(0, 38);
 			this->label8->TabIndex = 27;
-			this->label8->Text = L"0000";
 			// 
 			// label9
 			// 
@@ -533,8 +529,7 @@ namespace casinowinForms {
 			// 
 			// button17
 			// 
-			this->button17->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button17->BackColor = System::Drawing::Color::Red;
 			this->button17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button17->Location = System::Drawing::Point(519, 48);
@@ -543,11 +538,11 @@ namespace casinowinForms {
 			this->button17->TabIndex = 29;
 			this->button17->Text = L"Выбрать";
 			this->button17->UseVisualStyleBackColor = false;
+			this->button17->Click += gcnew System::EventHandler(this, &MyForm1::button17_Click);
 			// 
 			// button18
 			// 
-			this->button18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button18->BackColor = System::Drawing::Color::Red;
 			this->button18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button18->Location = System::Drawing::Point(865, 49);
@@ -556,11 +551,11 @@ namespace casinowinForms {
 			this->button18->TabIndex = 30;
 			this->button18->Text = L"Выбрать";
 			this->button18->UseVisualStyleBackColor = false;
+			this->button18->Click += gcnew System::EventHandler(this, &MyForm1::button18_Click);
 			// 
 			// button19
 			// 
-			this->button19->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button19->BackColor = System::Drawing::Color::Red;
 			this->button19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button19->Location = System::Drawing::Point(1263, 49);
@@ -569,6 +564,7 @@ namespace casinowinForms {
 			this->button19->TabIndex = 31;
 			this->button19->Text = L"Выбрать";
 			this->button19->UseVisualStyleBackColor = false;
+			this->button19->Click += gcnew System::EventHandler(this, &MyForm1::button19_Click);
 			// 
 			// textBox2
 			// 
@@ -640,157 +636,177 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 	int balance_dl = Convert::ToInt32(label2->Text);
 	int balance_evro = Convert::ToInt32(label3->Text);
 	int priz = 0;
-	int lose = 0;
 	int all_stavka = 0;
-	if (textBox1->Text == "")
+	if (wallet_rub == false && wallet_dol == false && wallet_evr == false)
 	{
-		label8->Text = "выберите сумму ставки";
-	}
-	else if(check_0==true||check_chet==true||check_color==true||check_pol==true||check_third==true)
-	{
-		stavka = Convert::ToInt32(textBox1->Text);
-		if (stavka > balance_rub)
-		{
-			label8->Text = "недостаточно средств на балансе";
-		}
-		else
-		{
-			Random^ random = gcnew Random();
-			int num = random->Next(0, 36);
-			if (num == 0)
-			{
-				label5->Text = Convert::ToString(num);
-				label5->BackColor = Color::Green;
-				label5->ForeColor = Color::White;
-			}
-			else if (num % 2 == 0)
-			{
-				label5->Text = Convert::ToString(num);
-				label5->BackColor = Color::Red;
-				label5->ForeColor = Color::Black;
-			}
-			else if (num % 2 == 1)
-			{
-				label5->Text = Convert::ToString(num);
-				label5->BackColor = Color::Black;
-				label5->ForeColor = Color::Red;
-			}
-			if (check_0 == true)
-			{
-				all_stavka += stavka;
-				if (num == 0)
-				{
-					priz += stavka * 36;
-				}
-				check_0 = false;
-			}
-			if (check_chet == true)
-			{
-				all_stavka += stavka;
-				if (stavka_chet == check_stavka::var_chet)
-				{
-					if (num % 2 == 0&&num!=0)
-					{
-						priz += stavka * 2;
-					}
-				}
-				if (stavka_chet == check_stavka::var_ne_chet)
-				{
-					if (num % 2 == 1 && num != 0)
-					{
-						priz += stavka * 2;
-					}
-				}
-				check_chet = false;
-			}
-			if (check_color == true)
-			{
-				all_stavka += stavka;
-				if (stavka_color == check_stavka::var_red)
-				{
-					if (num % 2 == 0 && num != 0)
-					{
-						priz += stavka * 2;
-					}
-				}
-				if (stavka_color == check_stavka::var_black)
-				{
-					if (num % 2 == 1 && num != 0)
-					{
-						priz += stavka * 2;
-					}
-				}
-				check_color = false;
-			}
-			if (check_pol == true)
-			{
-				all_stavka += stavka;
-				if (stavka_pol == check_stavka::var_1_18)
-				{
-					if (num >= 1 && num <= 18)
-					{
-						priz += stavka * 2;
-					}
-				}
-				if (stavka_pol == check_stavka::var_19_36)
-				{
-					if (num >= 19 && num <= 36)
-					{
-						priz += stavka * 2;
-					}
-				}
-				check_pol = false;
-			}
-			if (check_third == true)
-			{
-				all_stavka += stavka;
-				if (stavka_third == check_stavka::var_1_12)
-				{
-					if (num >= 1 && num <= 12)
-					{
-						priz += stavka * 3;
-					}
-				}
-				if (stavka_third == check_stavka::var_13_24)
-				{
-					if (num >= 13 && num <= 24)
-					{
-						priz += stavka * 3;
-					}
-				}
-				if (stavka_third == check_stavka::var_25_36)
-				{
-					if (num >= 25 && num <= 36)
-					{
-						priz += stavka * 3;
-					}
-				}
-				check_third = false;
-			}
-			balance_rub -= all_stavka;
-			balance_rub += priz;
-			if (all_stavka <= priz)
-			{
-				label6->Text = "вы выйграли";
-				label7->Text = Convert::ToString(priz);
-				label6->ForeColor = Color::Green;
-				label7->ForeColor = Color::Green;
-			}
-			else
-			{
-				label6->Text = "вы проиграли";
-				label7->Text = Convert::ToString(all_stavka - priz);
-				label6->ForeColor = Color::Red;
-				label7->ForeColor = Color::Red;
-			}
-			label1->Text = Convert::ToString(balance_rub);
-			label2->Text = Convert::ToString(balance_dl);
-			label3->Text = Convert::ToString(balance_evro);
-		}
+		label8->Text = "выберите валюту";
 	}
 	else
 	{
-		label8->Text = "Выберите ставку";
+		if (textBox1->Text == "")
+		{
+			label8->Text = "выберите сумму ставки";
+		}
+		else if (check_0 == true || check_chet == true || check_color == true || check_pol == true || check_third == true)
+		{
+			stavka = Convert::ToInt32(textBox1->Text);
+			if (stavka > balance_rub)
+			{
+				label8->Text = "недостаточно средств на балансе";
+			}
+			else
+			{
+				Random^ random = gcnew Random();
+				int num = random->Next(0, 36);
+				if (num == 0)
+				{
+					label5->Text = Convert::ToString(num);
+					label5->BackColor = Color::Green;
+					label5->ForeColor = Color::White;
+				}
+				else if (num % 2 == 0)
+				{
+					label5->Text = Convert::ToString(num);
+					label5->BackColor = Color::Red;
+					label5->ForeColor = Color::Black;
+				}
+				else if (num % 2 == 1)
+				{
+					label5->Text = Convert::ToString(num);
+					label5->BackColor = Color::Black;
+					label5->ForeColor = Color::Red;
+				}
+				if (check_0 == true)
+				{
+					all_stavka += stavka;
+					if (num == 0)
+					{
+						priz += stavka * 36;
+					}
+					check_0 = false;
+				}
+				if (check_chet == true)
+				{
+					all_stavka += stavka;
+					if (stavka_chet == check_stavka::var_chet)
+					{
+						if (num % 2 == 0 && num != 0)
+						{
+							priz += stavka * 2;
+						}
+					}
+					if (stavka_chet == check_stavka::var_ne_chet)
+					{
+						if (num % 2 == 1 && num != 0)
+						{
+							priz += stavka * 2;
+						}
+					}
+					check_chet = false;
+				}
+				if (check_color == true)
+				{
+					all_stavka += stavka;
+					if (stavka_color == check_stavka::var_red)
+					{
+						if (num % 2 == 0 && num != 0)
+						{
+							priz += stavka * 2;
+						}
+					}
+					if (stavka_color == check_stavka::var_black)
+					{
+						if (num % 2 == 1 && num != 0)
+						{
+							priz += stavka * 2;
+						}
+					}
+					check_color = false;
+				}
+				if (check_pol == true)
+				{
+					all_stavka += stavka;
+					if (stavka_pol == check_stavka::var_1_18)
+					{
+						if (num >= 1 && num <= 18)
+						{
+							priz += stavka * 2;
+						}
+					}
+					if (stavka_pol == check_stavka::var_19_36)
+					{
+						if (num >= 19 && num <= 36)
+						{
+							priz += stavka * 2;
+						}
+					}
+					check_pol = false;
+				}
+				if (check_third == true)
+				{
+					all_stavka += stavka;
+					if (stavka_third == check_stavka::var_1_12)
+					{
+						if (num >= 1 && num <= 12)
+						{
+							priz += stavka * 3;
+						}
+					}
+					if (stavka_third == check_stavka::var_13_24)
+					{
+						if (num >= 13 && num <= 24)
+						{
+							priz += stavka * 3;
+						}
+					}
+					if (stavka_third == check_stavka::var_25_36)
+					{
+						if (num >= 25 && num <= 36)
+						{
+							priz += stavka * 3;
+						}
+					}
+					check_third = false;
+				}
+				if (wallet_rub == true)
+				{
+					balance_rub -= all_stavka;
+					balance_rub += priz;
+					label1->Text = Convert::ToString(balance_rub);
+				}
+				else if (wallet_dol == true)
+				{
+					balance_dl -= all_stavka;
+					balance_dl += priz;
+					label2->Text = Convert::ToString(balance_dl);
+				}
+				else if (wallet_evr == true)
+				{
+					balance_evro -= all_stavka;
+					balance_evro += priz;
+					label3->Text = Convert::ToString(balance_evro);
+				}
+				if (all_stavka <= priz)
+				{
+					label6->Text = "вы выйграли";
+					label7->Text = Convert::ToString(priz);
+					label6->ForeColor = Color::Green;
+					label7->ForeColor = Color::Green;
+				}
+				else
+				{
+					label6->Text = "вы проиграли";
+					label7->Text = Convert::ToString(all_stavka - priz);
+					label6->ForeColor = Color::Red;
+					label7->ForeColor = Color::Red;
+				}
+				textBox2->Text = "Ваши ставки:";
+			}
+		}
+		else
+		{
+			label8->Text = "Выберите ставку";
+		}
 	}
 }
 private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -970,6 +986,39 @@ private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		label8->Text = "вы уже сделал ставку";
 	}
+}
+private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
+	wallet_rub = true;
+	wallet_evr = false;
+	wallet_dol = false;
+	button17->Text = "Выбрано";
+	button18->Text = "Выбрать";
+	button19->Text = "Выбрать";
+	button17->BackColor = Color::Green;
+	button18->BackColor = Color::Red;
+	button19->BackColor = Color::Red;
+}
+private: System::Void button18_Click(System::Object^ sender, System::EventArgs^ e) {
+	wallet_rub = false;
+	wallet_evr = false;
+	wallet_dol = true;
+	button17->Text = "Выбрать";
+	button18->Text = "Выбрано";
+	button19->Text = "Выбрать";
+	button17->BackColor = Color::Red;
+	button18->BackColor = Color::Green;
+	button19->BackColor = Color::Red;
+}
+private: System::Void button19_Click(System::Object^ sender, System::EventArgs^ e) {
+	wallet_rub = false;
+	wallet_evr = true;
+	wallet_dol = false;
+	button17->Text = "Выбрать";
+	button18->Text = "Выбрать";
+	button19->Text = "Выбрано";
+	button17->BackColor = Color::Red;
+	button18->BackColor = Color::Red;
+	button19->BackColor = Color::Green;
 }
 };
 }
