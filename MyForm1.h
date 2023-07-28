@@ -592,12 +592,28 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 				label5->BackColor = Color::Black;
 				label5->ForeColor = Color::Red;
 			}
+			if (check_0 == true)
+			{
 
+			}
+			if (check_chet == true)
+			{
+
+			}
+			if (check_color == true)
+			{
+
+			}
+			if (check_pol == true)
+			{
+
+			}
+			if (check_third == true)
+			{
+				 
+			}
 		}
 	}
-	
-	
-	
 }
 private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
 	stavka = Convert::ToInt32(textBox1->Text);
