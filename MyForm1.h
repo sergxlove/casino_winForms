@@ -12,6 +12,19 @@ namespace casinowinForms {
 	/// <summary>
 	/// Сводка для MyForm1
 	/// </summary>
+	enum check_stavka
+	{
+		var_red,
+		var_black,
+		var_1_18,
+		var_19_36,
+		var_1_12,
+		var_13_24,
+		var_25_36,
+		var_chet,
+		var_ne_chet,
+		var_0
+	};
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
@@ -63,9 +76,15 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8; 
 	private: int stavka;
-	
+	private: bool check_pol = false;
+	private: bool check_third = false;
+	private: bool check_color = false;
+	private: bool check_chet = false;
+	private: int stavka_pol;
+	private: int stavka_third;
+	private: int stavka_color;
+	private: int stavka_chet;
 	protected:
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -206,6 +225,7 @@ namespace casinowinForms {
 			this->button2->TabIndex = 7;
 			this->button2->Text = L"19-36 (х2)";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
 			// 
 			// button3
 			// 
@@ -220,6 +240,7 @@ namespace casinowinForms {
 			this->button3->TabIndex = 8;
 			this->button3->Text = L"1-18 (х2)";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm1::button3_Click);
 			// 
 			// button4
 			// 
@@ -452,9 +473,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(66, 686);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(0, 38);
+			this->label6->Size = System::Drawing::Size(89, 38);
 			this->label6->TabIndex = 25;
-			this->label6->Text = "0000";
+			this->label6->Text = L"0000";
 			// 
 			// label7
 			// 
@@ -463,9 +484,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label7->Location = System::Drawing::Point(218, 686);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(0, 38);
+			this->label7->Size = System::Drawing::Size(89, 38);
 			this->label7->TabIndex = 26;
-			this->label7->Text = "0000";
+			this->label7->Text = L"0000";
 			// 
 			// label8
 			// 
@@ -474,9 +495,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(483, 686);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(0, 38);
+			this->label8->Size = System::Drawing::Size(89, 38);
 			this->label8->TabIndex = 27;
-			this->label8->Text = "0000";
+			this->label8->Text = L"0000";
 			// 
 			// MyForm1
 			// 
@@ -524,39 +545,47 @@ namespace casinowinForms {
 
 		}
 #pragma endregion
-
 private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
 	int balance_rub = Convert::ToInt32(label1->Text);
 	int balance_dl = Convert::ToInt32(label2->Text);
 	int balance_evro = Convert::ToInt32(label3->Text);
-	stavka = Convert::ToInt32(textBox1->Text);
-	if (stavka > balance_rub)
+	if (textBox1->Text == "")
 	{
-		label8->Text = "недостаточно средств на балансе";
+		label8->Text = "сначала сделайте ставку";
 	}
 	else
 	{
-		Random^ random = gcnew Random();
-		int num = random->Next(0, 36);
-		if (num == 0)
+		stavka = Convert::ToInt32(textBox1->Text);
+		if (stavka > balance_rub)
 		{
-			label5->Text = Convert::ToString(num);
-			label5->BackColor = Color::Green;
-			label5->ForeColor = Color::White;
+			label8->Text = "недостаточно средств на балансе";
 		}
-		else if (num % 2 == 0)
+		else
 		{
-			label5->Text = Convert::ToString(num);
-			label5->BackColor = Color::Red;
-			label5->ForeColor = Color::Black;
-		}
-		else if (num % 2 == 1)
-		{
-			label5->Text = Convert::ToString(num);
-			label5->BackColor = Color::Black;
-			label5->ForeColor = Color::Red;
+			Random^ random = gcnew Random();
+			int num = random->Next(0, 36);
+			if (num == 0)
+			{
+				label5->Text = Convert::ToString(num);
+				label5->BackColor = Color::Green;
+				label5->ForeColor = Color::White;
+			}
+			else if (num % 2 == 0)
+			{
+				label5->Text = Convert::ToString(num);
+				label5->BackColor = Color::Red;
+				label5->ForeColor = Color::Black;
+			}
+			else if (num % 2 == 1)
+			{
+				label5->Text = Convert::ToString(num);
+				label5->BackColor = Color::Black;
+				label5->ForeColor = Color::Red;
+			}
+
 		}
 	}
+	
 	
 	
 }
@@ -580,5 +609,28 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	stavka += 100;
 	textBox1->Text = Convert::ToString(stavka);
 }
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_pol == false)
+	{
+		check_pol = true;
+		stavka_pol = check_stavka::var_1_18;
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (check_pol == false)
+	{
+		check_pol = true;
+		stavka_pol = check_stavka::var_19_36;
+	}
+	else
+	{
+		label8->Text = "вы уже сделали ставку";
+	}
+}
 };
 }
+
