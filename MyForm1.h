@@ -86,6 +86,11 @@ namespace casinowinForms {
 	private: int stavka_color;
 	private: int stavka_chet;
 	private: int stavka_0;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Button^ button17;
+	private: System::Windows::Forms::Button^ button18;
+	private: System::Windows::Forms::Button^ button19;
+	private: System::Windows::Forms::TextBox^ textBox2;
 
 	protected:
 	private:
@@ -130,6 +135,11 @@ namespace casinowinForms {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->button17 = (gcnew System::Windows::Forms::Button());
+			this->button18 = (gcnew System::Windows::Forms::Button());
+			this->button19 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -286,7 +296,7 @@ namespace casinowinForms {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(290, 77);
 			this->button6->TabIndex = 11;
-			this->button6->Text = L"25-36 (х2)";
+			this->button6->Text = L"25-36 (х3)";
 			this->button6->UseVisualStyleBackColor = false;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm1::button6_Click);
 			// 
@@ -402,7 +412,7 @@ namespace casinowinForms {
 			this->button12->Name = L"button12";
 			this->button12->Size = System::Drawing::Size(199, 77);
 			this->button12->TabIndex = 19;
-			this->button12->Text = L"Поставить";
+			this->button12->Text = L"Вращать";
 			this->button12->UseVisualStyleBackColor = false;
 			this->button12->Click += gcnew System::EventHandler(this, &MyForm1::button12_Click);
 			// 
@@ -493,7 +503,7 @@ namespace casinowinForms {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(384, 686);
+			this->label7->Location = System::Drawing::Point(366, 686);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(89, 38);
 			this->label7->TabIndex = 26;
@@ -504,11 +514,75 @@ namespace casinowinForms {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label8->Location = System::Drawing::Point(483, 686);
+			this->label8->Location = System::Drawing::Point(825, 529);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(89, 38);
 			this->label8->TabIndex = 27;
 			this->label8->Text = L"0000";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label9->Location = System::Drawing::Point(307, 12);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(220, 29);
+			this->label9->TabIndex = 28;
+			this->label9->Text = L"Выберите валюту:";
+			// 
+			// button17
+			// 
+			this->button17->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button17->Location = System::Drawing::Point(519, 48);
+			this->button17->Name = L"button17";
+			this->button17->Size = System::Drawing::Size(121, 49);
+			this->button17->TabIndex = 29;
+			this->button17->Text = L"Выбрать";
+			this->button17->UseVisualStyleBackColor = false;
+			// 
+			// button18
+			// 
+			this->button18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button18->Location = System::Drawing::Point(865, 49);
+			this->button18->Name = L"button18";
+			this->button18->Size = System::Drawing::Size(121, 49);
+			this->button18->TabIndex = 30;
+			this->button18->Text = L"Выбрать";
+			this->button18->UseVisualStyleBackColor = false;
+			// 
+			// button19
+			// 
+			this->button19->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button19->Location = System::Drawing::Point(1263, 49);
+			this->button19->Name = L"button19";
+			this->button19->Size = System::Drawing::Size(121, 49);
+			this->button19->TabIndex = 31;
+			this->button19->Text = L"Выбрать";
+			this->button19->UseVisualStyleBackColor = false;
+			// 
+			// textBox2
+			// 
+			this->textBox2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox2->ForeColor = System::Drawing::SystemColors::Window;
+			this->textBox2->Location = System::Drawing::Point(865, 661);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(519, 172);
+			this->textBox2->TabIndex = 32;
+			this->textBox2->Text = L"Ваша ставки :";
 			// 
 			// MyForm1
 			// 
@@ -516,7 +590,12 @@ namespace casinowinForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(1397, 747);
+			this->ClientSize = System::Drawing::Size(1415, 845);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->button19);
+			this->Controls->Add(this->button18);
+			this->Controls->Add(this->button17);
+			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -553,7 +632,7 @@ namespace casinowinForms {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-			
+
 		}
 #pragma endregion
 private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -565,9 +644,9 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 	int all_stavka = 0;
 	if (textBox1->Text == "")
 	{
-		label8->Text = "сначала сделайте ставку";
+		label8->Text = "выберите сумму ставки";
 	}
-	else
+	else if(check_0==true||check_chet==true||check_color==true||check_pol==true||check_third==true)
 	{
 		stavka = Convert::ToInt32(textBox1->Text);
 		if (stavka > balance_rub)
@@ -603,6 +682,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 				{
 					priz += stavka * 36;
 				}
+				check_0 = false;
 			}
 			if (check_chet == true)
 			{
@@ -621,6 +701,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 						priz += stavka * 2;
 					}
 				}
+				check_chet = false;
 			}
 			if (check_color == true)
 			{
@@ -639,6 +720,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 						priz += stavka * 2;
 					}
 				}
+				check_color = false;
 			}
 			if (check_pol == true)
 			{
@@ -657,6 +739,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 						priz += stavka * 2;
 					}
 				}
+				check_pol = false;
 			}
 			if (check_third == true)
 			{
@@ -682,6 +765,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 						priz += stavka * 3;
 					}
 				}
+				check_third = false;
 			}
 			balance_rub -= all_stavka;
 			balance_rub += priz;
@@ -689,16 +773,24 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 			{
 				label6->Text = "вы выйграли";
 				label7->Text = Convert::ToString(priz);
+				label6->ForeColor = Color::Green;
+				label7->ForeColor = Color::Green;
 			}
 			else
 			{
 				label6->Text = "вы проиграли";
 				label7->Text = Convert::ToString(all_stavka - priz);
+				label6->ForeColor = Color::Red;
+				label7->ForeColor = Color::Red;
 			}
 			label1->Text = Convert::ToString(balance_rub);
 			label2->Text = Convert::ToString(balance_dl);
 			label3->Text = Convert::ToString(balance_evro);
 		}
+	}
+	else
+	{
+		label8->Text = "Выберите ставку";
 	}
 }
 private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -755,6 +847,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		check_pol = true;
 		stavka_pol = check_stavka::var_1_18;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\n1-18   сумма : " + stavka;
 	}
 	else
 	{
@@ -767,6 +860,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		check_pol = true;
 		stavka_pol = check_stavka::var_19_36;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\n19-36   сумма : " + stavka;
 	}
 	else
 	{
@@ -779,6 +873,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_1_12;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\n1-12   сумма : " + stavka;
 	}
 	else
 	{
@@ -791,6 +886,7 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_13_24;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\n13-24   сумма : " + stavka;
 	}
 	else
 	{
@@ -803,6 +899,7 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_25_36;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\n25-36   сумма : " + stavka;
 	}
 	else
 	{
@@ -815,6 +912,7 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		check_chet = true;
 		stavka_chet = check_stavka::var_chet;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\nЧетное   сумма : " + stavka;
 	}
 	else
 	{
@@ -827,6 +925,7 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 		check_chet = true;
 		stavka_chet = check_stavka::var_ne_chet;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\nНечетное   сумма : " + stavka;
 	}
 	else
 	{
@@ -839,6 +938,7 @@ private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e
 		check_color = true;
 		stavka_color = check_stavka::var_red;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\nКрасное   сумма : " + stavka;
 	}
 	else
 	{
@@ -851,6 +951,7 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 		check_color = true;
 		stavka_color = check_stavka::var_black;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\nЧерное   сумма : " + stavka;
 	}
 	else
 	{
@@ -863,12 +964,12 @@ private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ 
 		check_0 = true;
 		stavka_0 = check_stavka::var_0;
 		label8->Text = "ставка принята";
+		textBox2->Text += "\r\nНа 0   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделал ставку";
 	}
-
 }
 };
 }
