@@ -1,6 +1,6 @@
 #pragma once
 #include "MyForm1.h"
-
+#include "MyForm2.h"
 namespace casinowinForms {
 
 	using namespace System;
@@ -391,7 +391,8 @@ namespace casinowinForms {
 			}
 			else if (clickedPictureBox == pictureBox6)
 			{
-
+				MyForm2^ thirdform = gcnew MyForm2();
+				thirdform->Show();
 			}
 			else if (clickedPictureBox == pictureBox7)
 			{
