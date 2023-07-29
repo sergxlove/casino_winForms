@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+
 namespace casinowinForms {
 
 	using namespace System;
@@ -94,6 +95,7 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Button^ button18;
 	private: System::Windows::Forms::Button^ button19;
 	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ textBox3;
 
 	protected:
 	private:
@@ -143,6 +145,7 @@ namespace casinowinForms {
 			this->button18 = (gcnew System::Windows::Forms::Button());
 			this->button19 = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -161,6 +164,7 @@ namespace casinowinForms {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Назад";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
 			// 
 			// pictureBox1
 			// 
@@ -580,6 +584,20 @@ namespace casinowinForms {
 			this->textBox2->TabIndex = 32;
 			this->textBox2->Text = L"Ваша ставки :";
 			// 
+			// textBox3
+			// 
+			this->textBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox3->ForeColor = System::Drawing::SystemColors::Window;
+			this->textBox3->Location = System::Drawing::Point(490, 661);
+			this->textBox3->Multiline = true;
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(369, 172);
+			this->textBox3->TabIndex = 33;
+			this->textBox3->Text = L"История :";
+			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -587,6 +605,7 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1415, 845);
+			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->button19);
 			this->Controls->Add(this->button18);
@@ -640,12 +659,14 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 	if (wallet_rub == false && wallet_dol == false && wallet_evr == false)
 	{
 		label8->Text = "выберите валюту";
+		label8->ForeColor = Color::Red;
 	}
 	else
 	{
 		if (textBox1->Text == "")
 		{
 			label8->Text = "выберите сумму ставки";
+			label8->ForeColor = Color::Red;
 		}
 		else if (check_0 == true || check_chet == true || check_color == true || check_pol == true || check_third == true)
 		{
@@ -653,6 +674,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 			if (stavka > balance_rub)
 			{
 				label8->Text = "недостаточно средств на балансе";
+				label8->ForeColor = Color::Red;
 			}
 			else
 			{
@@ -792,6 +814,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 					label7->Text = Convert::ToString(priz);
 					label6->ForeColor = Color::Green;
 					label7->ForeColor = Color::Green;
+					textBox3->Text += "\r\nВыйгрыш :" + priz;
 				}
 				else
 				{
@@ -799,6 +822,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 					label7->Text = Convert::ToString(all_stavka - priz);
 					label6->ForeColor = Color::Red;
 					label7->ForeColor = Color::Red;
+					textBox3->Text += "\r\nПройгрыш :" + (all_stavka - priz);
 				}
 				textBox2->Text = "Ваши ставки:";
 			}
@@ -806,6 +830,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 		else
 		{
 			label8->Text = "Выберите ставку";
+			label8->ForeColor = Color::Red;
 		}
 	}
 }
@@ -819,6 +844,7 @@ private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -831,6 +857,7 @@ private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -843,6 +870,7 @@ private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -855,6 +883,7 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -863,11 +892,13 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		check_pol = true;
 		stavka_pol = check_stavka::var_1_18;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\n1-18   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -876,11 +907,13 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		check_pol = true;
 		stavka_pol = check_stavka::var_19_36;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\n19-36   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -889,11 +922,13 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_1_12;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\n1-12   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -902,11 +937,13 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_13_24;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\n13-24   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -915,11 +952,13 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 		check_third = true;
 		stavka_third = check_stavka::var_25_36;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\n25-36   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -928,11 +967,13 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		check_chet = true;
 		stavka_chet = check_stavka::var_chet;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\nЧетное   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -941,11 +982,13 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 		check_chet = true;
 		stavka_chet = check_stavka::var_ne_chet;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\nНечетное   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -954,11 +997,13 @@ private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e
 		check_color = true;
 		stavka_color = check_stavka::var_red;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\nКрасное   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -967,11 +1012,13 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 		check_color = true;
 		stavka_color = check_stavka::var_black;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\nЧерное   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделали ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -980,11 +1027,13 @@ private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ 
 		check_0 = true;
 		stavka_0 = check_stavka::var_0;
 		label8->Text = "ставка принята";
+		label8->ForeColor = Color::Green;
 		textBox2->Text += "\r\nНа 0   сумма : " + stavka;
 	}
 	else
 	{
 		label8->Text = "вы уже сделал ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1019,6 +1068,9 @@ private: System::Void button19_Click(System::Object^ sender, System::EventArgs^ 
 	button17->BackColor = Color::Red;
 	button18->BackColor = Color::Red;
 	button19->BackColor = Color::Green;
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Hide();
 }
 };
 }
