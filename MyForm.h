@@ -388,7 +388,6 @@ namespace casinowinForms {
 			{
 				MyForm1^ secondform = gcnew MyForm1();
 				secondform->Show();			
-				this->Hide();
 			}
 			else if (clickedPictureBox == pictureBox6)
 			{
