@@ -94,6 +94,10 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label14;
 	private: bool completion = false;
 	private: int* bomb;
+	private: bool start_game;
+	private: int min;
+	private: int min_for_check;
+	private: int stavka;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -367,6 +371,7 @@ namespace casinowinForms {
 			this->button30->TabIndex = 77;
 			this->button30->Text = L"+10";
 			this->button30->UseVisualStyleBackColor = false;
+			this->button30->Click += gcnew System::EventHandler(this, &MyForm2::button30_Click);
 			// 
 			// button31
 			// 
@@ -381,6 +386,7 @@ namespace casinowinForms {
 			this->button31->TabIndex = 76;
 			this->button31->Text = L"+100";
 			this->button31->UseVisualStyleBackColor = false;
+			this->button31->Click += gcnew System::EventHandler(this, &MyForm2::button31_Click);
 			// 
 			// button32
 			// 
@@ -395,6 +401,7 @@ namespace casinowinForms {
 			this->button32->TabIndex = 75;
 			this->button32->Text = L"/2";
 			this->button32->UseVisualStyleBackColor = false;
+			this->button32->Click += gcnew System::EventHandler(this, &MyForm2::button32_Click);
 			// 
 			// button33
 			// 
@@ -409,6 +416,7 @@ namespace casinowinForms {
 			this->button33->TabIndex = 74;
 			this->button33->Text = L"х2";
 			this->button33->UseVisualStyleBackColor = false;
+			this->button33->Click += gcnew System::EventHandler(this, &MyForm2::button33_Click);
 			// 
 			// button34
 			// 
@@ -421,8 +429,9 @@ namespace casinowinForms {
 			this->button34->Name = L"button34";
 			this->button34->Size = System::Drawing::Size(199, 77);
 			this->button34->TabIndex = 73;
-			this->button34->Text = L"Поставить";
+			this->button34->Text = L"Начать";
 			this->button34->UseVisualStyleBackColor = false;
+			this->button34->Click += gcnew System::EventHandler(this, &MyForm2::button34_Click);
 			// 
 			// label7
 			// 
@@ -857,62 +866,70 @@ namespace casinowinForms {
 	{
 		bool have_bomb = false;
 		int min = Convert::ToInt32(textBox1->Text);
-		int min_for_check = min;
 		if (completion==false)
 		{
+			min = Convert::ToInt32(textBox1->Text);
+			min_for_check = min;
 			bomb = new int[min];
 		}
 		if (textBox1->Text != "")
 		{
 			if (textBox2->Text != "")
 			{
-				Button^ button = safe_cast<Button^>(sender);
-				Random^ random = gcnew Random();
-				if (completion == false)
+				if (start_game == true)
 				{
-					label14->Text = "Ставка принята";
-					label14->ForeColor = Color::Green;
-					bool unicue_value;
-					int k = 0;
-					for (int i = 0;min!=0;)
+					stavka = Convert::ToInt32(textBox2->Text);
+					Button^ button = safe_cast<Button^>(sender);
+					Random^ random = gcnew Random();
+					if (completion == false)
 					{
-						int value = random->Next(1, 26);
-						unicue_value = false;
-						for (int j = 0;j < k;j++)
+						bool unicue_value;
+						int k = 0;
+						for (int i = 0;min != 0;)
 						{
-							if (bomb[j] == value)
+							int value = random->Next(1, 26);
+							unicue_value = false;
+							for (int j = 0;j < k;j++)
 							{
-								unicue_value = true;
+								if (bomb[j] == value)
+								{
+									unicue_value = true;
+								}
+							}
+							if (unicue_value == false)
+							{
+								bomb[i] = value;
+								i++;
+								k++;
+								min--;
 							}
 						}
-						if (unicue_value == false)
+						completion = true;
+					}
+					for (int i = 0;i < min_for_check;i++)
+					{
+						if (bomb[i] == Convert::ToInt32(button->Text))
 						{
-							bomb[i] = value;
-							i++;
-							k++;
-							min--;
+							have_bomb = true;
 						}
 					}
-					completion = true;
-				}
-				for (int i = 0;i < min_for_check;i++)
-				{
-					if (bomb[i] == Convert::ToInt32(button->Text))
+					if (have_bomb == true)
 					{
-						have_bomb = true;
+						button->Text = "*";
+						button->BackColor = Color::Red;
 					}
-				}
-				if (have_bomb == true)
-				{
-					button->Text = "*";
-					button->BackColor = Color::Red;
+
+					else
+					{
+						button->Text = "$";
+						button->BackColor = Color::Green;
+					}
 				}
 				else
 				{
-					button->Text = "$";
-					button->BackColor = Color::Green;
+					label14->Text = "Нажмите начать";
+					label14->ForeColor = Color::Red;
 				}
-
 			}
 			else
 			{
@@ -926,5 +943,22 @@ namespace casinowinForms {
 			label14->ForeColor = Color::Red;
 		}
 	}
+private: System::Void button34_Click(System::Object^ sender, System::EventArgs^ e) {
+	start_game = true;
+	label14->Text = "Игра начата";
+	label14->ForeColor = Color::Green;
+}
+private: System::Void button33_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka *= 2;
+}
+private: System::Void button32_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka /= 2;
+}
+private: System::Void button30_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka += 10;
+}
+private: System::Void button31_Click(System::Object^ sender, System::EventArgs^ e) {
+	stavka += 100;
+}
 };
 }
