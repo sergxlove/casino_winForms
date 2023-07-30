@@ -92,6 +92,8 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Button^ button24;
 	private: System::Windows::Forms::Button^ button25;
 	private: System::Windows::Forms::Label^ label14;
+	private: bool completion = false;
+	private: int* bomb;
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -520,7 +522,7 @@ namespace casinowinForms {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(90, 90);
 			this->button1->TabIndex = 86;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -530,7 +532,7 @@ namespace casinowinForms {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(90, 90);
 			this->button2->TabIndex = 87;
-			this->button2->Text = L"button2";
+			this->button2->Text = L"2";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -540,7 +542,7 @@ namespace casinowinForms {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(90, 90);
 			this->button3->TabIndex = 88;
-			this->button3->Text = L"button3";
+			this->button3->Text = L"3";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -550,7 +552,7 @@ namespace casinowinForms {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(90, 90);
 			this->button4->TabIndex = 89;
-			this->button4->Text = L"button4";
+			this->button4->Text = L"4";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -560,7 +562,7 @@ namespace casinowinForms {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(90, 90);
 			this->button5->TabIndex = 90;
-			this->button5->Text = L"button5";
+			this->button5->Text = L"5";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -570,7 +572,7 @@ namespace casinowinForms {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(90, 90);
 			this->button6->TabIndex = 91;
-			this->button6->Text = L"button6";
+			this->button6->Text = L"6";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -580,7 +582,7 @@ namespace casinowinForms {
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(90, 90);
 			this->button7->TabIndex = 92;
-			this->button7->Text = L"button7";
+			this->button7->Text = L"7";
 			this->button7->UseVisualStyleBackColor = true;
 			this->button7->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -590,7 +592,7 @@ namespace casinowinForms {
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(90, 90);
 			this->button8->TabIndex = 93;
-			this->button8->Text = L"button8";
+			this->button8->Text = L"8";
 			this->button8->UseVisualStyleBackColor = true;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -600,7 +602,7 @@ namespace casinowinForms {
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(90, 90);
 			this->button9->TabIndex = 94;
-			this->button9->Text = L"button9";
+			this->button9->Text = L"9";
 			this->button9->UseVisualStyleBackColor = true;
 			this->button9->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -610,7 +612,7 @@ namespace casinowinForms {
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(90, 90);
 			this->button10->TabIndex = 95;
-			this->button10->Text = L"button10";
+			this->button10->Text = L"10";
 			this->button10->UseVisualStyleBackColor = true;
 			this->button10->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -620,7 +622,7 @@ namespace casinowinForms {
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(90, 90);
 			this->button11->TabIndex = 96;
-			this->button11->Text = L"button11";
+			this->button11->Text = L"11";
 			this->button11->UseVisualStyleBackColor = true;
 			this->button11->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -630,7 +632,7 @@ namespace casinowinForms {
 			this->button12->Name = L"button12";
 			this->button12->Size = System::Drawing::Size(90, 90);
 			this->button12->TabIndex = 97;
-			this->button12->Text = L"button12";
+			this->button12->Text = L"12";
 			this->button12->UseVisualStyleBackColor = true;
 			this->button12->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -640,7 +642,7 @@ namespace casinowinForms {
 			this->button13->Name = L"button13";
 			this->button13->Size = System::Drawing::Size(90, 90);
 			this->button13->TabIndex = 98;
-			this->button13->Text = L"button13";
+			this->button13->Text = L"13";
 			this->button13->UseVisualStyleBackColor = true;
 			this->button13->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -650,7 +652,7 @@ namespace casinowinForms {
 			this->button14->Name = L"button14";
 			this->button14->Size = System::Drawing::Size(90, 90);
 			this->button14->TabIndex = 99;
-			this->button14->Text = L"button14";
+			this->button14->Text = L"14";
 			this->button14->UseVisualStyleBackColor = true;
 			this->button14->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -660,7 +662,7 @@ namespace casinowinForms {
 			this->button15->Name = L"button15";
 			this->button15->Size = System::Drawing::Size(90, 90);
 			this->button15->TabIndex = 100;
-			this->button15->Text = L"button15";
+			this->button15->Text = L"15";
 			this->button15->UseVisualStyleBackColor = true;
 			this->button15->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -670,7 +672,7 @@ namespace casinowinForms {
 			this->button16->Name = L"button16";
 			this->button16->Size = System::Drawing::Size(90, 90);
 			this->button16->TabIndex = 101;
-			this->button16->Text = L"button16";
+			this->button16->Text = L"16";
 			this->button16->UseVisualStyleBackColor = true;
 			this->button16->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -680,7 +682,7 @@ namespace casinowinForms {
 			this->button17->Name = L"button17";
 			this->button17->Size = System::Drawing::Size(90, 90);
 			this->button17->TabIndex = 102;
-			this->button17->Text = L"button17";
+			this->button17->Text = L"17";
 			this->button17->UseVisualStyleBackColor = true;
 			this->button17->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -690,7 +692,7 @@ namespace casinowinForms {
 			this->button18->Name = L"button18";
 			this->button18->Size = System::Drawing::Size(90, 90);
 			this->button18->TabIndex = 103;
-			this->button18->Text = L"button18";
+			this->button18->Text = L"18";
 			this->button18->UseVisualStyleBackColor = true;
 			this->button18->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -700,7 +702,7 @@ namespace casinowinForms {
 			this->button19->Name = L"button19";
 			this->button19->Size = System::Drawing::Size(90, 90);
 			this->button19->TabIndex = 104;
-			this->button19->Text = L"button19";
+			this->button19->Text = L"19";
 			this->button19->UseVisualStyleBackColor = true;
 			this->button19->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -710,7 +712,7 @@ namespace casinowinForms {
 			this->button20->Name = L"button20";
 			this->button20->Size = System::Drawing::Size(90, 90);
 			this->button20->TabIndex = 105;
-			this->button20->Text = L"button20";
+			this->button20->Text = L"20";
 			this->button20->UseVisualStyleBackColor = true;
 			this->button20->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -720,7 +722,7 @@ namespace casinowinForms {
 			this->button21->Name = L"button21";
 			this->button21->Size = System::Drawing::Size(90, 90);
 			this->button21->TabIndex = 106;
-			this->button21->Text = L"button21";
+			this->button21->Text = L"21";
 			this->button21->UseVisualStyleBackColor = true;
 			this->button21->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -730,7 +732,7 @@ namespace casinowinForms {
 			this->button22->Name = L"button22";
 			this->button22->Size = System::Drawing::Size(90, 90);
 			this->button22->TabIndex = 107;
-			this->button22->Text = L"button22";
+			this->button22->Text = L"22";
 			this->button22->UseVisualStyleBackColor = true;
 			this->button22->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -740,7 +742,7 @@ namespace casinowinForms {
 			this->button23->Name = L"button23";
 			this->button23->Size = System::Drawing::Size(90, 90);
 			this->button23->TabIndex = 108;
-			this->button23->Text = L"button23";
+			this->button23->Text = L"23";
 			this->button23->UseVisualStyleBackColor = true;
 			this->button23->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -750,7 +752,7 @@ namespace casinowinForms {
 			this->button24->Name = L"button24";
 			this->button24->Size = System::Drawing::Size(90, 90);
 			this->button24->TabIndex = 109;
-			this->button24->Text = L"button24";
+			this->button24->Text = L"24";
 			this->button24->UseVisualStyleBackColor = true;
 			this->button24->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -760,7 +762,7 @@ namespace casinowinForms {
 			this->button25->Name = L"button25";
 			this->button25->Size = System::Drawing::Size(90, 90);
 			this->button25->TabIndex = 110;
-			this->button25->Text = L"button25";
+			this->button25->Text = L"25";
 			this->button25->UseVisualStyleBackColor = true;
 			this->button25->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
@@ -853,15 +855,64 @@ namespace casinowinForms {
 	}
 	private: System::Void btn_Check(System::Object^ sender, System::EventArgs^ e)
 	{
+		bool have_bomb = false;
+		int min = Convert::ToInt32(textBox1->Text);
+		int min_for_check = min;
+		if (completion==false)
+		{
+			bomb = new int[min];
+		}
 		if (textBox1->Text != "")
 		{
 			if (textBox2->Text != "")
 			{
-				label14->Text = "Ставка принята";
-				label14->ForeColor = Color::Green;
 				Button^ button = safe_cast<Button^>(sender);
-				int min = Convert::ToInt32(textBox1->Text);
 				Random^ random = gcnew Random();
+				if (completion == false)
+				{
+					label14->Text = "Ставка принята";
+					label14->ForeColor = Color::Green;
+					bool unicue_value;
+					int k = 0;
+					for (int i = 0;min!=0;)
+					{
+						int value = random->Next(1, 26);
+						unicue_value = false;
+						for (int j = 0;j < k;j++)
+						{
+							if (bomb[j] == value)
+							{
+								unicue_value = true;
+							}
+						}
+						if (unicue_value == false)
+						{
+							bomb[i] = value;
+							i++;
+							k++;
+							min--;
+						}
+					}
+					completion = true;
+				}
+				for (int i = 0;i < min_for_check;i++)
+				{
+					if (bomb[i] == Convert::ToInt32(button->Text))
+					{
+						have_bomb = true;
+					}
+				}
+				if (have_bomb == true)
+				{
+					button->Text = "*";
+					button->BackColor = Color::Red;
+				}
+				else
+				{
+					button->Text = "$";
+					button->BackColor = Color::Green;
+				}
+
 			}
 			else
 			{
