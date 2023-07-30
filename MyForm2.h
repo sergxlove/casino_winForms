@@ -101,6 +101,24 @@ namespace casinowinForms {
 	private: bool balance_rub = false;
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
+	private: double kf = 1;
+	private: bool check_kf = true;
+	private: double next_kf;
+	private: double sl_kf;
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 90, 100, 90, 605);
+			g->DrawLine(pen, 183, 100, 183, 605);
+			g->DrawLine(pen, 273, 100, 273, 605);
+			g->DrawLine(pen, 363, 100, 363, 605);
+			g->DrawLine(pen, 5, 190, 450, 190);
+			g->DrawLine(pen, 5, 300, 450, 300);
+			g->DrawLine(pen, 5, 410, 450, 410);
+			g->DrawLine(pen, 5, 520, 450, 520);
+		}
 		   /// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -356,13 +374,17 @@ namespace casinowinForms {
 			// 
 			// textBox2
 			// 
+			this->textBox2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->textBox2->ForeColor = System::Drawing::SystemColors::Info;
 			this->textBox2->Location = System::Drawing::Point(619, 290);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(163, 77);
 			this->textBox2->TabIndex = 72;
+			this->textBox2->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			// 
 			// button30
 			// 
@@ -471,9 +493,8 @@ namespace casinowinForms {
 			this->label10->ForeColor = System::Drawing::SystemColors::Control;
 			this->label10->Location = System::Drawing::Point(703, 483);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(108, 32);
+			this->label10->Size = System::Drawing::Size(0, 32);
 			this->label10->TabIndex = 80;
-			this->label10->Text = L"label10";
 			// 
 			// label11
 			// 
@@ -483,9 +504,8 @@ namespace casinowinForms {
 			this->label11->ForeColor = System::Drawing::SystemColors::Control;
 			this->label11->Location = System::Drawing::Point(1165, 483);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(108, 32);
+			this->label11->Size = System::Drawing::Size(0, 32);
 			this->label11->TabIndex = 81;
-			this->label11->Text = L"label11";
 			// 
 			// label12
 			// 
@@ -515,16 +535,23 @@ namespace casinowinForms {
 			// 
 			this->textBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox3->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox3->Location = System::Drawing::Point(619, 524);
 			this->textBox3->Multiline = true;
 			this->textBox3->Name = L"textBox3";
+			this->textBox3->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox3->Size = System::Drawing::Size(475, 232);
 			this->textBox3->TabIndex = 84;
+			this->textBox3->Text = L"Коэффиценты :";
 			// 
 			// textBox4
 			// 
 			this->textBox4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->textBox4->Location = System::Drawing::Point(1113, 524);
 			this->textBox4->Multiline = true;
 			this->textBox4->Name = L"textBox4";
@@ -533,252 +560,402 @@ namespace casinowinForms {
 			// 
 			// button1
 			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button1->Location = System::Drawing::Point(12, 124);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(90, 90);
 			this->button1->TabIndex = 86;
 			this->button1->Text = L"1";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button2
 			// 
+			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button2->Location = System::Drawing::Point(137, 124);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(90, 90);
 			this->button2->TabIndex = 87;
 			this->button2->Text = L"2";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button3
 			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button3->Location = System::Drawing::Point(260, 124);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(90, 90);
 			this->button3->TabIndex = 88;
 			this->button3->Text = L"3";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button4
 			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button4->Location = System::Drawing::Point(383, 124);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(90, 90);
 			this->button4->TabIndex = 89;
 			this->button4->Text = L"4";
-			this->button4->UseVisualStyleBackColor = true;
+			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button5
 			// 
+			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button5->Location = System::Drawing::Point(504, 124);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(90, 90);
 			this->button5->TabIndex = 90;
 			this->button5->Text = L"5";
-			this->button5->UseVisualStyleBackColor = true;
+			this->button5->UseVisualStyleBackColor = false;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button6
 			// 
+			this->button6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button6->Location = System::Drawing::Point(12, 255);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(90, 90);
 			this->button6->TabIndex = 91;
 			this->button6->Text = L"6";
-			this->button6->UseVisualStyleBackColor = true;
+			this->button6->UseVisualStyleBackColor = false;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button7
 			// 
+			this->button7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button7->Location = System::Drawing::Point(137, 255);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(90, 90);
 			this->button7->TabIndex = 92;
 			this->button7->Text = L"7";
-			this->button7->UseVisualStyleBackColor = true;
+			this->button7->UseVisualStyleBackColor = false;
 			this->button7->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button8
 			// 
+			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button8->Location = System::Drawing::Point(260, 255);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(90, 90);
 			this->button8->TabIndex = 93;
 			this->button8->Text = L"8";
-			this->button8->UseVisualStyleBackColor = true;
+			this->button8->UseVisualStyleBackColor = false;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button9
 			// 
+			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button9->Location = System::Drawing::Point(383, 255);
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(90, 90);
 			this->button9->TabIndex = 94;
 			this->button9->Text = L"9";
-			this->button9->UseVisualStyleBackColor = true;
+			this->button9->UseVisualStyleBackColor = false;
 			this->button9->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button10
 			// 
+			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button10->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button10->Location = System::Drawing::Point(504, 255);
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(90, 90);
 			this->button10->TabIndex = 95;
 			this->button10->Text = L"10";
-			this->button10->UseVisualStyleBackColor = true;
+			this->button10->UseVisualStyleBackColor = false;
 			this->button10->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button11
 			// 
+			this->button11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button11->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button11->Location = System::Drawing::Point(12, 390);
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(90, 90);
 			this->button11->TabIndex = 96;
 			this->button11->Text = L"11";
-			this->button11->UseVisualStyleBackColor = true;
+			this->button11->UseVisualStyleBackColor = false;
 			this->button11->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button12
 			// 
+			this->button12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button12->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button12->Location = System::Drawing::Point(137, 390);
 			this->button12->Name = L"button12";
 			this->button12->Size = System::Drawing::Size(90, 90);
 			this->button12->TabIndex = 97;
 			this->button12->Text = L"12";
-			this->button12->UseVisualStyleBackColor = true;
+			this->button12->UseVisualStyleBackColor = false;
 			this->button12->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button13
 			// 
+			this->button13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button13->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button13->Location = System::Drawing::Point(260, 390);
 			this->button13->Name = L"button13";
 			this->button13->Size = System::Drawing::Size(90, 90);
 			this->button13->TabIndex = 98;
 			this->button13->Text = L"13";
-			this->button13->UseVisualStyleBackColor = true;
+			this->button13->UseVisualStyleBackColor = false;
 			this->button13->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button14
 			// 
+			this->button14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button14->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button14->Location = System::Drawing::Point(383, 390);
 			this->button14->Name = L"button14";
 			this->button14->Size = System::Drawing::Size(90, 90);
 			this->button14->TabIndex = 99;
 			this->button14->Text = L"14";
-			this->button14->UseVisualStyleBackColor = true;
+			this->button14->UseVisualStyleBackColor = false;
 			this->button14->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button15
 			// 
+			this->button15->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button15->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button15->Location = System::Drawing::Point(504, 390);
 			this->button15->Name = L"button15";
 			this->button15->Size = System::Drawing::Size(90, 90);
 			this->button15->TabIndex = 100;
 			this->button15->Text = L"15";
-			this->button15->UseVisualStyleBackColor = true;
+			this->button15->UseVisualStyleBackColor = false;
 			this->button15->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button16
 			// 
+			this->button16->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button16->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button16->Location = System::Drawing::Point(12, 524);
 			this->button16->Name = L"button16";
 			this->button16->Size = System::Drawing::Size(90, 90);
 			this->button16->TabIndex = 101;
 			this->button16->Text = L"16";
-			this->button16->UseVisualStyleBackColor = true;
+			this->button16->UseVisualStyleBackColor = false;
 			this->button16->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button17
 			// 
+			this->button17->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button17->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button17->Location = System::Drawing::Point(137, 524);
 			this->button17->Name = L"button17";
 			this->button17->Size = System::Drawing::Size(90, 90);
 			this->button17->TabIndex = 102;
 			this->button17->Text = L"17";
-			this->button17->UseVisualStyleBackColor = true;
+			this->button17->UseVisualStyleBackColor = false;
 			this->button17->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button18
 			// 
+			this->button18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button18->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button18->Location = System::Drawing::Point(260, 524);
 			this->button18->Name = L"button18";
 			this->button18->Size = System::Drawing::Size(90, 90);
 			this->button18->TabIndex = 103;
 			this->button18->Text = L"18";
-			this->button18->UseVisualStyleBackColor = true;
+			this->button18->UseVisualStyleBackColor = false;
 			this->button18->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button19
 			// 
+			this->button19->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button19->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button19->Location = System::Drawing::Point(383, 524);
 			this->button19->Name = L"button19";
 			this->button19->Size = System::Drawing::Size(90, 90);
 			this->button19->TabIndex = 104;
 			this->button19->Text = L"19";
-			this->button19->UseVisualStyleBackColor = true;
+			this->button19->UseVisualStyleBackColor = false;
 			this->button19->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button20
 			// 
+			this->button20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button20->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button20->Location = System::Drawing::Point(504, 524);
 			this->button20->Name = L"button20";
 			this->button20->Size = System::Drawing::Size(90, 90);
 			this->button20->TabIndex = 105;
 			this->button20->Text = L"20";
-			this->button20->UseVisualStyleBackColor = true;
+			this->button20->UseVisualStyleBackColor = false;
 			this->button20->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button21
 			// 
+			this->button21->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button21->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button21->Location = System::Drawing::Point(12, 656);
 			this->button21->Name = L"button21";
 			this->button21->Size = System::Drawing::Size(90, 90);
 			this->button21->TabIndex = 106;
 			this->button21->Text = L"21";
-			this->button21->UseVisualStyleBackColor = true;
+			this->button21->UseVisualStyleBackColor = false;
 			this->button21->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button22
 			// 
+			this->button22->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button22->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button22->Location = System::Drawing::Point(137, 656);
 			this->button22->Name = L"button22";
 			this->button22->Size = System::Drawing::Size(90, 90);
 			this->button22->TabIndex = 107;
 			this->button22->Text = L"22";
-			this->button22->UseVisualStyleBackColor = true;
+			this->button22->UseVisualStyleBackColor = false;
 			this->button22->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button23
 			// 
+			this->button23->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button23->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button23->Location = System::Drawing::Point(260, 656);
 			this->button23->Name = L"button23";
 			this->button23->Size = System::Drawing::Size(90, 90);
 			this->button23->TabIndex = 108;
 			this->button23->Text = L"23";
-			this->button23->UseVisualStyleBackColor = true;
+			this->button23->UseVisualStyleBackColor = false;
 			this->button23->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button24
 			// 
+			this->button24->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button24->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button24->Location = System::Drawing::Point(383, 656);
 			this->button24->Name = L"button24";
 			this->button24->Size = System::Drawing::Size(90, 90);
 			this->button24->TabIndex = 109;
 			this->button24->Text = L"24";
-			this->button24->UseVisualStyleBackColor = true;
+			this->button24->UseVisualStyleBackColor = false;
 			this->button24->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// button25
 			// 
+			this->button25->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button25->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->button25->Location = System::Drawing::Point(504, 656);
 			this->button25->Name = L"button25";
 			this->button25->Size = System::Drawing::Size(90, 90);
 			this->button25->TabIndex = 110;
 			this->button25->Text = L"25";
-			this->button25->UseVisualStyleBackColor = true;
+			this->button25->UseVisualStyleBackColor = false;
 			this->button25->Click += gcnew System::EventHandler(this, &MyForm2::btn_Check);
 			// 
 			// label14
@@ -789,9 +966,8 @@ namespace casinowinForms {
 			this->label14->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label14->Location = System::Drawing::Point(613, 390);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(108, 32);
+			this->label14->Size = System::Drawing::Size(0, 32);
 			this->label14->TabIndex = 111;
-			this->label14->Text = L"label14";
 			// 
 			// MyForm2
 			// 
@@ -871,7 +1047,7 @@ namespace casinowinForms {
 	private: System::Void btn_Check(System::Object^ sender, System::EventArgs^ e)
 	{
 		bool have_bomb = false;
-		int min = Convert::ToInt32(textBox1->Text);
+		min = Convert::ToInt32(textBox1->Text);
 		if (completion==false)
 		{
 			min = Convert::ToInt32(textBox1->Text);
@@ -886,9 +1062,10 @@ namespace casinowinForms {
 				{
 					stavka = Convert::ToInt32(textBox2->Text);
 					Button^ button = safe_cast<Button^>(sender);
-					Random^ random = gcnew Random();
+					
 					if (completion == false)
 					{
+						Random^ random = gcnew Random();
 						bool unicue_value;
 						int k = 0;
 						for (int i = 0;min != 0;)
@@ -923,11 +1100,13 @@ namespace casinowinForms {
 					{
 						button->Text = "*";
 						button->BackColor = Color::Red;
+						button->ForeColor = Color::White;
 					}
 					else
 					{
 						button->Text = "$";
 						button->BackColor = Color::Green;
+						button->ForeColor = Color::White;
 					}
 				}
 				else
@@ -949,9 +1128,35 @@ namespace casinowinForms {
 		}
 	}
 private: System::Void button34_Click(System::Object^ sender, System::EventArgs^ e) {
-	start_game = true;
-	label14->Text = "Игра начата";
-	label14->ForeColor = Color::Green;
+	min = Convert::ToInt32(textBox1->Text);
+
+	if (min < 1 || min>24)
+	{
+		label14->Text = "Введите правильно количество мин";
+		label14->ForeColor = Color::Red;
+	}
+	else
+	{
+		start_game = true;
+		if (check_kf == true)
+		{
+			next_kf = static_cast<double> (min) / 100;
+			kf += static_cast<double>(min) / 10 + next_kf;
+			check_kf = false;
+			label10->Text = Convert::ToString(kf);
+			sl_kf = kf + (kf * 0.20);
+			label11->Text = Convert::ToString(sl_kf);
+		}
+		label14->Text = "Игра начата";
+		label14->ForeColor = Color::Green;
+		double see_sl_kf = sl_kf;
+		for (;min != 25;)
+		{
+			textBox3->Text += "\r\n" + min + "hits = " + see_sl_kf.ToString("0.00");
+			see_sl_kf = see_sl_kf + (see_sl_kf * 0.20);
+			min++;
+		}
+	}
 }
 private: System::Void button33_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (textBox2->Text != "")
