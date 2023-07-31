@@ -105,6 +105,10 @@ namespace casinowinForms {
 	private: bool check_kf = true;
 	private: double next_kf;
 	private: double sl_kf;
+	private: bool mode_game_swap = true;
+	private: int count = 0;
+	private: double priz = 0;
+	private: bool defeat = false;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
@@ -1060,53 +1064,70 @@ namespace casinowinForms {
 			{
 				if (start_game == true)
 				{
-					stavka = Convert::ToInt32(textBox2->Text);
-					Button^ button = safe_cast<Button^>(sender);
-					
-					if (completion == false)
+					if (defeat == false)
 					{
-						Random^ random = gcnew Random();
-						bool unicue_value;
-						int k = 0;
-						for (int i = 0;min != 0;)
+						stavka = Convert::ToInt32(textBox2->Text);
+						Button^ button = safe_cast<Button^>(sender);
+
+						if (completion == false)
 						{
-							int value = random->Next(1, 26);
-							unicue_value = false;
-							for (int j = 0;j < k;j++)
+							Random^ random = gcnew Random();
+							bool unicue_value;
+							int k = 0;
+							for (int i = 0;min != 0;)
 							{
-								if (bomb[j] == value)
+								int value = random->Next(1, 26);
+								unicue_value = false;
+								for (int j = 0;j < k;j++)
 								{
-									unicue_value = true;
+									if (bomb[j] == value)
+									{
+										unicue_value = true;
+									}
+								}
+								if (unicue_value == false)
+								{
+									bomb[i] = value;
+									i++;
+									k++;
+									min--;
 								}
 							}
-							if (unicue_value == false)
+							completion = true;
+						}
+						for (int i = 0;i < min_for_check;i++)
+						{
+							if (bomb[i] == Convert::ToInt32(button->Text))
 							{
-								bomb[i] = value;
-								i++;
-								k++;
-								min--;
+								have_bomb = true;
 							}
 						}
-						completion = true;
-					}
-					for (int i = 0;i < min_for_check;i++)
-					{
-						if (bomb[i] == Convert::ToInt32(button->Text))
+						if (have_bomb == true)
 						{
-							have_bomb = true;
+							button->Text = "*";
+							button->BackColor = Color::Red;
+							button->ForeColor = Color::White;
+							label12->Text = "Вы проиграли :";
+							label13->Text = Convert::ToString(stavka);
+							label12->ForeColor = Color::Red;
+							label13->ForeColor = Color::Red;
+							defeat = true;
+							button34->Text = "Играть";
+							mode_game_swap = true;
 						}
-					}
-					if (have_bomb == true)
-					{
-						button->Text = "*";
-						button->BackColor = Color::Red;
-						button->ForeColor = Color::White;
+						else
+						{
+							button->Text = "$";
+							button->BackColor = Color::Green;
+							button->ForeColor = Color::White;
+							count++;
+						}
 					}
 					else
 					{
-						button->Text = "$";
-						button->BackColor = Color::Green;
-						button->ForeColor = Color::White;
+						label14->ForeColor = Color::Red;
+						label14->Text = "Вы проиграли, начните игру заново";
+						start_game = false;
 					}
 				}
 				else
@@ -1128,34 +1149,53 @@ namespace casinowinForms {
 		}
 	}
 private: System::Void button34_Click(System::Object^ sender, System::EventArgs^ e) {
-	min = Convert::ToInt32(textBox1->Text);
-
-	if (min < 1 || min>24)
+	if (mode_game_swap == true)
 	{
-		label14->Text = "Введите правильно количество мин";
-		label14->ForeColor = Color::Red;
+		min = Convert::ToInt32(textBox1->Text);
+
+		if (min < 1 || min>24)
+		{
+			label14->Text = "Введите правильно количество мин";
+			label14->ForeColor = Color::Red;
+		}
+		else
+		{
+			start_game = true;
+			mode_game_swap = false;
+			defeat = false;
+			button34->Text = "Забрать";
+			if (check_kf == true)
+			{
+				next_kf = static_cast<double> (min) / 100;
+				kf += static_cast<double>(min) / 10 + next_kf;
+				check_kf = false;
+				label10->Text = Convert::ToString(kf);
+				sl_kf = kf + (kf * 0.20);
+				label11->Text = Convert::ToString(sl_kf);
+			}
+			label14->Text = "Игра начата";
+			label14->ForeColor = Color::Green;
+			double see_sl_kf = sl_kf;
+			for (;min != 25;)
+			{
+				textBox3->Text += "\r\n" + min + "hits = " + see_sl_kf.ToString("0.00");
+				see_sl_kf = see_sl_kf + (see_sl_kf * 0.20);
+				min++;
+			}
+		}
 	}
 	else
 	{
-		start_game = true;
-		if (check_kf == true)
+		priz = sl_kf;
+		for (;count != 0;)
 		{
-			next_kf = static_cast<double> (min) / 100;
-			kf += static_cast<double>(min) / 10 + next_kf;
-			check_kf = false;
-			label10->Text = Convert::ToString(kf);
-			sl_kf = kf + (kf * 0.20);
-			label11->Text = Convert::ToString(sl_kf);
+			priz = priz + (priz * 0.20);
+			count--;
 		}
-		label14->Text = "Игра начата";
-		label14->ForeColor = Color::Green;
-		double see_sl_kf = sl_kf;
-		for (;min != 25;)
-		{
-			textBox3->Text += "\r\n" + min + "hits = " + see_sl_kf.ToString("0.00");
-			see_sl_kf = see_sl_kf + (see_sl_kf * 0.20);
-			min++;
-		}
+		label12->Text = "Вы выйграли : ";
+		label13->Text = Convert::ToString(priz*stavka - stavka);
+		label12->ForeColor = Color::Green;
+		label13->ForeColor = Color::Green;
 	}
 }
 private: System::Void button33_Click(System::Object^ sender, System::EventArgs^ e) {
