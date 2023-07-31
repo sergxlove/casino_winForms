@@ -110,6 +110,9 @@ namespace casinowinForms {
 	private: double priz = 0;
 	private: bool defeat = false;
 	private: bool check_click = false;
+	private: int balance_r = 0;
+	private: int balance_e = 0;
+	private: int balance_d = 0;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
@@ -520,9 +523,8 @@ namespace casinowinForms {
 			this->label12->ForeColor = System::Drawing::SystemColors::Control;
 			this->label12->Location = System::Drawing::Point(6, 772);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(108, 32);
+			this->label12->Size = System::Drawing::Size(0, 32);
 			this->label12->TabIndex = 82;
-			this->label12->Text = L"label12";
 			// 
 			// label13
 			// 
@@ -532,9 +534,8 @@ namespace casinowinForms {
 			this->label13->ForeColor = System::Drawing::SystemColors::Control;
 			this->label13->Location = System::Drawing::Point(466, 772);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(108, 32);
+			this->label13->Size = System::Drawing::Size(0, 32);
 			this->label13->TabIndex = 83;
-			this->label13->Text = L"label13";
 			// 
 			// textBox3
 			// 
@@ -555,13 +556,16 @@ namespace casinowinForms {
 			// 
 			this->textBox4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->textBox4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(127)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox4->ForeColor = System::Drawing::Color::White;
 			this->textBox4->Location = System::Drawing::Point(1113, 524);
 			this->textBox4->Multiline = true;
 			this->textBox4->Name = L"textBox4";
+			this->textBox4->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox4->Size = System::Drawing::Size(317, 232);
 			this->textBox4->TabIndex = 85;
+			this->textBox4->Text = L"История :";
 			// 
 			// button1
 			// 
@@ -1038,6 +1042,7 @@ namespace casinowinForms {
 			this->Controls->Add(this->button26);
 			this->Name = L"MyForm2";
 			this->Text = L"MyForm2";
+			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm2_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -1068,7 +1073,6 @@ namespace casinowinForms {
 			}
 			if (defeat == false)
 			{
-				stavka = Convert::ToInt32(textBox2->Text);
 				Button^ button = safe_cast<Button^>(sender);
 				if (completion == false)
 				{
@@ -1096,6 +1100,7 @@ namespace casinowinForms {
 					}
 					completion = true;
 				}
+				button34->Text = "Забрать";
 				for (int i = 0;i < min_for_check;i++)
 				{
 					if (bomb[i] == Convert::ToInt32(button->Text))
@@ -1112,6 +1117,22 @@ namespace casinowinForms {
 					label13->Text = Convert::ToString(stavka);
 					label12->ForeColor = Color::Red;
 					label13->ForeColor = Color::Red;
+					if (balance_rub == true)
+					{
+						balance_r -= stavka;
+						label1->Text = Convert::ToString(balance_r);
+					}
+					if (balance_dol == true)
+					{
+						balance_d -= stavka;
+						label2->Text = Convert::ToString(balance_d);
+					}
+					if (balance_evro == true)
+					{
+						balance_e -= stavka;
+						label2->Text = Convert::ToString(balance_e);
+					}
+					textBox4->Text += "\r\nПроигрыш : " + stavka;
 					defeat = true;
 					button34->Text = "Играть снова";
 					mode_game_swap = true;
@@ -1145,139 +1166,194 @@ private: System::Void button34_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		if (textBox2->Text != "")
 		{
-			if (defeat == false)
+			if (balance_rub ==true || balance_dol == true || balance_evro == true)
 			{
-				if (mode_game_swap == true)
+				int balance = 0;
+				stavka = Convert::ToInt32(textBox2->Text);
+				if (balance_rub == true)
 				{
-					min = Convert::ToInt32(textBox1->Text);
-					if (min < 1 || min>24)
+					balance = balance_r;
+				}
+				if (balance_dol == true)
+				{
+					balance = balance_d;
+				}
+				if (balance_evro == true)
+				{
+					balance = balance_e;
+				}
+				if (stavka < balance)
+				{
+					if (defeat == false)
 					{
-						label14->Text = "Введите правильно количество мин";
-						label14->ForeColor = Color::Red;
+						if (mode_game_swap == true)
+						{
+							min = Convert::ToInt32(textBox1->Text);
+							if (min < 1 || min>24)
+							{
+								label14->Text = "Введите правильно количество мин";
+								label14->ForeColor = Color::Red;
+							}
+							else
+							{
+								start_game = true;
+								mode_game_swap = false;
+								defeat = false;
+								button34->Text = "Забрать";
+								if (check_kf == true)
+								{
+									check_kf = false;
+									next_kf = static_cast<double> (min) / 100;
+									kf += static_cast<double>(min) / 10 + next_kf;
+									label10->Text = Convert::ToString(kf);
+									sl_kf = kf + (kf * 0.20);
+									label11->Text = Convert::ToString(sl_kf);
+								}
+								label14->Text = "Игра начата";
+								label14->ForeColor = Color::Green;
+								double see_sl_kf = sl_kf;
+								for (int i = 1;min != 25;i++)
+								{
+									textBox3->Text += "\r\n" + i + "hits = " + see_sl_kf.ToString("0.00");
+									see_sl_kf = see_sl_kf + (see_sl_kf * 0.20);
+									min++;
+								}
+							}
+						}
+						else
+						{
+							if (count != 0)
+							{
+								priz = sl_kf;
+								for (;count != 0;)
+								{
+									priz = priz + (priz * 0.20);
+									count--;
+								}
+								label12->Text = "Вы выйграли : ";
+								double final_prize = priz * stavka - stavka;
+								if (balance_rub == true)
+								{
+									balance_r+=final_prize;
+									label1->Text = Convert::ToString(balance_r);
+								}
+								if (balance_dol == true)
+								{
+									balance_d+=final_prize;
+									label2->Text = Convert::ToString(balance_d);
+								}
+								if (balance_evro == true)
+								{
+									balance_e+=final_prize;
+									label2->Text = Convert::ToString(balance_e);
+								}
+								label13->Text = final_prize.ToString("0.00");
+								textBox4->Text += "\r\nВыйгрыш :" + final_prize;
+								label12->ForeColor = Color::Green;
+								label13->ForeColor = Color::Green;
+								button34->Text = "Играть снова";
+								defeat = true;
+								mode_game_swap = true;
+							}
+							else
+							{
+								label14->Text = "Откройте хотя бы одно поле";
+								label14->ForeColor = Color::Red;
+							}
+						}
 					}
 					else
 					{
+						button1->ForeColor = Color::FromArgb(0, 127, 255);
+						button1->BackColor = Color::FromArgb(0, 127, 255);
+						button1->Text = "1";
+						button2->ForeColor = Color::FromArgb(0, 127, 255);
+						button2->BackColor = Color::FromArgb(0, 127, 255);
+						button2->Text = "2";
+						button3->ForeColor = Color::FromArgb(0, 127, 255);
+						button3->BackColor = Color::FromArgb(0, 127, 255);
+						button3->Text = "3";
+						button4->ForeColor = Color::FromArgb(0, 127, 255);
+						button4->BackColor = Color::FromArgb(0, 127, 255);
+						button4->Text = "4";
+						button5->ForeColor = Color::FromArgb(0, 127, 255);
+						button5->BackColor = Color::FromArgb(0, 127, 255);
+						button5->Text = "5";
+						button6->ForeColor = Color::FromArgb(0, 127, 255);
+						button6->BackColor = Color::FromArgb(0, 127, 255);
+						button6->Text = "6";
+						button7->ForeColor = Color::FromArgb(0, 127, 255);
+						button7->BackColor = Color::FromArgb(0, 127, 255);
+						button7->Text = "7";
+						button8->ForeColor = Color::FromArgb(0, 127, 255);
+						button8->BackColor = Color::FromArgb(0, 127, 255);
+						button8->Text = "8";
+						button9->ForeColor = Color::FromArgb(0, 127, 255);
+						button9->BackColor = Color::FromArgb(0, 127, 255);
+						button9->Text = "9";
+						button10->ForeColor = Color::FromArgb(0, 127, 255);
+						button10->BackColor = Color::FromArgb(0, 127, 255);
+						button10->Text = "10";
+						button11->ForeColor = Color::FromArgb(0, 127, 255);
+						button11->BackColor = Color::FromArgb(0, 127, 255);
+						button11->Text = "11";
+						button12->ForeColor = Color::FromArgb(0, 127, 255);
+						button12->BackColor = Color::FromArgb(0, 127, 255);
+						button12->Text = "12";
+						button13->ForeColor = Color::FromArgb(0, 127, 255);
+						button13->BackColor = Color::FromArgb(0, 127, 255);
+						button13->Text = "13";
+						button14->ForeColor = Color::FromArgb(0, 127, 255);
+						button14->BackColor = Color::FromArgb(0, 127, 255);
+						button14->Text = "14";
+						button15->ForeColor = Color::FromArgb(0, 127, 255);
+						button15->BackColor = Color::FromArgb(0, 127, 255);
+						button15->Text = "15";
+						button16->ForeColor = Color::FromArgb(0, 127, 255);
+						button16->BackColor = Color::FromArgb(0, 127, 255);
+						button16->Text = "16";
+						button17->ForeColor = Color::FromArgb(0, 127, 255);
+						button17->BackColor = Color::FromArgb(0, 127, 255);
+						button17->Text = "17";
+						button18->ForeColor = Color::FromArgb(0, 127, 255);
+						button18->BackColor = Color::FromArgb(0, 127, 255);
+						button18->Text = "18";
+						button19->ForeColor = Color::FromArgb(0, 127, 255);
+						button19->BackColor = Color::FromArgb(0, 127, 255);
+						button19->Text = "19";
+						button20->ForeColor = Color::FromArgb(0, 127, 255);
+						button20->BackColor = Color::FromArgb(0, 127, 255);
+						button20->Text = "20";
+						button21->ForeColor = Color::FromArgb(0, 127, 255);
+						button21->BackColor = Color::FromArgb(0, 127, 255);
+						button21->Text = "21";
+						button22->ForeColor = Color::FromArgb(0, 127, 255);
+						button22->BackColor = Color::FromArgb(0, 127, 255);
+						button22->Text = "22";
+						button23->ForeColor = Color::FromArgb(0, 127, 255);
+						button23->BackColor = Color::FromArgb(0, 127, 255);
+						button23->Text = "23";
+						button24->ForeColor = Color::FromArgb(0, 127, 255);
+						button24->BackColor = Color::FromArgb(0, 127, 255);
+						button24->Text = "24";
+						button25->ForeColor = Color::FromArgb(0, 127, 255);
+						button25->BackColor = Color::FromArgb(0, 127, 255);
+						button25->Text = "25";
 						start_game = true;
-						mode_game_swap = false;
 						defeat = false;
-						button34->Text = "Забрать";
-						if (check_kf == true)
-						{
-							next_kf = static_cast<double> (min) / 100;
-							kf += static_cast<double>(min) / 10 + next_kf;
-							check_kf = false;
-							label10->Text = Convert::ToString(kf);
-							sl_kf = kf + (kf * 0.20);
-							label11->Text = Convert::ToString(sl_kf);
-						}
-						label14->Text = "Игра начата";
-						label14->ForeColor = Color::Green;
-						double see_sl_kf = sl_kf;
-						for (;min != 25;)
-						{
-							textBox3->Text += "\r\n" + min + "hits = " + see_sl_kf.ToString("0.00");
-							see_sl_kf = see_sl_kf + (see_sl_kf * 0.20);
-							min++;
-						}
+						completion = false;
 					}
 				}
 				else
 				{
-					priz = sl_kf;
-					for (;count != 0;)
-					{
-						priz = priz + (priz * 0.20);
-						count--;
-					}
-					label12->Text = "Вы выйграли : ";
-					label13->Text = Convert::ToString(priz * stavka - stavka);
-					label12->ForeColor = Color::Green;
-					label13->ForeColor = Color::Green;
-					button34->Text = "Играть снова";
-					defeat = true;
-					mode_game_swap = true;
+					label14->Text = "Недостаточно средств";
+					label14->ForeColor = Color::Red;
 				}
 			}
 			else
 			{
-				button1->ForeColor = Color::FromArgb(0, 127, 255);
-				button1->BackColor = Color::FromArgb(0, 127, 255);
-				button1->Text = "1";
-				button2->ForeColor = Color::FromArgb(0, 127, 255);
-				button2->BackColor = Color::FromArgb(0, 127, 255);
-				button2->Text = "2";
-				button3->ForeColor = Color::FromArgb(0, 127, 255);
-				button3->BackColor = Color::FromArgb(0, 127, 255);
-				button3->Text = "3";
-				button4->ForeColor = Color::FromArgb(0, 127, 255);
-				button4->BackColor = Color::FromArgb(0, 127, 255);
-				button4->Text = "4";
-				button5->ForeColor = Color::FromArgb(0, 127, 255);
-				button5->BackColor = Color::FromArgb(0, 127, 255);
-				button5->Text = "5";
-				button6->ForeColor = Color::FromArgb(0, 127, 255);
-				button6->BackColor = Color::FromArgb(0, 127, 255);
-				button6->Text = "6";
-				button7->ForeColor = Color::FromArgb(0, 127, 255);
-				button7->BackColor = Color::FromArgb(0, 127, 255);
-				button7->Text = "7";
-				button8->ForeColor = Color::FromArgb(0, 127, 255);
-				button8->BackColor = Color::FromArgb(0, 127, 255);
-				button8->Text = "8";
-				button9->ForeColor = Color::FromArgb(0, 127, 255);
-				button9->BackColor = Color::FromArgb(0, 127, 255);
-				button9->Text = "9";
-				button10->ForeColor = Color::FromArgb(0, 127, 255);
-				button10->BackColor = Color::FromArgb(0, 127, 255);
-				button10->Text = "10";
-				button11->ForeColor = Color::FromArgb(0, 127, 255);
-				button11->BackColor = Color::FromArgb(0, 127, 255);
-				button11->Text = "11";
-				button12->ForeColor = Color::FromArgb(0, 127, 255);
-				button12->BackColor = Color::FromArgb(0, 127, 255);
-				button12->Text = "12";
-				button13->ForeColor = Color::FromArgb(0, 127, 255);
-				button13->BackColor = Color::FromArgb(0, 127, 255);
-				button13->Text = "13";
-				button14->ForeColor = Color::FromArgb(0, 127, 255);
-				button14->BackColor = Color::FromArgb(0, 127, 255);
-				button14->Text = "14";
-				button15->ForeColor = Color::FromArgb(0, 127, 255);
-				button15->BackColor = Color::FromArgb(0, 127, 255);
-				button15->Text = "15";
-				button16->ForeColor = Color::FromArgb(0, 127, 255);
-				button16->BackColor = Color::FromArgb(0, 127, 255);
-				button16->Text = "16";
-				button17->ForeColor = Color::FromArgb(0, 127, 255);
-				button17->BackColor = Color::FromArgb(0, 127, 255);
-				button17->Text = "17";
-				button18->ForeColor = Color::FromArgb(0, 127, 255);
-				button18->BackColor = Color::FromArgb(0, 127, 255); 
-				button18->Text = "18";
-				button19->ForeColor = Color::FromArgb(0, 127, 255);
-				button19->BackColor = Color::FromArgb(0, 127, 255);
-				button19->Text = "19";
-				button20->ForeColor = Color::FromArgb(0, 127, 255);
-				button20->BackColor = Color::FromArgb(0, 127, 255);
-				button20->Text = "20";
-				button21->ForeColor = Color::FromArgb(0, 127, 255);
-				button21->BackColor = Color::FromArgb(0, 127, 255);
-				button21->Text = "21";
-				button22->ForeColor = Color::FromArgb(0, 127, 255);
-				button22->BackColor = Color::FromArgb(0, 127, 255);
-				button22->Text = "22";
-				button23->ForeColor = Color::FromArgb(0, 127, 255);
-				button23->BackColor = Color::FromArgb(0, 127, 255);
-				button23->Text = "23";
-				button24->ForeColor = Color::FromArgb(0, 127, 255);
-				button24->BackColor = Color::FromArgb(0, 127, 255);
-				button24->Text = "24";
-				button25->ForeColor = Color::FromArgb(0, 127, 255);
-				button25->BackColor = Color::FromArgb(0, 127, 255);
-				button25->Text = "25";
-				start_game = true;
-				defeat = false;
-				completion = false;
+				label14->Text = "Выберите валюту";
+				label14->ForeColor = Color::Red;
 			}
 		}
 		else
@@ -1376,6 +1452,11 @@ private: System::Void button29_Click(System::Object^ sender, System::EventArgs^ 
 	button27->Text = "Выбрать";
 	button28->Text = "Выбрать";
 	button29->Text = "Выбрано";
+}
+private: System::Void MyForm2_Load(System::Object^ sender, System::EventArgs^ e) {
+	balance_r = Convert::ToInt32(label1->Text);
+	balance_d = Convert::ToInt32(label2->Text);
+	balance_e = Convert::ToInt32(label3->Text);
 }
 };
 }
