@@ -66,6 +66,10 @@ namespace casinowinForms {
 	private: bool balance_rub = false;
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
+	private: double kf = 0.00;
+	private: int num = 0;
+	private: int value_for_kf = 0;
+	private: int count = 0;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -246,6 +250,8 @@ namespace casinowinForms {
 			// 
 			// label4
 			// 
+			this->label4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(133)),
+				static_cast<System::Int32>(static_cast<System::Byte>(180)));
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 72, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -253,11 +259,13 @@ namespace casinowinForms {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(387, 426);
 			this->label4->TabIndex = 54;
-			this->label4->Text = L"label4";
+			this->label4->Text = L"\?\?\?";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label5
 			// 
+			this->label5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(133)),
+				static_cast<System::Int32>(static_cast<System::Byte>(180)));
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -265,11 +273,13 @@ namespace casinowinForms {
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(266, 236);
 			this->label5->TabIndex = 55;
-			this->label5->Text = L"label5";
+			this->label5->Text = L"\?";
 			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label6
 			// 
+			this->label6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(133)),
+				static_cast<System::Int32>(static_cast<System::Byte>(180)));
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label6->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -277,19 +287,23 @@ namespace casinowinForms {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(266, 236);
 			this->label6->TabIndex = 56;
-			this->label6->Text = L"label6";
+			this->label6->Text = L"...";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->button1->Location = System::Drawing::Point(560, 559);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(360, 120);
 			this->button1->TabIndex = 57;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Играть";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm3::button1_Click);
 			// 
 			// label7
 			// 
@@ -307,8 +321,9 @@ namespace casinowinForms {
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox1->Location = System::Drawing::Point(18, 608);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
@@ -430,6 +445,7 @@ namespace casinowinForms {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(378, 266);
 			this->textBox2->TabIndex = 83;
+			this->textBox2->Text = L"История :";
 			// 
 			// label10
 			// 
@@ -439,9 +455,8 @@ namespace casinowinForms {
 			this->label10->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label10->Location = System::Drawing::Point(697, 714);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(108, 32);
+			this->label10->Size = System::Drawing::Size(0, 32);
 			this->label10->TabIndex = 84;
-			this->label10->Text = L"label10";
 			// 
 			// label11
 			// 
@@ -451,9 +466,8 @@ namespace casinowinForms {
 			this->label11->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label11->Location = System::Drawing::Point(697, 773);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(108, 32);
+			this->label11->Size = System::Drawing::Size(0, 32);
 			this->label11->TabIndex = 85;
-			this->label11->Text = L"label11";
 			// 
 			// MyForm3
 			// 
@@ -461,7 +475,7 @@ namespace casinowinForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(1445, 893);
+			this->ClientSize = System::Drawing::Size(1409, 872);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->textBox2);
@@ -620,6 +634,63 @@ private: System::Void button29_Click(System::Object^ sender, System::EventArgs^ 
 	button27->BackColor = Color::Red;
 	button28->BackColor = Color::Red;
 	button29->BackColor = Color::Green;
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox1->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox1->Text);
+		if (count != 0)
+		{
+			if (value_for_kf < 100)
+			{
+				label6->BackColor = Color::Red;
+				label6->Text = Convert::ToString(kf);
+			}
+			else
+			{
+				label6->BackColor = Color::Green;
+				label6->Text = Convert::ToString(kf);
+			}
+		}
+		Random^ random = gcnew Random();
+		num = random->Next(0, 101);
+		if (num >= 0 && num <= 5)
+		{
+			value_for_kf = random->Next(300, 1300);
+		}
+		if (num >= 6 && num <= 30)
+		{
+			value_for_kf = random->Next(90, 250);
+		}
+		if (num >= 31 && num <= 101)
+		{
+			value_for_kf = random->Next(25, 150);
+		}
+		kf = static_cast<double>(value_for_kf) / 100;
+		label4->Text = Convert::ToString(kf);
+		count++;
+		if (value_for_kf < 100)
+		{
+			label4->BackColor = Color::Red;
+			label10->Text = "Вы проиграли";
+			label10->ForeColor = Color::Red;
+			label11->Text = Convert::ToString(stavka - stavka * kf);
+			textBox2->Text += "\r\n - " + (stavka - stavka * kf) + "     K = " + kf;
+		}
+		else
+		{
+			label4->BackColor = Color::Green;
+			label10->Text = "Вы выйграли";
+			label10->ForeColor = Color::Green;
+			label11->Text = Convert::ToString(stavka * kf);
+			textBox2->Text += "\r\n + " + (stavka * kf) + "     K = " + kf;
+		}	
+	}
+	else
+	{
+		label8->Text = "Сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
+	}
 }
 };
 }
