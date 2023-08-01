@@ -1132,7 +1132,7 @@ namespace casinowinForms {
 						balance_e -= stavka;
 						label2->Text = Convert::ToString(balance_e);
 					}
-					textBox4->Text += "\r\nПроигрыш : " + stavka;
+					textBox4->Text += "\r\nПроигрыш : " + stavka.ToString("0.00");
 					defeat = true;
 					button34->Text = "Играть снова";
 					mode_game_swap = true;
@@ -1248,7 +1248,7 @@ private: System::Void button34_Click(System::Object^ sender, System::EventArgs^ 
 									label2->Text = Convert::ToString(balance_e);
 								}
 								label13->Text = final_prize.ToString("0.00");
-								textBox4->Text += "\r\nВыйгрыш :" + final_prize;
+								textBox4->Text += "\r\nВыйгрыш :" + final_prize.ToString("0.00");
 								label12->ForeColor = Color::Green;
 								label13->ForeColor = Color::Green;
 								button34->Text = "Играть снова";

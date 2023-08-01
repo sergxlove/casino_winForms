@@ -1,6 +1,7 @@
 #pragma once
 #include "MyForm1.h"
 #include "MyForm2.h"
+#include "MyForm3.h"
 namespace casinowinForms {
 
 	using namespace System;
@@ -396,7 +397,8 @@ namespace casinowinForms {
 			}
 			else if (clickedPictureBox == pictureBox7)
 			{
-
+				MyForm3^ fourform = gcnew MyForm3();
+				fourform->Show();
 			}
 			else if (clickedPictureBox == pictureBox8)
 			{
