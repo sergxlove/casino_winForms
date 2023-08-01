@@ -70,6 +70,10 @@ namespace casinowinForms {
 	private: int num = 0;
 	private: int value_for_kf = 0;
 	private: int count = 0;
+	private: int balance_r = 0;
+	private: int balance_d = 0;
+	private: int balance_e = 0;
+	private: int balance = 0;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -443,6 +447,7 @@ namespace casinowinForms {
 			this->textBox2->Location = System::Drawing::Point(1002, 569);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox2->Size = System::Drawing::Size(378, 266);
 			this->textBox2->TabIndex = 83;
 			this->textBox2->Text = L"История :";
@@ -638,53 +643,94 @@ private: System::Void button29_Click(System::Object^ sender, System::EventArgs^ 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (textBox1->Text != "")
 	{
-		stavka = Convert::ToInt32(textBox1->Text);
-		if (count != 0)
+		if (balance_rub == true || balance_dol == true || balance_evro == true)
 		{
+			balance_r = Convert::ToInt32(label1->Text);
+			balance_d = Convert::ToInt32(label2->Text);
+			balance_e = Convert::ToInt32(label3->Text);
+			stavka = Convert::ToInt32(textBox1->Text);
+			if (count != 0)
+			{
+				if (value_for_kf < 100)
+				{
+					label6->BackColor = Color::Red;
+					label6->Text = Convert::ToString(kf);
+				}
+				else
+				{
+					label6->BackColor = Color::Green;
+					label6->Text = Convert::ToString(kf);
+				}
+			}
+			Random^ random = gcnew Random();
+			num = random->Next(0, 101);
+			if (num >= 0 && num <= 3)
+			{
+				value_for_kf = random->Next(300, 1300);
+			}
+			if (num >= 4 && num <= 20)
+			{
+				value_for_kf = random->Next(90, 250);
+			}
+			if (num >= 21 && num <= 101)
+			{
+				value_for_kf = random->Next(15, 150);
+			}
+			kf = static_cast<double>(value_for_kf) / 100;
+			label4->Text = Convert::ToString(kf);
+			count++;
 			if (value_for_kf < 100)
 			{
-				label6->BackColor = Color::Red;
-				label6->Text = Convert::ToString(kf);
+				label4->BackColor = Color::Red;
+				label10->Text = "Вы проиграли";
+				label10->ForeColor = Color::Red;
+				label11->Text = Convert::ToString(stavka - stavka * kf);
+				textBox2->Text += "\r\n - " + (stavka - stavka * kf) + "     K = " + kf;
+				if (balance_rub == true)
+				{
+					balance_r -= stavka - stavka * kf;
+					label1->Text = Convert::ToString(balance_r);
+				}
+				if (balance_dol == true)
+				{
+					balance_d -= stavka - stavka * kf;
+					label2->Text = Convert::ToString(balance_d);
+				}
+				if (balance_evro == true)
+				{
+					balance_e -= stavka - stavka * kf;
+					label3->Text = Convert::ToString(balance_e);
+				}
 			}
 			else
 			{
-				label6->BackColor = Color::Green;
-				label6->Text = Convert::ToString(kf);
+				label4->BackColor = Color::Green;
+				label10->Text = "Вы выйграли";
+				label10->ForeColor = Color::Green;
+				label11->Text = Convert::ToString(stavka * kf);
+				textBox2->Text += "\r\n + " + (stavka * kf) + "     K = " + kf;
+				if (balance_rub == true)
+				{
+					balance_r += stavka * kf - stavka;
+					label1->Text = Convert::ToString(balance_r);
+				}
+				if (balance_dol == true)
+				{
+					balance_d += stavka * kf - stavka;
+					label2->Text = Convert::ToString(balance_d);
+				}
+				if (balance_evro == true)
+				{
+					balance_e += stavka * kf - stavka;
+					label3->Text = Convert::ToString(balance_e);
+				}
 			}
-		}
-		Random^ random = gcnew Random();
-		num = random->Next(0, 101);
-		if (num >= 0 && num <= 5)
-		{
-			value_for_kf = random->Next(300, 1300);
-		}
-		if (num >= 6 && num <= 30)
-		{
-			value_for_kf = random->Next(90, 250);
-		}
-		if (num >= 31 && num <= 101)
-		{
-			value_for_kf = random->Next(25, 150);
-		}
-		kf = static_cast<double>(value_for_kf) / 100;
-		label4->Text = Convert::ToString(kf);
-		count++;
-		if (value_for_kf < 100)
-		{
-			label4->BackColor = Color::Red;
-			label10->Text = "Вы проиграли";
-			label10->ForeColor = Color::Red;
-			label11->Text = Convert::ToString(stavka - stavka * kf);
-			textBox2->Text += "\r\n - " + (stavka - stavka * kf) + "     K = " + kf;
 		}
 		else
 		{
-			label4->BackColor = Color::Green;
-			label10->Text = "Вы выйграли";
-			label10->ForeColor = Color::Green;
-			label11->Text = Convert::ToString(stavka * kf);
-			textBox2->Text += "\r\n + " + (stavka * kf) + "     K = " + kf;
-		}	
+			label8->Text = "Выберите валюту";
+			label8->ForeColor = Color::Red;
+		}
 	}
 	else
 	{
