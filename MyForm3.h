@@ -296,9 +296,9 @@ namespace casinowinForms {
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(121)),
+				static_cast<System::Int32>(static_cast<System::Byte>(111)));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->button1->Location = System::Drawing::Point(560, 559);
@@ -433,9 +433,8 @@ namespace casinowinForms {
 			this->label8->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label8->Location = System::Drawing::Point(15, 803);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(92, 32);
+			this->label8->Size = System::Drawing::Size(0, 32);
 			this->label8->TabIndex = 82;
-			this->label8->Text = L"label8";
 			// 
 			// textBox2
 			// 
@@ -528,6 +527,7 @@ private: System::Void button33_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "Сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button32_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -540,6 +540,7 @@ private: System::Void button32_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "Сначала сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button30_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -552,6 +553,7 @@ private: System::Void button30_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "Сначало сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button31_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -564,6 +566,7 @@ private: System::Void button31_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label8->Text = "Сначало сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -583,6 +586,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	else
 	{
 		label8->Text = "Сначало сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -602,6 +606,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	else
 	{
 		label8->Text = "Сначало сделайте ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
