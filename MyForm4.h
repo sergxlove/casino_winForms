@@ -79,13 +79,16 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label14;
 	private: int stavka = 0;
 	private: int var = check_var::off;
+	private: double full_kf = 1.00;
+	private: double middle_kf = 0.50;
+	private: int bal = 0;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
 			Graphics^ g = e->Graphics;
 			Pen^ pen = gcnew Pen(Color::White, 2);
-			g->DrawLine(pen, 10, 90, 1000, 90);
-			g->DrawLine(pen, 450, 275, 1000, 275);
+			g->DrawLine(pen, 10, 90, 1050, 90);
+			g->DrawLine(pen, 450, 275, 1050, 275);
 		}
 	private:
 		/// <summary>
@@ -439,6 +442,7 @@ namespace casinowinForms {
 			this->textBox2->Location = System::Drawing::Point(1047, 487);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox2->Size = System::Drawing::Size(376, 293);
 			this->textBox2->TabIndex = 77;
 			this->textBox2->Text = L"История :";
@@ -472,9 +476,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(144, 712);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(92, 32);
+			this->label8->Size = System::Drawing::Size(0, 32);
 			this->label8->TabIndex = 80;
-			this->label8->Text = L"label8";
 			// 
 			// label10
 			// 
@@ -483,9 +486,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label10->Location = System::Drawing::Point(595, 712);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(108, 32);
+			this->label10->Size = System::Drawing::Size(0, 32);
 			this->label10->TabIndex = 81;
-			this->label10->Text = L"label10";
 			// 
 			// button4
 			// 
@@ -499,6 +501,8 @@ namespace casinowinForms {
 			this->button4->TabIndex = 82;
 			this->button4->Text = L"Забрать";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Visible = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm4::button4_Click);
 			// 
 			// label11
 			// 
@@ -507,9 +511,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label11->Location = System::Drawing::Point(34, 772);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(108, 32);
+			this->label11->Size = System::Drawing::Size(0, 32);
 			this->label11->TabIndex = 83;
-			this->label11->Text = L"label11";
 			// 
 			// label12
 			// 
@@ -518,9 +521,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label12->Location = System::Drawing::Point(412, 772);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(108, 32);
+			this->label12->Size = System::Drawing::Size(0, 32);
 			this->label12->TabIndex = 84;
-			this->label12->Text = L"label12";
 			// 
 			// label13
 			// 
@@ -688,39 +690,178 @@ private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ 
 	this->Hide();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (var != check_var::off)
+	if (textBox1->Text != "")
 	{
-		Random^ random = gcnew Random();
-		int image = random->Next(1, 3);
-		if (image == 1)
+		stavka = Convert::ToInt32(textBox1->Text);
+		if (balance_rub == true || balance_dol == true || balance_evro == true)
 		{
-			pictureBox4->Visible = true;
-			pictureBox5->Visible = false;
-		}
-		if (image == 2)
-		{
-			pictureBox5->Visible = true;
-			pictureBox4->Visible = false;
-		}
-		if (var == check_var::var_orel)
-		{
-			if (image == 1)
+			if (balance_rub == true)
 			{
-				label11->Text = "Вы выйграли";
-				label11->ForeColor = Color::Green;
+				bal = Convert::ToInt32(label1->Text);
+			}
+			if (balance_dol == true)
+			{
+				bal = Convert::ToInt32(label2->Text);
+			}
+			if (balance_evro == true)
+			{
+				bal = Convert::ToInt32(label3->Text);
+			}
+			if (bal >= stavka)
+			{
+				if (var != check_var::off)
+				{
+					label5->Text = "Ставка принята";
+					label5->ForeColor = Color::Green;
+					Random^ random = gcnew Random();
+					int image = random->Next(1, 3);
+					double n = 0.25;
+					full_kf += middle_kf;
+					label8->Text = Convert::ToString(full_kf);
+					middle_kf += n;
+					n += 0.25;
+					label10->Text = Convert::ToString(full_kf + middle_kf);
+					if (image == 1)
+					{
+						pictureBox4->Visible = true;
+						pictureBox5->Visible = false;
+					}
+					if (image == 2)
+					{
+						pictureBox5->Visible = true;
+						pictureBox4->Visible = false;
+					}
+					if (var == check_var::var_orel)
+					{
+						if (image == 1)
+						{
+							label11->Text = "Возможный выйгрыш";
+							label11->ForeColor = Color::Green;
+							button4->Visible = true;
+							label12->Text = Convert::ToString(stavka * full_kf);
+							label12->ForeColor = Color::Green;
+						}
+						else
+						{
+							label11->Text = "Вы проиграли";
+							label11->ForeColor = Color::Red;
+							label12->Text = Convert::ToString(stavka);
+							label12->ForeColor = Color::Red;
+							if (balance_rub == true)
+							{
+								int balance = Convert::ToInt32(label1->Text);
+								balance -= stavka;
+								label1->Text = Convert::ToString(balance);
+							}
+							if (balance_dol == true)
+							{
+								int balance = Convert::ToInt32(label2->Text);
+								balance -= stavka;
+								label2->Text = Convert::ToString(balance);
+							}
+							if (balance_evro == true)
+							{
+								int balance = Convert::ToInt32(label3->Text);
+								balance -= stavka;
+								label3->Text = Convert::ToString(balance);
+							}
+							textBox2->Text += "\r\nПроигрыш - " + stavka;
+							button4->Visible = false;
+							full_kf = 1.00;
+							middle_kf = 0.50;
+						}
+					}
+					if (var == check_var::var_reshka)
+					{
+						if (image == 1)
+						{
+							label11->Text = "Вы проиграли";
+							label11->ForeColor = Color::Red;
+							label12->Text = Convert::ToString(stavka);
+							label12->ForeColor = Color::Red;
+							if (balance_rub == true)
+							{
+								int balance = Convert::ToInt32(label1->Text);
+								balance -= stavka;
+								label1->Text = Convert::ToString(balance);
+							}
+							if (balance_dol == true)
+							{
+								int balance = Convert::ToInt32(label2->Text);
+								balance -= stavka;
+								label2->Text = Convert::ToString(balance);
+							}
+							if (balance_evro == true)
+							{
+								int balance = Convert::ToInt32(label3->Text);
+								balance -= stavka;
+								label3->Text = Convert::ToString(balance);
+							}
+							textBox2->Text += "\r\nПроигрыш - " + stavka;
+							button4->Visible = false;
+							full_kf = 1.00;
+							middle_kf = 0.50;
+						}
+						else
+						{
+							label11->Text = "Возможный выйгрыш";
+							label11->ForeColor = Color::Green;
+							button4->Visible = true;
+							label12->Text = Convert::ToString(stavka * full_kf);
+							label12->ForeColor = Color::Green;
+						}
+					}
+				}
+				else
+				{
+					label5->Text = "Выберите исход ( Орел или Решка)";
+					label5->ForeColor = Color::Red;
+				}
 			}
 			else
 			{
-				label11->Text = "Вы проиграли";
-				label11->ForeColor = Color::Red;
+				label5->Text = "Недостаточно средств";
+				label5->ForeColor = Color::Red;
 			}
+		}
+		else
+		{
+			label5->Text = "Выберите валюту";
+			label5->ForeColor = Color::Red;
 		}
 	}
 	else
 	{
-		label5->Text = "Выберите исход ( Орел или Решка)";
+		label5->Text = "Введите ставку";
 		label5->ForeColor = Color::Red;
 	}
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (balance_rub == true)
+	{
+		int balance = Convert::ToInt32(label1->Text);
+		int priz = (stavka * full_kf) - stavka;
+		balance += priz;
+		label1->Text = Convert::ToString(balance);
+	}
+	if (balance_dol == true)
+	{
+		int balance = Convert::ToInt32(label2->Text);
+		int priz = (stavka * full_kf) - stavka;
+		balance += priz;
+		label2->Text = Convert::ToString(balance);
+	}
+	if (balance_evro == true)
+	{
+		int balance = Convert::ToInt32(label3->Text);
+		int priz = (stavka * full_kf) - stavka;
+		balance += priz;
+		label3->Text = Convert::ToString(balance);
+	}
+	textBox2->Text += "\r\nВыйгрыш - " + (stavka * full_kf);
+	full_kf = 1.00;
+	middle_kf = 0.50;
+	button4->Visible = false;
 }
 };
 }
