@@ -442,6 +442,7 @@ namespace casinowinForms {
 			this->textBox2->Location = System::Drawing::Point(1047, 487);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox2->Size = System::Drawing::Size(376, 293);
 			this->textBox2->TabIndex = 77;
 			this->textBox2->Text = L"История :";

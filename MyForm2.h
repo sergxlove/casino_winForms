@@ -205,6 +205,7 @@ namespace casinowinForms {
 			this->button29->BackColor = System::Drawing::Color::Red;
 			this->button29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button29->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->button29->Location = System::Drawing::Point(1263, 49);
 			this->button29->Name = L"button29";
 			this->button29->Size = System::Drawing::Size(121, 49);
@@ -218,6 +219,7 @@ namespace casinowinForms {
 			this->button28->BackColor = System::Drawing::Color::Red;
 			this->button28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button28->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->button28->Location = System::Drawing::Point(865, 49);
 			this->button28->Name = L"button28";
 			this->button28->Size = System::Drawing::Size(121, 49);
@@ -231,6 +233,7 @@ namespace casinowinForms {
 			this->button27->BackColor = System::Drawing::Color::Red;
 			this->button27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button27->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->button27->Location = System::Drawing::Point(519, 48);
 			this->button27->Name = L"button27";
 			this->button27->Size = System::Drawing::Size(121, 49);

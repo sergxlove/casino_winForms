@@ -580,6 +580,7 @@ namespace casinowinForms {
 			this->textBox2->Location = System::Drawing::Point(865, 661);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox2->Size = System::Drawing::Size(519, 172);
 			this->textBox2->TabIndex = 32;
 			this->textBox2->Text = L"Ваша ставки :";
@@ -594,6 +595,7 @@ namespace casinowinForms {
 			this->textBox3->Location = System::Drawing::Point(490, 661);
 			this->textBox3->Multiline = true;
 			this->textBox3->Name = L"textBox3";
+			this->textBox3->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox3->Size = System::Drawing::Size(369, 172);
 			this->textBox3->TabIndex = 33;
 			this->textBox3->Text = L"История :";
