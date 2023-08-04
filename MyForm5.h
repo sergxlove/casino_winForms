@@ -70,6 +70,10 @@ namespace casinowinForms {
 	private: bool balance_evro = false;
 	private: int stavka = 0;
 	private: bool start_game = false;
+	private: double kf = 1.00;
+	private: double midlle_kf = 0.50;
+	private: double priz;
+	private: double n = 0.25;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
@@ -528,6 +532,7 @@ namespace casinowinForms {
 			this->button11->TabIndex = 94;
 			this->button11->Text = L"Забрать";
 			this->button11->UseVisualStyleBackColor = false;
+			this->button11->Click += gcnew System::EventHandler(this, &MyForm5::button11_Click);
 			// 
 			// MyForm5
 			// 
@@ -617,7 +622,7 @@ private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		stavka = Convert::ToInt32(textBox2->Text);
 		stavka *= 2;
-		textBox1->Text = Convert::ToString(stavka);
+		textBox2->Text = Convert::ToString(stavka);
 	}
 	else
 	{
@@ -630,7 +635,7 @@ private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		stavka = Convert::ToInt32(textBox2->Text);
 		stavka /= 2;
-		textBox1->Text = Convert::ToString(stavka);
+		textBox2->Text = Convert::ToString(stavka);
 	}
 	else
 	{
@@ -643,7 +648,7 @@ private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		stavka = Convert::ToInt32(textBox2->Text);
 		stavka += 10;
-		textBox1->Text = Convert::ToString(stavka);
+		textBox2->Text = Convert::ToString(stavka);
 	}
 	else
 	{
@@ -656,7 +661,7 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		stavka = Convert::ToInt32(textBox2->Text);
 		stavka += 100;
-		textBox1->Text = Convert::ToString(stavka);
+		textBox2->Text = Convert::ToString(stavka);
 	}
 	else
 	{
@@ -680,6 +685,7 @@ private: System::Void button_play_game(System::Object^ sender, System::EventArgs
 		Button^ button = safe_cast<Button^>(sender);
 		Random^ random = gcnew Random();
 		int value = random->Next(1, 4);
+		stavka = Convert::ToInt32(textBox2->Text);
 		if (value == 1)
 		{
 			button7->BackColor = Color::Green;
@@ -711,16 +717,118 @@ private: System::Void button_play_game(System::Object^ sender, System::EventArgs
 		{
 			if (value == Convert::ToInt32(button->Text))
 			{
-				label5->Text = "Возможный выйгрыш";
+				priz = kf + midlle_kf;
+				label5->Text = "Возможный выйгрыш   " + priz;
+				label5->ForeColor = Color::Green;
+				n += 0.5;
+				midlle_kf += n;
+				button11->Visible = true;
+			}
+			else
+			{
+				label5->Text = "Вы проиграли   " + stavka;
+				label5->ForeColor = Color::Red;
+				textBox1->Text += "\r\nПроигрыш - " + stavka;
+				midlle_kf = 0.50;
+				n = 0.25;
+				button11->Visible = false;
+				if (balance_rub == true)
+				{
+					int balance = Convert::ToInt32(label1->Text);
+					balance -= stavka;
+					label1->Text = Convert::ToString(balance);
+				}
+				if (balance_dol == true)
+				{
+					int balance = Convert::ToInt32(label2->Text);
+					balance -= stavka;
+					label2->Text = Convert::ToString(balance);
+				}
+				if (balance_evro == true)
+				{
+					int balance = Convert::ToInt32(label3->Text);
+					balance -= stavka;
+					label3->Text = Convert::ToString(balance);
+				}
 			}
 		}
 		if (button->Text == "2")
 		{
-
+			if (value == Convert::ToInt32(button->Text))
+			{
+				priz = kf + midlle_kf;
+				label5->Text = "Возможный выйгрыш   " + priz;
+				label5->ForeColor = Color::Green;
+				n += 0.5;
+				midlle_kf += n;
+				button11->Visible = true;
+			}
+			else
+			{
+				label5->Text = "Вы проиграли   " + stavka;
+				label5->ForeColor = Color::Red;
+				textBox1->Text += "\r\nПроигрыш - " + stavka;
+				midlle_kf = 0.50;
+				n = 0.25;
+				button11->Visible = false;
+				if (balance_rub == true)
+				{
+					int balance = Convert::ToInt32(label1->Text);
+					balance -= stavka;
+					label1->Text = Convert::ToString(balance);
+				}
+				if (balance_dol == true)
+				{
+					int balance = Convert::ToInt32(label2->Text);
+					balance -= stavka;
+					label2->Text = Convert::ToString(balance);
+				}
+				if (balance_evro == true)
+				{
+					int balance = Convert::ToInt32(label3->Text);
+					balance -= stavka;
+					label3->Text = Convert::ToString(balance);
+				}
+			}
 		}
 		if (button->Text == "3")
 		{
-
+			if (value == Convert::ToInt32(button->Text))
+			{
+				priz = kf + midlle_kf;
+				label5->Text = "Возможный выйгрыш   " + priz;
+				label5->ForeColor = Color::Green;
+				n += 0.5;
+				midlle_kf += n;
+				button11->Visible = true;
+			}
+			else
+			{
+				label5->Text = "Вы проиграли   " + stavka;
+				label5->ForeColor = Color::Red;
+				textBox1->Text += "\r\nПроигрыш - " + stavka;
+				midlle_kf = 0.50;
+				n = 0.25;
+				button11->Visible = false;
+				if (balance_rub == true)
+				{
+					int balance = Convert::ToInt32(label1->Text);
+					balance -= stavka;
+					label1->Text = Convert::ToString(balance);
+				}
+				if (balance_dol == true)
+				{
+					int balance = Convert::ToInt32(label2->Text);
+					balance -= stavka;
+					label2->Text = Convert::ToString(balance);
+				}
+				if (balance_evro == true)
+				{
+					int balance = Convert::ToInt32(label3->Text);
+					balance -= stavka;
+					label3->Text = Convert::ToString(balance);
+				}
+			}
 		}
 	}
 	else
@@ -732,14 +840,48 @@ private: System::Void button_play_game(System::Object^ sender, System::EventArgs
 private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (textBox2->Text != "")
 	{
-		start_game = true;
-		label5->Text = "Игра начата";
-		label5->ForeColor = Color::Green;
+		if (balance_rub == true || balance_dol == true || balance_evro == true)
+		{
+			start_game = true;
+			label5->Text = "Игра начата";
+			label5->ForeColor = Color::Green;
+		}
+		else
+		{
+			label5->Text = "Выберите валюту";
+			label5->ForeColor = Color::Red;
+		}
 	}
 	else
 	{
 		label5->Text = "Сделайте ставку";
 		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
+	textBox1->Text += "\r\nВыйгрыш - " + (priz * stavka);
+	label5->Text = "Вы выйграли : " + (priz * stavka);
+	label5->ForeColor = Color::Green;
+	midlle_kf = 0.50;
+	n = 0.25;
+	button11->Visible = false;
+	if (balance_rub == true)
+	{
+		int balance = Convert::ToInt32(label1->Text);
+		balance += (priz * stavka) - stavka;
+		label1->Text = Convert::ToString(balance);
+	}
+	if (balance_dol == true)
+	{
+		int balance = Convert::ToInt32(label2->Text);
+		balance += (priz * stavka) - stavka;
+		label2->Text = Convert::ToString(balance);
+	}
+	if (balance_evro == true)
+	{
+		int balance = Convert::ToInt32(label3->Text);
+		balance += (priz * stavka) - stavka;
+		label3->Text = Convert::ToString(balance);
 	}
 }
 };
