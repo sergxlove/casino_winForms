@@ -69,6 +69,7 @@ namespace casinowinForms {
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
 	private: int stavka = 0;
+	private: bool start_game = false;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
@@ -274,6 +275,7 @@ namespace casinowinForms {
 			this->button1->TabIndex = 76;
 			this->button1->Text = L"\?\?\?";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm5::btn_click);
 			// 
 			// button2
 			// 
@@ -287,6 +289,7 @@ namespace casinowinForms {
 			this->button2->TabIndex = 77;
 			this->button2->Text = L"\?\?\?";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm5::btn_click);
 			// 
 			// button3
 			// 
@@ -300,6 +303,7 @@ namespace casinowinForms {
 			this->button3->TabIndex = 78;
 			this->button3->Text = L"\?\?\?";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm5::btn_click);
 			// 
 			// button4
 			// 
@@ -311,8 +315,9 @@ namespace casinowinForms {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(360, 105);
 			this->button4->TabIndex = 79;
-			this->button4->Text = L"\?";
+			this->button4->Text = L"1";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm5::button_play_game);
 			// 
 			// button5
 			// 
@@ -324,8 +329,9 @@ namespace casinowinForms {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(360, 105);
 			this->button5->TabIndex = 80;
-			this->button5->Text = L"\?";
+			this->button5->Text = L"2";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm5::button_play_game);
 			// 
 			// button6
 			// 
@@ -337,8 +343,9 @@ namespace casinowinForms {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(360, 105);
 			this->button6->TabIndex = 81;
-			this->button6->Text = L"\?";
+			this->button6->Text = L"3";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm5::button_play_game);
 			// 
 			// button7
 			// 
@@ -352,6 +359,7 @@ namespace casinowinForms {
 			this->button7->TabIndex = 82;
 			this->button7->Text = L"...";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm5::btn_click2);
 			// 
 			// button8
 			// 
@@ -365,6 +373,7 @@ namespace casinowinForms {
 			this->button8->TabIndex = 83;
 			this->button8->Text = L"...";
 			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm5::btn_click2);
 			// 
 			// button9
 			// 
@@ -378,6 +387,7 @@ namespace casinowinForms {
 			this->button9->TabIndex = 84;
 			this->button9->Text = L"...";
 			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Click += gcnew System::EventHandler(this, &MyForm5::btn_click2);
 			// 
 			// textBox1
 			// 
@@ -417,6 +427,7 @@ namespace casinowinForms {
 			this->button10->TabIndex = 92;
 			this->button10->Text = L"Играть";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &MyForm5::button10_Click);
 			// 
 			// button16
 			// 
@@ -431,6 +442,7 @@ namespace casinowinForms {
 			this->button16->TabIndex = 91;
 			this->button16->Text = L"+10";
 			this->button16->UseVisualStyleBackColor = false;
+			this->button16->Click += gcnew System::EventHandler(this, &MyForm5::button16_Click);
 			// 
 			// button15
 			// 
@@ -445,6 +457,7 @@ namespace casinowinForms {
 			this->button15->TabIndex = 90;
 			this->button15->Text = L"+100";
 			this->button15->UseVisualStyleBackColor = false;
+			this->button15->Click += gcnew System::EventHandler(this, &MyForm5::button15_Click);
 			// 
 			// button14
 			// 
@@ -459,6 +472,7 @@ namespace casinowinForms {
 			this->button14->TabIndex = 89;
 			this->button14->Text = L"/2";
 			this->button14->UseVisualStyleBackColor = false;
+			this->button14->Click += gcnew System::EventHandler(this, &MyForm5::button14_Click);
 			// 
 			// button13
 			// 
@@ -553,7 +567,7 @@ namespace casinowinForms {
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button26);
 			this->Name = L"MyForm5";
-			this->Text = L"\?";
+			this->Text = L"MyForm5";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -608,6 +622,123 @@ private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ 
 	else
 	{
 		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka /= 2;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka += 10;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka += 100;
+		textBox1->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void btn_click(System::Object^ sender, System::EventArgs^ e) {
+	label5->Text = "Выберите ячейку уровнем ниже";
+	label5->ForeColor = Color::Red;
+}
+private: System::Void btn_click2(System::Object^ sender, System::EventArgs^ e)
+{
+	label5->Text = "Выберите ячейку уровнем выше";
+	label5->ForeColor = Color::Red;
+}
+private: System::Void button_play_game(System::Object^ sender, System::EventArgs^ e)
+{
+	if (start_game == true)
+	{
+		Button^ button = safe_cast<Button^>(sender);
+		Random^ random = gcnew Random();
+		int value = random->Next(1, 4);
+		if (value == 1)
+		{
+			button7->BackColor = Color::Green;
+			button7->Text = "";
+			button8->BackColor = Color::Red;
+			button8->Text = "";
+			button9->BackColor = Color::Red;
+			button9->Text = "";
+		}
+		if (value == 2)
+		{
+			button7->BackColor = Color::Red;
+			button7->Text = "";
+			button8->BackColor = Color::Green;
+			button8->Text = "";
+			button9->BackColor = Color::Red;
+			button9->Text = "";
+		}
+		if (value == 3)
+		{
+			button7->BackColor = Color::Red;
+			button7->Text = "";
+			button8->BackColor = Color::Red;
+			button8->Text = "";
+			button9->BackColor = Color::Green;
+			button9->Text = "";
+		}
+		if (button->Text == "1")
+		{
+			if (value == Convert::ToInt32(button->Text))
+			{
+				label5->Text = "Возможный выйгрыш";
+			}
+		}
+		if (button->Text == "2")
+		{
+
+		}
+		if (button->Text == "3")
+		{
+
+		}
+	}
+	else
+	{
+		label5->Text = "Нажмите начать";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		start_game = true;
+		label5->Text = "Игра начата";
+		label5->ForeColor = Color::Green;
+	}
+	else
+	{
+		label5->Text = "Сделайте ставку";
 		label5->ForeColor = Color::Red;
 	}
 }
