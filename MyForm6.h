@@ -61,6 +61,7 @@ namespace casinowinForms {
 	private: bool balance_rub = false;
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
+	private: int stavka = 0;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -284,11 +285,15 @@ namespace casinowinForms {
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox1->Location = System::Drawing::Point(1136, 178);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(289, 447);
 			this->textBox1->TabIndex = 90;
+			this->textBox1->Text = L"Комбинации :";
 			// 
 			// button10
 			// 
@@ -317,6 +322,7 @@ namespace casinowinForms {
 			this->button16->TabIndex = 98;
 			this->button16->Text = L"+10";
 			this->button16->UseVisualStyleBackColor = false;
+			this->button16->Click += gcnew System::EventHandler(this, &MyForm6::button16_Click);
 			// 
 			// button15
 			// 
@@ -331,6 +337,7 @@ namespace casinowinForms {
 			this->button15->TabIndex = 97;
 			this->button15->Text = L"+100";
 			this->button15->UseVisualStyleBackColor = false;
+			this->button15->Click += gcnew System::EventHandler(this, &MyForm6::button15_Click);
 			// 
 			// button14
 			// 
@@ -345,6 +352,7 @@ namespace casinowinForms {
 			this->button14->TabIndex = 96;
 			this->button14->Text = L"/2";
 			this->button14->UseVisualStyleBackColor = false;
+			this->button14->Click += gcnew System::EventHandler(this, &MyForm6::button14_Click);
 			// 
 			// button13
 			// 
@@ -359,6 +367,7 @@ namespace casinowinForms {
 			this->button13->TabIndex = 95;
 			this->button13->Text = L"х2";
 			this->button13->UseVisualStyleBackColor = false;
+			this->button13->Click += gcnew System::EventHandler(this, &MyForm6::button13_Click);
 			// 
 			// textBox2
 			// 
@@ -390,11 +399,15 @@ namespace casinowinForms {
 			// 
 			this->textBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox3->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox3->Location = System::Drawing::Point(993, 669);
 			this->textBox3->Multiline = true;
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(432, 179);
 			this->textBox3->TabIndex = 100;
+			this->textBox3->Text = L"История :";
 			// 
 			// MyForm6
 			// 
@@ -471,6 +484,58 @@ private: System::Void button29_Click(System::Object^ sender, System::EventArgs^ 
 	button27->BackColor = Color::Red;
 	button28->BackColor = Color::Red;
 	button29->BackColor = Color::Green;
+}
+private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka *= 2;
+		textBox2->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka /= 2;
+		textBox2->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka += 10;
+		textBox2->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
+}
+private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		stavka += 100;
+		textBox2->Text = Convert::ToString(stavka);
+	}
+	else
+	{
+		label5->Text = "Введите ставку";
+		label5->ForeColor = Color::Red;
+	}
 }
 };
 }
