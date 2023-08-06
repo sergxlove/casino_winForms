@@ -62,6 +62,12 @@ namespace casinowinForms {
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
 	private: int stavka = 0;
+	private: int slot1;
+	private: int slot2;
+	private: int slot3;
+	private: bool check;
+	private: int bal = 0;
+	private: System::Windows::Forms::Label^ label8;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -99,6 +105,7 @@ namespace casinowinForms {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -291,6 +298,7 @@ namespace casinowinForms {
 			this->textBox1->Location = System::Drawing::Point(1136, 178);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
+			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox1->Size = System::Drawing::Size(289, 447);
 			this->textBox1->TabIndex = 90;
 			this->textBox1->Text = L"Комбинации :";
@@ -306,8 +314,9 @@ namespace casinowinForms {
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(185, 77);
 			this->button10->TabIndex = 99;
-			this->button10->Text = L"Начать";
+			this->button10->Text = L"Играть";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &MyForm6::button10_Click);
 			// 
 			// button16
 			// 
@@ -405,9 +414,21 @@ namespace casinowinForms {
 			this->textBox3->Location = System::Drawing::Point(993, 669);
 			this->textBox3->Multiline = true;
 			this->textBox3->Name = L"textBox3";
+			this->textBox3->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->textBox3->Size = System::Drawing::Size(432, 179);
 			this->textBox3->TabIndex = 100;
 			this->textBox3->Text = L"История :";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label8->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label8->Location = System::Drawing::Point(30, 813);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(0, 38);
+			this->label8->TabIndex = 101;
 			// 
 			// MyForm6
 			// 
@@ -416,6 +437,7 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1456, 860);
+			this->Controls->Add(this->label8);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->button10);
 			this->Controls->Add(this->button16);
@@ -441,6 +463,7 @@ namespace casinowinForms {
 			this->Controls->Add(this->button26);
 			this->Name = L"MyForm6";
 			this->Text = L"MyForm6";
+			this->Load += gcnew System::EventHandler(this, &MyForm6::MyForm6_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -494,8 +517,8 @@ private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ 
 	}
 	else
 	{
-		label5->Text = "Введите ставку";
-		label5->ForeColor = Color::Red;
+		label8->Text = "Введите ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -507,8 +530,8 @@ private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ 
 	}
 	else
 	{
-		label5->Text = "Введите ставку";
-		label5->ForeColor = Color::Red;
+		label8->Text = "Введите ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -520,8 +543,8 @@ private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ 
 	}
 	else
 	{
-		label5->Text = "Введите ставку";
-		label5->ForeColor = Color::Red;
+		label8->Text = "Введите ставку";
+		label8->ForeColor = Color::Red;
 	}
 }
 private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -533,9 +556,157 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	}
 	else
 	{
-		label5->Text = "Введите ставку";
-		label5->ForeColor = Color::Red;
+		label8->Text = "Введите ставку";
+		label8->ForeColor = Color::Red;
 	}
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (textBox2->Text != "")
+	{
+		stavka = Convert::ToInt32(textBox2->Text);
+		if (balance_rub == true || balance_dol == true || balance_evro == true)
+		{
+			if (balance_rub == true)
+			{
+				bal = Convert::ToInt32(label1->Text);
+			}
+			if (balance_dol == true)
+			{
+				bal = Convert::ToInt32(label2->Text);
+			}
+			if (balance_evro == true)
+			{
+				bal = Convert::ToInt32(label3->Text);
+			}
+			if (stavka < bal)
+			{
+				Random^ random = gcnew Random();
+				slot1 = random->Next(1, 10);
+				slot2 = random->Next(1, 10);
+				slot3 = random->Next(1, 10);
+				label4->Text = Convert::ToString(slot1);
+				label5->Text = Convert::ToString(slot2);
+				label6->Text = Convert::ToString(slot3);
+				int priz = 0;
+				check = true;
+				if (slot1 == 7)
+				{
+					label4->BackColor = Color::FromArgb(255, 215, 0);
+				}
+				else
+				{
+					if (slot1 % 2 == 0)
+					{
+						label4->BackColor = Color::FromArgb(117, 93, 154);
+					}
+					else
+					{
+						label4->BackColor = Color::FromArgb(235, 76, 66);
+					}
+				}
+				if (slot2 == 7)
+				{
+					label5->BackColor = Color::FromArgb(255, 215, 0);
+				}
+				else
+				{
+					if (slot2 % 2 == 0)
+					{
+						label5->BackColor = Color::FromArgb(117, 93, 154);
+					}
+					else
+					{
+						label5->BackColor = Color::FromArgb(235, 76, 66);
+					}
+				}
+				if (slot3 == 7)
+				{
+					label6->BackColor = Color::FromArgb(255, 215, 0);
+				}
+				else
+				{
+					if (slot3 % 2 == 0)
+					{
+						label6->BackColor = Color::FromArgb(117, 93, 154);
+					}
+					else
+					{
+						label6->BackColor = Color::FromArgb(235, 76, 66);
+					}
+				}
+				if (check == true && slot1 == slot2 && slot1 == slot3)
+				{
+					if (slot1 == 7 && slot2 == 7 && slot3 == 7)
+					{
+						priz = stavka * 100;
+					}
+					else
+					{
+						priz = stavka * 20;
+					}
+					check = false;
+				}
+				if (check == true && slot1 % 2 == 0 && slot2 % 2 == 0 && slot3 % 2 == 0)
+				{
+					priz = stavka * 5;
+					check = false;
+				}
+				if (check == true && slot1 % 2 == 1 && slot2 % 2 == 1 && slot3 % 2 == 1)
+				{
+					priz = stavka * 5;
+					check = false;
+				}
+				if (check == true && slot1 + slot2 + slot3 == 10)
+				{
+					priz = stavka * 3;
+					check = false;
+				}
+				if (check == true)
+				{
+					if (slot1 == 7 || slot2 == 7 || slot3 == 7)
+					{
+						priz = stavka * 2;
+						check = false;
+					}
+				}
+				if (check == false)
+				{
+					label8->Text = "Вы выйграли" + priz;
+					label8->ForeColor = Color::Green;
+					textBox3->Text += "\r\nВыйгрыш - " + priz + " - slot - " + slot1 + " - " + slot2 + " - " + slot3;
+				}
+				if (check == true)
+				{
+					label8->Text = "Вы проиграли  " + stavka;
+					label8->ForeColor = Color::Red;
+					textBox3->Text += "\r\nПроигрыш - " + stavka + " - slot - " + slot1 + " - " + slot2 + " - " + slot3;
+				}
+			}
+			else
+			{
+				label8->Text = "Недостаточно средств";
+				label8->ForeColor = Color::Red;
+			}
+		}
+		else
+		{
+			label8->Text = "Введите валюту";
+			label8->ForeColor = Color::Red;
+		}
+	}
+	else
+	{
+		label8->Text = "Введите ставку";
+		label8->ForeColor = Color::Red;
+	}
+}
+private: System::Void MyForm6_Load(System::Object^ sender, System::EventArgs^ e) {
+	textBox1->Text += "\r\nтри 7 --- Х100";
+	textBox1->Text += "\r\nтри одинаковых --- Х20";
+	textBox1->Text += "\r\nвсе четные --- Х5";
+	textBox1->Text += "\r\nвсе нечетные --- X5";
+	textBox1->Text += "\r\nодна 7 --- Х2";
+	textBox1->Text += "\r\nсумма = 10 --- Х3";
 }
 };
 }
