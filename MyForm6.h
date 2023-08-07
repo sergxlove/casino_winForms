@@ -674,12 +674,48 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 					label8->Text = "Вы выйграли" + priz;
 					label8->ForeColor = Color::Green;
 					textBox3->Text += "\r\nВыйгрыш - " + priz + " - slot - " + slot1 + " - " + slot2 + " - " + slot3;
+					if (balance_rub == true)
+					{
+						bal = Convert::ToInt32(label1->Text);
+						bal += priz - stavka;
+						label1->Text = Convert::ToString(bal);
+					}
+					if (balance_dol == true)
+					{
+						bal = Convert::ToInt32(label2->Text);
+						bal += priz - stavka;
+						label2->Text = Convert::ToString(bal);
+					}
+					if (balance_evro == true)
+					{
+						bal = Convert::ToInt32(label3->Text);
+						bal += priz - stavka;
+						label3->Text = Convert::ToString(bal);
+					}
 				}
 				if (check == true)
 				{
 					label8->Text = "Вы проиграли  " + stavka;
 					label8->ForeColor = Color::Red;
 					textBox3->Text += "\r\nПроигрыш - " + stavka + " - slot - " + slot1 + " - " + slot2 + " - " + slot3;
+					if (balance_rub == true)
+					{
+						bal = Convert::ToInt32(label1->Text);
+						bal -= stavka;
+						label1->Text = Convert::ToString(bal);
+					}
+					if (balance_dol == true)
+					{
+						bal = Convert::ToInt32(label2->Text);
+						bal -= stavka;
+						label2->Text = Convert::ToString(bal);
+					}
+					if (balance_evro == true)
+					{
+						bal = Convert::ToInt32(label3->Text);
+						bal -= stavka;
+						label3->Text = Convert::ToString(bal);
+					}
 				}
 			}
 			else
