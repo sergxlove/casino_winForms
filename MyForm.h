@@ -5,6 +5,7 @@
 #include "MyForm4.h"
 #include "MyForm5.h"
 #include "MyForm6.h"
+#include "MyForm7.h"
 namespace casinowinForms {
 
 	using namespace System;
@@ -420,7 +421,8 @@ namespace casinowinForms {
 			}
 			else if (clickedPictureBox == pictureBox11)
 			{
-
+				MyForm7^ eightform = gcnew MyForm7();
+				eightform->Show();
 			}
 			else if (clickedPictureBox == pictureBox12)
 			{
