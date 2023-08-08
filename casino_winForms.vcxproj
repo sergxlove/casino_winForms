@@ -127,6 +127,7 @@
     <ClCompile Include="MyForm4.cpp" />
     <ClCompile Include="MyForm5.cpp" />
     <ClCompile Include="MyForm6.cpp" />
+    <ClCompile Include="MyForm7.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -148,6 +149,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm6.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyForm7.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm6.resx">
       <DependentUpon>MyForm6.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm7.resx">
+      <DependentUpon>MyForm7.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
