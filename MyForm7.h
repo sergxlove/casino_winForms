@@ -297,8 +297,8 @@ namespace casinowinForms {
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(153)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->Location = System::Drawing::Point(12, 509);
@@ -311,8 +311,7 @@ namespace casinowinForms {
 			// 
 			// button2
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button2->BackColor = System::Drawing::Color::SlateBlue;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->Location = System::Drawing::Point(483, 509);
@@ -325,8 +324,8 @@ namespace casinowinForms {
 			// 
 			// button3
 			// 
-			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(153)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button3->Location = System::Drawing::Point(965, 509);
@@ -598,7 +597,6 @@ namespace casinowinForms {
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(37, 89);
 			this->label5->TabIndex = 123;
-			this->label5->Text = L"l";
 			// 
 			// label6
 			// 
@@ -606,7 +604,6 @@ namespace casinowinForms {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(37, 89);
 			this->label6->TabIndex = 124;
-			this->label6->Text = L"l";
 			// 
 			// label10
 			// 
@@ -614,7 +611,6 @@ namespace casinowinForms {
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(37, 89);
 			this->label10->TabIndex = 125;
-			this->label10->Text = L"l";
 			// 
 			// MyForm7
 			// 

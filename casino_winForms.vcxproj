@@ -128,6 +128,7 @@
     <ClCompile Include="MyForm5.cpp" />
     <ClCompile Include="MyForm6.cpp" />
     <ClCompile Include="MyForm7.cpp" />
+    <ClCompile Include="MyForm8.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -152,6 +153,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm7.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyForm8.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
