@@ -12,6 +12,12 @@ namespace casinowinForms {
 	/// <summary>
 	/// Сводка для MyForm7
 	/// </summary>
+	enum check_seven
+	{
+		var_less,
+		var_eqully,
+		var_more
+	};
 	public ref class MyForm7 : public System::Windows::Forms::Form
 	{
 	public:
@@ -61,6 +67,7 @@ namespace casinowinForms {
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
 	private: int stavka = 0;
+	private: int priz = 0;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
@@ -76,6 +83,13 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox15;
 	private: int value1 = 0;
 	private: int value2 = 0;
+	private: int var = 9;
+	private: int really_var;
+	private: int bal;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label10;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -125,6 +139,10 @@ namespace casinowinForms {
 			this->pictureBox13 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox14 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox15 = (gcnew System::Windows::Forms::PictureBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -279,8 +297,8 @@ namespace casinowinForms {
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(153)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->Location = System::Drawing::Point(12, 509);
@@ -289,32 +307,34 @@ namespace casinowinForms {
 			this->button1->TabIndex = 98;
 			this->button1->Text = L"<7";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm7::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button2->BackColor = System::Drawing::Color::SlateBlue;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button2->Location = System::Drawing::Point(440, 509);
+			this->button2->Location = System::Drawing::Point(483, 509);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(387, 89);
 			this->button2->TabIndex = 99;
 			this->button2->Text = L"=7";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm7::button2_Click);
 			// 
 			// button3
 			// 
-			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
-				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(153)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+				static_cast<System::Int32>(static_cast<System::Byte>(204)));
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button3->Location = System::Drawing::Point(876, 509);
+			this->button3->Location = System::Drawing::Point(965, 509);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(387, 89);
 			this->button3->TabIndex = 100;
 			this->button3->Text = L">7";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm7::button3_Click);
 			// 
 			// button10
 			// 
@@ -438,9 +458,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(870, 729);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(92, 32);
+			this->label8->Size = System::Drawing::Size(0, 32);
 			this->label8->TabIndex = 109;
-			this->label8->Text = L"label4";
 			// 
 			// pictureBox4
 			// 
@@ -562,6 +581,37 @@ namespace casinowinForms {
 			this->pictureBox15->TabIndex = 121;
 			this->pictureBox15->TabStop = false;
 			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(870, 650);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(0, 32);
+			this->label4->TabIndex = 122;
+			// 
+			// label5
+			// 
+			this->label5->Location = System::Drawing::Point(404, 509);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(37, 89);
+			this->label5->TabIndex = 123;
+			// 
+			// label6
+			// 
+			this->label6->Location = System::Drawing::Point(876, 509);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(37, 89);
+			this->label6->TabIndex = 124;
+			// 
+			// label10
+			// 
+			this->label10->Location = System::Drawing::Point(1358, 509);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(37, 89);
+			this->label10->TabIndex = 125;
+			// 
 			// MyForm7
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -569,6 +619,10 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1470, 786);
+			this->Controls->Add(this->label10);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->pictureBox15);
 			this->Controls->Add(this->pictureBox14);
 			this->Controls->Add(this->pictureBox13);
@@ -716,70 +770,206 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	}
 }
 	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
-		Random^ random = gcnew Random();
-		value1 = random->Next(1, 7);
-		value2 = random->Next(1, 7);
-		label8->Text = "1 - " + value1 + "2 - " + value2;
-		pictureBox4->Visible = false;
-		pictureBox5->Visible = false;
-		pictureBox6->Visible = false;
-		pictureBox7->Visible = false;
-		pictureBox8->Visible = false;
-		pictureBox9->Visible = false;
-		pictureBox10->Visible = false;
-		pictureBox11->Visible = false;
-		pictureBox12->Visible = false;
-		pictureBox13->Visible = false;
-		pictureBox14->Visible = false;
-		pictureBox15->Visible = false;
-		if (value1 == 1)
+		if (textBox2->Text != "")
 		{
-			pictureBox4->Visible = true;
+			stavka = Convert::ToInt32(textBox2->Text);
+			if (balance_rub == true || balance_dol == true || balance_evro == true)
+			{
+				if (balance_rub == true)
+				{
+					bal = Convert::ToInt32(label1->Text);
+				}
+				if (balance_dol == true)
+				{
+					bal = Convert::ToInt32(label2->Text);
+				}
+				if (balance_evro == true)
+				{
+					bal = Convert::ToInt32(label3->Text);
+				}
+				if (stavka < bal)
+				{
+					if (var != 9)
+					{
+						Random^ random = gcnew Random();
+						value1 = random->Next(1, 7);
+						value2 = random->Next(1, 7);
+						pictureBox4->Visible = false;
+						pictureBox5->Visible = false;
+						pictureBox6->Visible = false;
+						pictureBox7->Visible = false;
+						pictureBox8->Visible = false;
+						pictureBox9->Visible = false;
+						pictureBox10->Visible = false;
+						pictureBox11->Visible = false;
+						pictureBox12->Visible = false;
+						pictureBox13->Visible = false;
+						pictureBox14->Visible = false;
+						pictureBox15->Visible = false;
+						if (value1 == 1)
+						{
+							pictureBox4->Visible = true;
+						}
+						if (value1 == 2)
+						{
+							pictureBox5->Visible = true;
+						}
+						if (value1 == 3)
+						{
+							pictureBox6->Visible = true;
+						}
+						if (value1 == 4)
+						{
+							pictureBox7->Visible = true;
+						}
+						if (value1 == 5)
+						{
+							pictureBox8->Visible = true;
+						}
+						if (value1 == 6)
+						{
+							pictureBox9->Visible = true;
+						}
+						if (value2 == 1)
+						{
+							pictureBox10->Visible = true;
+						}
+						if (value2 == 2)
+						{
+							pictureBox11->Visible = true;
+						}
+						if (value2 == 3)
+						{
+							pictureBox12->Visible = true;
+						}
+						if (value2 == 4)
+						{
+							pictureBox13->Visible = true;
+						}
+						if (value2 == 5)
+						{
+							pictureBox14->Visible = true;
+						}
+						if (value2 == 6)
+						{
+							pictureBox15->Visible = true;
+						}
+						if (value1 + value2 == 7)
+						{
+							really_var = check_seven::var_eqully;
+							label4->Text = "Выпало 7";
+						}
+						else
+						{
+							if (value1 + value2 > 7)
+							{
+								really_var = check_seven::var_more;
+								label4->Text = "Выпало больше 7";
+							}
+							else
+							{
+								really_var = check_seven::var_less;
+								label4->Text = "Выпало меньше 7";
+							}
+						}
+						if (var == really_var)
+						{
+							label8->Text = "Вы выйграли";
+							label8->ForeColor = Color::Green;
+							if (var == check_seven::var_less || var == check_seven::var_more)
+							{
+								priz = stavka * 2;
+							}
+							if (var == check_seven::var_eqully)
+							{
+								priz = stavka * 6;
+							}
+							textBox1->Text += "\r\nВыйгрыш - " + priz;
+							if (balance_rub == true)
+							{
+								bal = Convert::ToInt32(label1->Text);
+								bal += priz;
+								label1->Text = Convert::ToString(bal);
+							}
+							if (balance_dol == true)
+							{
+								bal = Convert::ToInt32(label2->Text);
+								bal += priz;
+								label2->Text = Convert::ToString(bal);
+							}
+							if (balance_evro == true)
+							{
+								bal = Convert::ToInt32(label3->Text);
+								bal += priz;
+								label3->Text = Convert::ToString(bal);
+							}
+						}
+						else
+						{
+							label8->Text = "Вы проиграли   " + stavka;
+							label8->ForeColor = Color::Red;
+							textBox1->Text += "\r\nПроигрыш - " + stavka;
+							if (balance_rub == true)
+							{
+								bal = Convert::ToInt32(label1->Text);
+								bal -= stavka;
+								label1->Text = Convert::ToString(bal);
+							}
+							if (balance_dol == true)
+							{
+								bal = Convert::ToInt32(label2->Text);
+								bal -= stavka;
+								label2->Text = Convert::ToString(bal);
+							}
+							if (balance_evro == true)
+							{
+								bal = Convert::ToInt32(label3->Text);
+								bal -= stavka;
+								label3->Text = Convert::ToString(bal);
+							}
+						}
+					}
+					else
+					{
+						label8->Text = "Выберите исход";
+						label8->ForeColor = Color::Red;
+					}
+				}
+				else
+				{
+					label8->Text = "Недостаточно средств";
+					label8->ForeColor = Color::Red;
+				}
+			}
+			else
+			{
+				label8->Text = "Выберите валюту";
+				label8->ForeColor = Color::Red;
+			}
 		}
-		if (value1 == 2)
+		else
 		{
-			pictureBox5->Visible = true;
-		}
-		if (value1 == 3)
-		{
-			pictureBox6->Visible = true;
-		}
-		if (value1 == 4)
-		{
-			pictureBox7->Visible = true;
-		}
-		if (value1 == 5)
-		{
-			pictureBox8->Visible = true;
-		}
-		if (value1 == 6)
-		{
-			pictureBox9->Visible = true;
-		}
-		if (value2 == 1)
-		{
-			pictureBox10->Visible = true;
-		}
-		if (value2 == 2)
-		{
-			pictureBox11->Visible = true;
-		}
-		if (value2 == 3)
-		{
-			pictureBox12->Visible = true;
-		}
-		if (value2 == 4)
-		{
-			pictureBox13->Visible = true;
-		}
-		if (value2 == 5)
-		{
-			pictureBox14->Visible = true;
-		}
-		if (value2 == 6)
-		{
-			pictureBox15->Visible = true;
+			label8->Text = "Введите ставку";
+			label8->ForeColor = Color::Red;
 		}
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	var = check_seven::var_less;
+	label5->BackColor = Color::Green;
+	label6->BackColor = Color::Red;
+	label10->BackColor = Color::Red;
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	var = check_seven::var_eqully;
+	label5->BackColor = Color::Red;
+	label6->BackColor = Color::Green;
+	label10->BackColor = Color::Red;
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	var = check_seven::var_more;
+	label5->BackColor = Color::Red;
+	label6->BackColor = Color::Red;
+	label10->BackColor = Color::Green;
+}
 };
 }
