@@ -184,6 +184,9 @@
     <EmbeddedResource Include="MyForm7.resx">
       <DependentUpon>MyForm7.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyForm8.resx">
+      <DependentUpon>MyForm8.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
