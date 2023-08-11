@@ -58,6 +58,7 @@ namespace casinowinForms {
 	private: bool balance_rub = false;
 	private: bool balance_dol = false;
 	private: bool balance_evro = false;
+	private: int priz;
 	private: int stavka = 0;
 	private: int var = check_double::var_no;
 	private: int really_var = check_double::var_no;
@@ -77,6 +78,7 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: int bal;
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -611,79 +613,177 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	var = check_double::var_x2;
-	label5->Text = "Вы выбрвали х2";
+	label5->Text = "Вы выбрали х2";
 	label5->ForeColor = Color::Green;
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	var = check_double::var_x3;
-	label5->Text = "Вы выбрвали х3";
+	label5->Text = "Вы выбрали х3";
 	label5->ForeColor = Color::Green;
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	var = check_double::var_x5;
-	label5->Text = "Вы выбрвали х5";
+	label5->Text = "Вы выбрали х5";
 	label5->ForeColor = Color::Green;
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	var = check_double::var_x10;
-	label5->Text = "Вы выбрвали х10";
+	label5->Text = "Вы выбрали х10";
 	label5->ForeColor = Color::Green;
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	var = check_double::var_x50;
-	label5->Text = "Вы выбрвали х50";
+	label5->Text = "Вы выбрали х50";
 	label5->ForeColor = Color::Green;
 }
 private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
-	int value;
-	Random^ random = gcnew Random();
-	value = random->Next(0, 101);
-	if (value == 0 || value == 1)
+	if (textBox2->Text != "")
 	{
-		really_var = check_double::var_x50;
-		label4->Text = "x50";
-		label4->BackColor = Color::SpringGreen;
-	}
-	else
-	{
-		if (value >= 2 && value <= 10)
+		stavka = Convert::ToInt32(textBox2->Text);
+		if (balance_rub == true || balance_dol == true || balance_evro == true)
 		{
-			really_var = check_double::var_x10;
-			label4->Text = "x10";
-			label4->BackColor = Color::FromArgb(235, 71, 35);
-		}
-		else
-		{
-			if (value >= 11 && value <= 30)
+			if (balance_rub == true)
 			{
-				really_var = check_double::var_x5;
-				label4->Text = "x5";
-				label4->BackColor = Color::FromArgb(1, 121, 111);
+				bal = Convert::ToInt32(label1->Text);
 			}
-			else
+			if (balance_dol == true)
 			{
-				if (value >= 31 && value <= 60)
+				bal = Convert::ToInt32(label2->Text);
+			}
+			if (balance_evro == true)
+			{
+				bal = Convert::ToInt32(label3->Text);
+			}
+			if (stavka < bal)
+			{
+				int value;
+				priz = 0;
+				Random^ random = gcnew Random();
+				value = random->Next(0, 101);
+				if (value == 0 || value == 1)
 				{
-					really_var = check_double::var_x3;
-					label4->Text = "x3";
-					label4->BackColor = Color::FromArgb(21, 96, 189);
+					really_var = check_double::var_x50;
+					label4->Text = "x50";
+					label4->BackColor = Color::SpringGreen;
 				}
 				else
 				{
-					really_var = check_double::var_x2;
-					label4->Text = "x2";
-					label4->BackColor = Color::FromArgb(201, 160, 220);
+					if (value >= 2 && value <= 10)
+					{
+						really_var = check_double::var_x10;
+						label4->Text = "x10";
+						label4->BackColor = Color::FromArgb(235, 71, 35);
+					}
+					else
+					{
+						if (value >= 11 && value <= 30)
+						{
+							really_var = check_double::var_x5;
+							label4->Text = "x5";
+							label4->BackColor = Color::FromArgb(1, 121, 111);
+						}
+						else
+						{
+							if (value >= 31 && value <= 60)
+							{
+								really_var = check_double::var_x3;
+								label4->Text = "x3";
+								label4->BackColor = Color::FromArgb(21, 96, 189);
+							}
+							else
+							{
+								really_var = check_double::var_x2;
+								label4->Text = "x2";
+								label4->BackColor = Color::FromArgb(201, 160, 220);
+							}
+						}
+					}
+				}
+				if (really_var == var)
+				{
+					if (really_var == check_double::var_x2)
+					{
+						priz = stavka * 2;
+					}
+					else if (really_var == check_double::var_x3)
+					{
+						priz = stavka * 3;
+					}
+					else if (really_var == check_double::var_x5)
+					{
+						priz = stavka * 5;
+					}
+					else if (really_var == check_double::var_x10)
+					{
+						priz = stavka * 10;
+					}
+					else if (really_var == check_double::var_x50)
+					{
+						priz = stavka * 50;
+					}
+					label6->Text = "Вы выйграли   " + priz;
+					label6->ForeColor = Color::Green;
+					textBox1->Text += "Выйгрыш   " + priz;
+					if (balance_rub == true)
+					{
+						bal = Convert::ToInt32(label1->Text);
+						bal += priz;
+						label1->Text = Convert::ToString(bal);
+					}
+					if (balance_dol == true)
+					{
+						bal = Convert::ToInt32(label2->Text);
+						bal += priz;
+						label2->Text = Convert::ToString(bal);
+					}
+					if (balance_evro == true)
+					{
+						bal = Convert::ToInt32(label3->Text);
+						bal += priz;
+						label3->Text = Convert::ToString(bal);
+					}
+				}
+				else
+				{
+					label6->Text = "Вы проиграли   " + stavka;
+					label6->ForeColor = Color::Red;
+					textBox1->Text += "Проигрыш   " + stavka;
+					if (balance_rub == true)
+					{
+						bal = Convert::ToInt32(label1->Text);
+						bal -= stavka;
+						label1->Text = Convert::ToString(bal);
+					}
+					if (balance_dol == true)
+					{
+						bal = Convert::ToInt32(label2->Text);
+						bal -= stavka;
+						label2->Text = Convert::ToString(bal);
+					}
+					if (balance_evro == true)
+					{
+						bal = Convert::ToInt32(label3->Text);
+						bal -= stavka;
+						label3->Text = Convert::ToString(bal);
+					}
 				}
 			}
+			else
+			{
+				label6->Text = "Недостаточно средств";
+				label6->ForeColor = Color::Red;
+			}
 		}
-	}
-	if (really_var == var)
-	{
-		label6->Text = "Вы выйграли";
+		else
+		{
+			label6->Text = "Выберите валюту";
+			label6->ForeColor = Color::Red;
+		}
 	}
 	else
 	{
-		label6->Text = "Вы проиграли";
+		label6->Text = "Введите ставку";
+		label6->ForeColor = Color::Red;
 	}
 }
 };
