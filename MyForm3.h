@@ -74,6 +74,16 @@ namespace casinowinForms {
 	private: int balance_d = 0;
 	private: int balance_e = 0;
 	private: int balance = 0;
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 10, 90, 1075, 90);
+			g->DrawLine(pen, 10, 450, 1075, 450);
+			g->DrawLine(pen, 400, 450, 400, 650);
+			g->DrawLine(pen, 710, 450, 710, 650);
+		}
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -304,7 +314,7 @@ namespace casinowinForms {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button1->Location = System::Drawing::Point(560, 559);
+			this->button1->Location = System::Drawing::Point(560, 574);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(360, 120);
 			this->button1->TabIndex = 57;

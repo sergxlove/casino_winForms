@@ -96,7 +96,14 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Button^ button19;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox3;
-
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 10, 90, 1050, 90);
+			g->DrawLine(pen, 350, 90, 350, 700);
+		}
 	protected:
 	private:
 		/// <summary>

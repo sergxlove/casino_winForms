@@ -88,7 +88,9 @@ namespace casinowinForms {
 			Graphics^ g = e->Graphics;
 			Pen^ pen = gcnew Pen(Color::White, 2);
 			g->DrawLine(pen, 10, 90, 1050, 90);
+			g->DrawLine(pen, 430, 90, 430, 520);
 			g->DrawLine(pen, 450, 275, 1050, 275);
+			g->DrawLine(pen, 10, 520, 430, 520);
 		}
 	private:
 		/// <summary>

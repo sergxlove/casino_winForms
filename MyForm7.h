@@ -90,6 +90,16 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label10;
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 10, 95, 1075, 95);
+			g->DrawLine(pen, 10, 500, 1075, 500);
+			g->DrawLine(pen, 10, 400, 1075, 400);
+			g->DrawLine(pen, 800, 95, 800, 400);
+		}
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
