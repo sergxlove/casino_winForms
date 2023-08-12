@@ -68,6 +68,16 @@ namespace casinowinForms {
 	private: bool check;
 	private: int bal = 0;
 	private: System::Windows::Forms::Label^ label8;
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 10, 105, 1075, 105);
+			g->DrawLine(pen, 10, 525, 1075, 525);
+			g->DrawLine(pen, 825, 105, 825, 525);
+			g->DrawLine(pen, 700, 525, 700, 700);
+		}
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -436,7 +446,7 @@ namespace casinowinForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(1456, 860);
+			this->ClientSize = System::Drawing::Size(1458, 900);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->button10);

@@ -82,6 +82,8 @@ namespace casinowinForms {
 			g->DrawLine(pen, 10, 90, 1050, 90);
 			g->DrawLine(pen, 10, 220, 875, 220);
 			g->DrawLine(pen, 10, 340, 875, 340);
+			g->DrawLine(pen, 10, 460, 1050, 460);
+			g->DrawLine(pen, 650, 460, 650, 700);
 		}
 	private:
 		/// <summary>

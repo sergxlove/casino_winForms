@@ -79,6 +79,14 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: int bal;
+	protected:
+		void OnPaint(PaintEventArgs^ e) override
+		{
+			Graphics^ g = e->Graphics;
+			Pen^ pen = gcnew Pen(Color::White, 2);
+			g->DrawLine(pen, 10, 95, 1075, 95);
+			g->DrawLine(pen, 10, 390, 1075, 390);
+		}
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -269,7 +277,6 @@ namespace casinowinForms {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(854, 264);
 			this->label4->TabIndex = 109;
-			this->label4->Text = L"label4";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// button1
@@ -449,9 +456,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label5->Location = System::Drawing::Point(890, 613);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(92, 32);
+			this->label5->Size = System::Drawing::Size(0, 32);
 			this->label5->TabIndex = 122;
-			this->label5->Text = L"label5";
 			// 
 			// label6
 			// 
@@ -460,9 +466,8 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(890, 709);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(92, 32);
+			this->label6->Size = System::Drawing::Size(0, 32);
 			this->label6->TabIndex = 123;
-			this->label6->Text = L"label6";
 			// 
 			// textBox1
 			// 
@@ -723,7 +728,7 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 					}
 					label6->Text = "Вы выйграли   " + priz;
 					label6->ForeColor = Color::Green;
-					textBox1->Text += "Выйгрыш   " + priz;
+					textBox1->Text += "\r\nВыйгрыш   " + priz;
 					if (balance_rub == true)
 					{
 						bal = Convert::ToInt32(label1->Text);
@@ -747,7 +752,7 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 				{
 					label6->Text = "Вы проиграли   " + stavka;
 					label6->ForeColor = Color::Red;
-					textBox1->Text += "Проигрыш   " + stavka;
+					textBox1->Text += "\r\nПроигрыш   " + stavka;
 					if (balance_rub == true)
 					{
 						bal = Convert::ToInt32(label1->Text);

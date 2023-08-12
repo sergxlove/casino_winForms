@@ -126,6 +126,9 @@ namespace casinowinForms {
 			g->DrawLine(pen, 5, 300, 450, 300);
 			g->DrawLine(pen, 5, 410, 450, 410);
 			g->DrawLine(pen, 5, 520, 450, 520);
+			g->DrawLine(pen, 10, 90, 1075, 90);
+			g->DrawLine(pen, 500, 200, 1075, 200);
+			g->DrawLine(pen, 500, 350, 1075, 350);
 		}
 		   /// <summary>
 		/// Обязательная переменная конструктора.
