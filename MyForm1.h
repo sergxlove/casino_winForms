@@ -90,6 +90,7 @@ namespace casinowinForms {
 	private: bool wallet_rub = false;
 	private: bool wallet_evr = false;
 	private: bool wallet_dol = false;
+	private: int num = 0;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Button^ button17;
 	private: System::Windows::Forms::Button^ button18;
@@ -688,7 +689,7 @@ private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ 
 			else
 			{
 				Random^ random = gcnew Random();
-				int num = random->Next(0, 36);
+				num = random->Next(0, 36);
 				if (num == 0)
 				{
 					label5->Text = Convert::ToString(num);

@@ -7,6 +7,7 @@
 #include "MyForm6.h"
 #include "MyForm7.h"
 #include "MyForm8.h"
+#include "MyForm9.h"
 namespace casinowinForms {
 
 	using namespace System;
@@ -433,6 +434,8 @@ namespace casinowinForms {
 		}
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm9^ tenform = gcnew MyForm9();
+	tenform->Show();
 }
 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
