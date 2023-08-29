@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 namespace casinowinForms {
 
 	using namespace System;
@@ -8,6 +8,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для MyForm4
@@ -583,6 +584,7 @@ namespace casinowinForms {
 			this->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->Name = L"MyForm4";
 			this->Text = L"MyForm4";
+			this->Load += gcnew System::EventHandler(this, &MyForm4::MyForm4_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -689,6 +691,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	var = check_var::var_reshka;
 }
 private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamWriter^ file = gcnew StreamWriter(fileName);
+	file->WriteLine(label1->Text);
+	file->WriteLine(label2->Text);
+	file->WriteLine(label3->Text);
+	file->Close();
 	this->Hide();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -864,6 +872,18 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	full_kf = 1.00;
 	middle_kf = 0.50;
 	button4->Visible = false;
+}
+private: System::Void MyForm4_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 }
 };
 }

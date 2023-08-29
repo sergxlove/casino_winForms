@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 namespace casinowinForms {
 
 	using namespace System;
@@ -8,6 +8,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для MyForm6
@@ -483,6 +484,12 @@ namespace casinowinForms {
 		}
 #pragma endregion
 	private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ fileName = "balance.txt";
+		StreamWriter^ file = gcnew StreamWriter(fileName);
+		file->WriteLine(label1->Text);
+		file->WriteLine(label2->Text);
+		file->WriteLine(label3->Text);
+		file->Close();
 		this->Hide();
 	}
 private: System::Void button27_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -753,6 +760,16 @@ private: System::Void MyForm6_Load(System::Object^ sender, System::EventArgs^ e)
 	textBox1->Text += "\r\nвсе нечетные --- X5";
 	textBox1->Text += "\r\nодна 7 --- Х2";
 	textBox1->Text += "\r\nсумма = 10 --- Х3";
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 }
 };
 }

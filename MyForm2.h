@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 namespace casinowinForms {
 
 	using namespace System;
@@ -7,6 +8,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 	/// <summary>
 	/// Сводка для MyForm2
 	/// </summary>
@@ -1062,6 +1064,12 @@ namespace casinowinForms {
 		{
 			delete bomb;
 		}
+		String^ fileName = "balance.txt";
+		StreamWriter^ file = gcnew StreamWriter(fileName);
+		file->WriteLine(label1->Text);
+		file->WriteLine(label2->Text);
+		file->WriteLine(label3->Text);
+		file->Close();
 		this->Hide();
 
 	}
@@ -1460,6 +1468,16 @@ private: System::Void button29_Click(System::Object^ sender, System::EventArgs^ 
 	button29->Text = "Выбрано";
 }
 private: System::Void MyForm2_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 	balance_r = Convert::ToInt32(label1->Text);
 	balance_d = Convert::ToInt32(label2->Text);
 	balance_e = Convert::ToInt32(label3->Text);

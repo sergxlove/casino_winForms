@@ -8,7 +8,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::IO;
 	/// <summary>
 	/// Сводка для MyForm8
 	/// </summary>
@@ -520,6 +520,7 @@ namespace casinowinForms {
 			this->ForeColor = System::Drawing::Color::White;
 			this->Name = L"MyForm8";
 			this->Text = L"MyForm8";
+			this->Load += gcnew System::EventHandler(this, &MyForm8::MyForm8_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -529,6 +530,12 @@ namespace casinowinForms {
 		}
 #pragma endregion
 	private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ fileName = "balance.txt";
+		StreamWriter^ file = gcnew StreamWriter(fileName);
+		file->WriteLine(label1->Text);
+		file->WriteLine(label2->Text);
+		file->WriteLine(label3->Text);
+		file->Close();
 		this->Hide();
 	}
 private: System::Void button27_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -790,6 +797,18 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 		label6->Text = "Введите ставку";
 		label6->ForeColor = Color::Red;
 	}
+}
+private: System::Void MyForm8_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 }
 };
 }
