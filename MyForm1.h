@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <string>
 
 namespace casinowinForms {
 
@@ -9,6 +10,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для MyForm1
@@ -652,6 +654,7 @@ namespace casinowinForms {
 			this->ForeColor = System::Drawing::Color::White;
 			this->Name = L"MyForm1";
 			this->Text = L"MyForm1";
+			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
@@ -1080,7 +1083,25 @@ private: System::Void button19_Click(System::Object^ sender, System::EventArgs^ 
 	button19->BackColor = Color::Green;
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamWriter^ file = gcnew StreamWriter(fileName);
+	file->WriteLine(label1->Text);
+	file->WriteLine(label2->Text);
+	file->WriteLine(label3->Text);
+	file->Close();
 	this->Hide();
+}
+private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 }
 };
 }

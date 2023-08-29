@@ -219,7 +219,7 @@ namespace casinowinForms {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button1->Location = System::Drawing::Point(21, 584);
+			this->button1->Location = System::Drawing::Point(21, 680);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(320, 63);
 			this->button1->TabIndex = 9;
@@ -234,11 +234,11 @@ namespace casinowinForms {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button2->Location = System::Drawing::Point(21, 653);
+			this->button2->Location = System::Drawing::Point(21, 596);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(320, 63);
 			this->button2->TabIndex = 10;
-			this->button2->Text = L"Редактировать";
+			this->button2->Text = L"Обновить";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -441,6 +441,16 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	tenform->Show();
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	line = file->ReadLine();
+	label4->Text = line;
+	file->Close();
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	String^ fileName = "balance.txt";
@@ -452,6 +462,7 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 	label3->Text = line;
 	line = file->ReadLine();
 	label4->Text = line;
+	file->Close();
 }
 };
 }
