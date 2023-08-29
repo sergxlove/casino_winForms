@@ -8,6 +8,7 @@
 #include "MyForm7.h"
 #include "MyForm8.h"
 #include "MyForm9.h"
+#include <string>
 namespace casinowinForms {
 
 	using namespace System;
@@ -16,6 +17,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -182,9 +184,9 @@ namespace casinowinForms {
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label2->Location = System::Drawing::Point(77, 424);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(40, 42);
+			this->label2->Size = System::Drawing::Size(128, 42);
 			this->label2->TabIndex = 6;
-			this->label2->Text = L"0";
+			this->label2->Text = L"10000";
 			// 
 			// label3
 			// 
@@ -194,9 +196,9 @@ namespace casinowinForms {
 			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label3->Location = System::Drawing::Point(77, 480);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(40, 42);
+			this->label3->Size = System::Drawing::Size(106, 42);
 			this->label3->TabIndex = 7;
-			this->label3->Text = L"0";
+			this->label3->Text = L"1000";
 			// 
 			// label4
 			// 
@@ -206,9 +208,9 @@ namespace casinowinForms {
 			this->label4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label4->Location = System::Drawing::Point(77, 536);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(40, 42);
+			this->label4->Size = System::Drawing::Size(106, 42);
 			this->label4->TabIndex = 8;
-			this->label4->Text = L"0";
+			this->label4->Text = L"1000";
 			// 
 			// button1
 			// 
@@ -368,6 +370,7 @@ namespace casinowinForms {
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -437,8 +440,18 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	MyForm9^ tenform = gcnew MyForm9();
 	tenform->Show();
 }
-
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	line = file->ReadLine();
+	label4->Text = line;
 }
 };
 }
