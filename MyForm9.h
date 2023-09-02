@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 namespace casinowinForms {
 
 	using namespace System;
@@ -8,7 +8,7 @@ namespace casinowinForms {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::IO;
 	/// <summary>
 	/// Сводка для MyForm9
 	/// </summary>
@@ -71,17 +71,18 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label13;
 	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Button^ button26;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
 		{
 			Graphics^ g = e->Graphics;
 			Pen^ pen = gcnew Pen(Color::White, 2);
-			g->DrawLine(pen, 5, 60, 700, 60);
-			g->DrawLine(pen, 5, 165, 700, 165);
-			g->DrawLine(pen, 290, 165, 290, 400);
-			g->DrawLine(pen, 420, 165, 420, 300);
-			g->DrawLine(pen, 5, 300, 700, 300);
+			g->DrawLine(pen, 5, 85, 900, 85);
+			g->DrawLine(pen, 5, 185, 900, 185);
+			g->DrawLine(pen, 250, 185, 250, 300);
+			g->DrawLine(pen, 375, 185, 375, 300);
+			g->DrawLine(pen, 5, 300, 900, 300);
 		}
 	private:
 		/// <summary>
@@ -130,6 +131,7 @@ namespace casinowinForms {
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button26 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -150,7 +152,7 @@ namespace casinowinForms {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label3->Location = System::Drawing::Point(723, 24);
+			this->label3->Location = System::Drawing::Point(854, 46);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(107, 38);
 			this->label3->TabIndex = 48;
@@ -162,7 +164,7 @@ namespace casinowinForms {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(377, 24);
+			this->label2->Location = System::Drawing::Point(619, 46);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(107, 38);
 			this->label2->TabIndex = 47;
@@ -174,7 +176,7 @@ namespace casinowinForms {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label1->Location = System::Drawing::Point(68, 24);
+			this->label1->Location = System::Drawing::Point(369, 46);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(107, 38);
 			this->label1->TabIndex = 46;
@@ -183,7 +185,7 @@ namespace casinowinForms {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(658, 12);
+			this->pictureBox3->Location = System::Drawing::Point(798, 34);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(50, 50);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -193,7 +195,7 @@ namespace casinowinForms {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(312, 12);
+			this->pictureBox2->Location = System::Drawing::Point(550, 34);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(50, 50);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -203,7 +205,7 @@ namespace casinowinForms {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Location = System::Drawing::Point(313, 34);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(50, 50);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -213,7 +215,7 @@ namespace casinowinForms {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(264, 94);
+			this->pictureBox4->Location = System::Drawing::Point(265, 125);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(98, 97);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -223,7 +225,7 @@ namespace casinowinForms {
 			// pictureBox5
 			// 
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(573, 94);
+			this->pictureBox5->Location = System::Drawing::Point(573, 125);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(94, 97);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -233,7 +235,7 @@ namespace casinowinForms {
 			// pictureBox6
 			// 
 			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
-			this->pictureBox6->Location = System::Drawing::Point(264, 94);
+			this->pictureBox6->Location = System::Drawing::Point(265, 125);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(98, 97);
 			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -243,7 +245,7 @@ namespace casinowinForms {
 			// pictureBox7
 			// 
 			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(573, 94);
+			this->pictureBox7->Location = System::Drawing::Point(573, 125);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(94, 97);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -253,7 +255,7 @@ namespace casinowinForms {
 			// pictureBox8
 			// 
 			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(265, 94);
+			this->pictureBox8->Location = System::Drawing::Point(265, 125);
 			this->pictureBox8->Name = L"pictureBox8";
 			this->pictureBox8->Size = System::Drawing::Size(98, 97);
 			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -263,7 +265,7 @@ namespace casinowinForms {
 			// pictureBox9
 			// 
 			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.Image")));
-			this->pictureBox9->Location = System::Drawing::Point(573, 94);
+			this->pictureBox9->Location = System::Drawing::Point(573, 125);
 			this->pictureBox9->Name = L"pictureBox9";
 			this->pictureBox9->Size = System::Drawing::Size(94, 97);
 			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -276,9 +278,9 @@ namespace casinowinForms {
 			this->groupBox1->Controls->Add(this->radioButton2);
 			this->groupBox1->Controls->Add(this->radioButton1);
 			this->groupBox1->ForeColor = System::Drawing::SystemColors::Window;
-			this->groupBox1->Location = System::Drawing::Point(75, 228);
+			this->groupBox1->Location = System::Drawing::Point(58, 236);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(288, 120);
+			this->groupBox1->Size = System::Drawing::Size(257, 120);
 			this->groupBox1->TabIndex = 57;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Выберите валюту :";
@@ -331,9 +333,9 @@ namespace casinowinForms {
 			this->groupBox2->Controls->Add(this->radioButton6);
 			this->groupBox2->Controls->Add(this->radioButton5);
 			this->groupBox2->ForeColor = System::Drawing::SystemColors::Window;
-			this->groupBox2->Location = System::Drawing::Point(573, 228);
+			this->groupBox2->Location = System::Drawing::Point(514, 236);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(289, 120);
+			this->groupBox2->Size = System::Drawing::Size(257, 120);
 			this->groupBox2->TabIndex = 58;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Выберите валюту :";
@@ -386,7 +388,7 @@ namespace casinowinForms {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label4->ForeColor = System::Drawing::SystemColors::Window;
-			this->label4->Location = System::Drawing::Point(439, 121);
+			this->label4->Location = System::Drawing::Point(433, 146);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(66, 54);
 			this->label4->TabIndex = 59;
@@ -410,7 +412,7 @@ namespace casinowinForms {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::Window;
-			this->button1->Location = System::Drawing::Point(402, 309);
+			this->button1->Location = System::Drawing::Point(343, 303);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(144, 47);
 			this->button1->TabIndex = 62;
@@ -427,9 +429,9 @@ namespace casinowinForms {
 			this->groupBox3->Controls->Add(this->label8);
 			this->groupBox3->Controls->Add(this->label7);
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::Window;
-			this->groupBox3->Location = System::Drawing::Point(75, 381);
+			this->groupBox3->Location = System::Drawing::Point(777, 236);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(287, 100);
+			this->groupBox3->Size = System::Drawing::Size(287, 120);
 			this->groupBox3->TabIndex = 63;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Курсы  :";
@@ -472,7 +474,7 @@ namespace casinowinForms {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label9->Location = System::Drawing::Point(168, 31);
+			this->label9->Location = System::Drawing::Point(169, 31);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(39, 29);
 			this->label9->TabIndex = 64;
@@ -517,7 +519,7 @@ namespace casinowinForms {
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label14->ForeColor = System::Drawing::SystemColors::Window;
-			this->label14->Location = System::Drawing::Point(434, 228);
+			this->label14->Location = System::Drawing::Point(372, 235);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(83, 22);
 			this->label14->TabIndex = 65;
@@ -530,11 +532,26 @@ namespace casinowinForms {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
-			this->textBox1->Location = System::Drawing::Point(403, 264);
+			this->textBox1->Location = System::Drawing::Point(343, 260);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(143, 30);
 			this->textBox1->TabIndex = 66;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// button26
+			// 
+			this->button26->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(246)), static_cast<System::Int32>(static_cast<System::Byte>(146)),
+				static_cast<System::Int32>(static_cast<System::Byte>(118)));
+			this->button26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button26->ForeColor = System::Drawing::Color::White;
+			this->button26->Location = System::Drawing::Point(8, 12);
+			this->button26->Name = L"button26";
+			this->button26->Size = System::Drawing::Size(274, 86);
+			this->button26->TabIndex = 67;
+			this->button26->Text = L"Назад";
+			this->button26->UseVisualStyleBackColor = false;
+			this->button26->Click += gcnew System::EventHandler(this, &MyForm9::button26_Click);
 			// 
 			// MyForm9
 			// 
@@ -542,15 +559,16 @@ namespace casinowinForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(962, 514);
+			this->ClientSize = System::Drawing::Size(1114, 514);
+			this->Controls->Add(this->button26);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label14);
+			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->pictureBox9);
 			this->Controls->Add(this->pictureBox8);
@@ -618,6 +636,16 @@ private: void delete_checked()
 	radioButton6->Checked = false;
 }
 private: System::Void MyForm9_Load(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamReader^ file = gcnew StreamReader(fileName);
+	String^ line;
+	line = file->ReadLine();
+	label1->Text = line;
+	line = file->ReadLine();
+	label2->Text = line;
+	line = file->ReadLine();
+	label3->Text = line;
+	file->Close();
 	delete_image();
 	delete_checked();
 }
@@ -783,6 +811,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			label13->ForeColor = Color::Red;
 		}
 	}
+}
+private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "balance.txt";
+	StreamWriter^ file = gcnew StreamWriter(fileName);
+	file->WriteLine(label1->Text);
+	file->WriteLine(label2->Text);
+	file->WriteLine(label3->Text);
+	file->Close();
+	this->Hide();
 }
 };
 }
