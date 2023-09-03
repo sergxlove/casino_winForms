@@ -559,7 +559,7 @@ namespace casinowinForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(1114, 514);
+			this->ClientSize = System::Drawing::Size(1114, 489);
 			this->Controls->Add(this->button26);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label14);
@@ -677,137 +677,153 @@ private: System::Void radioButton4_CheckedChanged(System::Object^ sender, System
 	pictureBox7->Visible = true;
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (radioButton1->Checked)
+	if (radioButton1->Checked == false && radioButton2->Checked == false && radioButton3->Checked == false || radioButton4->Checked == false && radioButton5->Checked == false && radioButton6->Checked == false) 
 	{
-		if (radioButton6->Checked)
-		{
-			label13->Text = "Обмен невозможен";
-			label13->ForeColor = Color::Red;
-		}
-		else if (radioButton5->Checked)
-		{
-			balance = Convert::ToInt32(label1->Text);
-			sum = Convert::ToInt32(textBox1->Text);
-			if (sum < balance)
-			{
-				balance -= sum;
-				result_convert = sum / Convert::ToInt32(label9->Text);
-				second_balance = Convert::ToInt32(label3->Text);
-				second_balance += result_convert;
-				label1->Text = Convert::ToString(balance);
-				label3->Text = Convert::ToString(second_balance);
-				label13->Text = "Успешно";
-				label13->ForeColor = Color::Green;
-				balance = 0;
-				sum = 0;
-				result_convert = 0;
-				second_balance = 0;
-			}
-			else
-			{
-				label13->Text = "Недостаточно средств";
-				label13->ForeColor = Color::Red;
-			}
-		}
-		else if (radioButton4->Checked)
-		{
-			balance = Convert::ToInt32(label1->Text);
-			sum = Convert::ToInt32(textBox1->Text);
-			if (sum < balance)
-			{
-				balance -= sum;
-				result_convert = sum / Convert::ToInt32(label10->Text);
-				second_balance = Convert::ToInt32(label2->Text);
-				second_balance += result_convert;
-				label1->Text = Convert::ToString(balance);
-				label2->Text = Convert::ToString(second_balance);
-				label13->Text = "Успешно";
-				label13->ForeColor = Color::Green;
-				balance = 0;
-				sum = 0;
-				result_convert = 0;
-				second_balance = 0;
-			}
-			else
-			{
-				label13->Text = "Недостаточно средств";
-				label13->ForeColor = Color::Red;
-			}
-		}
+		label13->Text = "Выберите валюты для обмена";
+		label13->ForeColor = Color::Red;
 	}
-	else if (radioButton2->Checked)
+	else
 	{
-		if (radioButton6->Checked)
+		if (textBox1->Text != "")
 		{
-			balance = Convert::ToInt32(label3->Text);
-			sum = Convert::ToInt32(textBox1->Text);
-			if (sum < balance)
+			if (radioButton1->Checked)
 			{
-				balance -= sum;
-				result_convert = sum * Convert::ToInt32(label9->Text);
-				second_balance = Convert::ToInt32(label1->Text);
-				second_balance += result_convert;
-				label1->Text = Convert::ToString(second_balance);
-				label3->Text = Convert::ToString(balance);
-				label13->Text = "Успешно";
-				label13->ForeColor = Color::Green;
-				balance = 0;
-				sum = 0;
-				result_convert = 0;
-				second_balance = 0;
+				if (radioButton6->Checked)
+				{
+					label13->Text = "Обмен невозможен";
+					label13->ForeColor = Color::Red;
+				}
+				else if (radioButton5->Checked)
+				{
+					balance = Convert::ToInt32(label1->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum / Convert::ToInt32(label9->Text);
+						second_balance = Convert::ToInt32(label3->Text);
+						second_balance += result_convert;
+						label1->Text = Convert::ToString(balance);
+						label3->Text = Convert::ToString(second_balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
+					else
+					{
+						label13->Text = "Недостаточно средств";
+						label13->ForeColor = Color::Red;
+					}
+				}
+				else if (radioButton4->Checked)
+				{
+					balance = Convert::ToInt32(label1->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum / Convert::ToInt32(label10->Text);
+						second_balance = Convert::ToInt32(label2->Text);
+						second_balance += result_convert;
+						label1->Text = Convert::ToString(balance);
+						label2->Text = Convert::ToString(second_balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
+					else
+					{
+						label13->Text = "Недостаточно средств";
+						label13->ForeColor = Color::Red;
+					}
+				}
 			}
-			else
+			else if (radioButton2->Checked)
 			{
-				label13->Text = "Недостаточно средств";
-				label13->ForeColor = Color::Red;
+				if (radioButton6->Checked)
+				{
+					balance = Convert::ToInt32(label3->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum * Convert::ToInt32(label9->Text);
+						second_balance = Convert::ToInt32(label1->Text);
+						second_balance += result_convert;
+						label1->Text = Convert::ToString(second_balance);
+						label3->Text = Convert::ToString(balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
+					else
+					{
+						label13->Text = "Недостаточно средств";
+						label13->ForeColor = Color::Red;
+					}
+				}
+				else if (radioButton5->Checked)
+				{
+					label13->Text = "Обмен невозможен";
+					label13->ForeColor = Color::Red;
+				}
+				else if (radioButton4->Checked)
+				{
+					label13->Text = "Обмен невозможен";
+					label13->ForeColor = Color::Red;
+				}
 			}
-		}
-		else if (radioButton5->Checked)
-		{
-			label13->Text = "Обмен невозможен";
-			label13->ForeColor = Color::Red;
-		}
-		else if (radioButton4->Checked)
-		{
-			label13->Text = "Обмен невозможен";
-			label13->ForeColor = Color::Red;
-		}
-	}
-	else if (radioButton3->Checked)
-	{
-		if (radioButton6->Checked)
-		{
-			balance = Convert::ToInt32(label2->Text);
-			sum = Convert::ToInt32(textBox1->Text);
-			if (sum < balance)
+			else if (radioButton3->Checked)
 			{
-				balance -= sum;
-				result_convert = sum * Convert::ToInt32(label10->Text);
-				second_balance = Convert::ToInt32(label1->Text);
-				second_balance += result_convert;
-				label1->Text = Convert::ToString(second_balance);
-				label2->Text = Convert::ToString(balance);
-				label13->Text = "Успешно";
-				label13->ForeColor = Color::Green;
-				balance = 0;
-				sum = 0;
-				result_convert = 0;
-				second_balance = 0;
-			}
-			else
-			{
-				label13->Text = "Недостаточно средств";
-				label13->ForeColor = Color::Red;
+				if (radioButton6->Checked)
+				{
+					balance = Convert::ToInt32(label2->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum * Convert::ToInt32(label10->Text);
+						second_balance = Convert::ToInt32(label1->Text);
+						second_balance += result_convert;
+						label1->Text = Convert::ToString(second_balance);
+						label2->Text = Convert::ToString(balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
+					else
+					{
+						label13->Text = "Недостаточно средств";
+						label13->ForeColor = Color::Red;
+					}
+				}
+				else if (radioButton5->Checked)
+				{
+					label13->Text = "Обмен невозможен";
+					label13->ForeColor = Color::Red;
+				}
+				else if (radioButton4->Checked)
+				{
+					label13->Text = "Обмен невозможен";
+					label13->ForeColor = Color::Red;
+				}
 			}
 		}
-		else if (radioButton5->Checked)
+		else
 		{
-			label13->Text = "Обмен невозможен";
-			label13->ForeColor = Color::Red;
-		}
-		else if (radioButton4->Checked)
-		{
-			label13->Text = "Обмен невозможен";
+			label13->Text = "Введите сумму обмена";
 			label13->ForeColor = Color::Red;
 		}
 	}
