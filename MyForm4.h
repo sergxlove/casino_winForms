@@ -237,7 +237,7 @@ namespace casinowinForms {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(989, 45);
+			this->pictureBox3->Location = System::Drawing::Point(989, 44);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(50, 50);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
