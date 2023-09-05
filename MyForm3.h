@@ -134,6 +134,8 @@ namespace casinowinForms {
 			// button29
 			// 
 			this->button29->BackColor = System::Drawing::Color::Red;
+			this->button29->FlatAppearance->BorderSize = 0;
+			this->button29->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button29->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -148,6 +150,8 @@ namespace casinowinForms {
 			// button28
 			// 
 			this->button28->BackColor = System::Drawing::Color::Red;
+			this->button28->FlatAppearance->BorderSize = 0;
+			this->button28->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button28->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -162,6 +166,8 @@ namespace casinowinForms {
 			// button27
 			// 
 			this->button27->BackColor = System::Drawing::Color::Red;
+			this->button27->FlatAppearance->BorderSize = 0;
+			this->button27->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button27->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -255,6 +261,8 @@ namespace casinowinForms {
 			// 
 			this->button26->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(246)), static_cast<System::Int32>(static_cast<System::Byte>(146)),
 				static_cast<System::Int32>(static_cast<System::Byte>(118)));
+			this->button26->FlatAppearance->BorderSize = 0;
+			this->button26->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button26->ForeColor = System::Drawing::Color::White;
@@ -312,6 +320,8 @@ namespace casinowinForms {
 			// 
 			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(121)),
 				static_cast<System::Int32>(static_cast<System::Byte>(111)));
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
@@ -339,6 +349,7 @@ namespace casinowinForms {
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
@@ -353,6 +364,8 @@ namespace casinowinForms {
 			// 
 			this->button32->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button32->FlatAppearance->BorderSize = 0;
+			this->button32->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button32->ForeColor = System::Drawing::Color::White;
@@ -368,6 +381,8 @@ namespace casinowinForms {
 			// 
 			this->button33->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button33->FlatAppearance->BorderSize = 0;
+			this->button33->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button33->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button33->ForeColor = System::Drawing::Color::White;
@@ -383,6 +398,8 @@ namespace casinowinForms {
 			// 
 			this->button30->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button30->FlatAppearance->BorderSize = 0;
+			this->button30->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button30->ForeColor = System::Drawing::Color::White;
@@ -398,6 +415,8 @@ namespace casinowinForms {
 			// 
 			this->button31->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button31->FlatAppearance->BorderSize = 0;
+			this->button31->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button31->ForeColor = System::Drawing::Color::White;
@@ -413,6 +432,8 @@ namespace casinowinForms {
 			// 
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->ForeColor = System::Drawing::Color::White;
@@ -428,6 +449,8 @@ namespace casinowinForms {
 			// 
 			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(160)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button3->ForeColor = System::Drawing::Color::White;
@@ -454,6 +477,7 @@ namespace casinowinForms {
 			// 
 			this->textBox2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->textBox2->ForeColor = System::Drawing::SystemColors::Window;
