@@ -8,6 +8,7 @@
 #include "MyForm7.h"
 #include "MyForm8.h"
 #include "MyForm9.h"
+#include "MyForm10.h"
 #include <string>
 namespace casinowinForms {
 
@@ -63,6 +64,8 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox10;
 	private: System::Windows::Forms::PictureBox^ pictureBox11;
 	private: System::Windows::Forms::PictureBox^ pictureBox12;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
 
 	private: System::Windows::Forms::Button^ button2;
 	protected: 
@@ -110,6 +113,8 @@ namespace casinowinForms {
 			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox12 = (gcnew System::Windows::Forms::PictureBox());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -346,6 +351,36 @@ namespace casinowinForms {
 			this->pictureBox12->TabStop = false;
 			this->pictureBox12->Click += gcnew System::EventHandler(this, &MyForm::swap_mode);
 			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(74)), static_cast<System::Int32>(static_cast<System::Byte>(74)),
+				static_cast<System::Int32>(static_cast<System::Byte>(74)));
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button3->ForeColor = System::Drawing::SystemColors::Window;
+			this->button3->Location = System::Drawing::Point(266, 19);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 42);
+			this->button3->TabIndex = 20;
+			this->button3->Text = L"Πεδ.";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button4->ForeColor = System::Drawing::SystemColors::Window;
+			this->button4->Location = System::Drawing::Point(1289, 12);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(51, 49);
+			this->button4->TabIndex = 21;
+			this->button4->Text = L"\?";
+			this->button4->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -353,6 +388,8 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1396, 771);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->pictureBox12);
 			this->Controls->Add(this->pictureBox11);
 			this->Controls->Add(this->pictureBox10);
@@ -458,6 +495,12 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	String^ fileName = "balance.txt";
+	String^ path = "Nick.txt";
+	StreamReader^ name = gcnew StreamReader(path);
+	String^ Name_nick;
+	Name_nick = name->ReadLine();
+	label1->Text = Name_nick;
+	name->Close();
 	StreamReader^ file = gcnew StreamReader(fileName);
 	String^ line;
 	line = file->ReadLine();
@@ -467,6 +510,10 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 	line = file->ReadLine();
 	label4->Text = line;
 	file->Close();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm10^ eleven_form = gcnew MyForm10();
+	eleven_form->Show();
 }
 };
 }
