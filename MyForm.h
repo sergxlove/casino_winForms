@@ -387,12 +387,16 @@ namespace casinowinForms {
 			// 
 			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(74)), static_cast<System::Int32>(static_cast<System::Byte>(74)),
 				static_cast<System::Int32>(static_cast<System::Byte>(74)));
+			this->button5->FlatAppearance->BorderSize = 0;
+			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button5->ForeColor = System::Drawing::SystemColors::Window;
 			this->button5->Location = System::Drawing::Point(1073, 12);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(186, 49);
 			this->button5->TabIndex = 22;
-			this->button5->Text = L"button5";
+			this->button5->Text = L"Промокод";
 			this->button5->UseVisualStyleBackColor = false;
 			// 
 			// MyForm
