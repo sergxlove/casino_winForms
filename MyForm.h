@@ -523,7 +523,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	file->Close();
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	Console::WriteLine("egjgskkskgggg");
 	String^ fileName = "balance.txt";
 	String^ path = "Nick.txt";
 	StreamReader^ name = gcnew StreamReader(path);
