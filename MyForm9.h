@@ -72,6 +72,9 @@ namespace casinowinForms {
 	private: System::Windows::Forms::Label^ label13;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::Button^ button26;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	protected:
 		void OnPaint(PaintEventArgs^ e) override
@@ -132,6 +135,9 @@ namespace casinowinForms {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button26 = (gcnew System::Windows::Forms::Button());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -291,11 +297,11 @@ namespace casinowinForms {
 			this->radioButton3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->radioButton3->ForeColor = System::Drawing::SystemColors::Window;
-			this->radioButton3->Location = System::Drawing::Point(6, 81);
+			this->radioButton3->Location = System::Drawing::Point(6, 51);
 			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(95, 33);
+			this->radioButton3->Size = System::Drawing::Size(136, 33);
 			this->radioButton3->TabIndex = 60;
-			this->radioButton3->Text = L"dollar";
+			this->radioButton3->Text = L"silvercoin";
 			this->radioButton3->UseVisualStyleBackColor = true;
 			this->radioButton3->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton3_CheckedChanged);
 			// 
@@ -305,11 +311,11 @@ namespace casinowinForms {
 			this->radioButton2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->radioButton2->ForeColor = System::Drawing::SystemColors::Window;
-			this->radioButton2->Location = System::Drawing::Point(6, 51);
+			this->radioButton2->Location = System::Drawing::Point(6, 81);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(81, 33);
+			this->radioButton2->Size = System::Drawing::Size(127, 33);
 			this->radioButton2->TabIndex = 59;
-			this->radioButton2->Text = L"evro";
+			this->radioButton2->Text = L"goldcoin";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton2_CheckedChanged);
 			// 
@@ -321,9 +327,9 @@ namespace casinowinForms {
 			this->radioButton1->ForeColor = System::Drawing::SystemColors::Window;
 			this->radioButton1->Location = System::Drawing::Point(6, 21);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(69, 33);
+			this->radioButton1->Size = System::Drawing::Size(153, 33);
 			this->radioButton1->TabIndex = 58;
-			this->radioButton1->Text = L"rub";
+			this->radioButton1->Text = L"bronzecoin";
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton1_CheckedChanged);
 			// 
@@ -346,11 +352,11 @@ namespace casinowinForms {
 			this->radioButton4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->radioButton4->ForeColor = System::Drawing::SystemColors::Window;
-			this->radioButton4->Location = System::Drawing::Point(6, 81);
+			this->radioButton4->Location = System::Drawing::Point(6, 51);
 			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(95, 33);
+			this->radioButton4->Size = System::Drawing::Size(136, 33);
 			this->radioButton4->TabIndex = 63;
-			this->radioButton4->Text = L"dollar";
+			this->radioButton4->Text = L"silvercoin";
 			this->radioButton4->UseVisualStyleBackColor = true;
 			this->radioButton4->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton4_CheckedChanged);
 			// 
@@ -362,9 +368,9 @@ namespace casinowinForms {
 			this->radioButton6->ForeColor = System::Drawing::SystemColors::Window;
 			this->radioButton6->Location = System::Drawing::Point(6, 21);
 			this->radioButton6->Name = L"radioButton6";
-			this->radioButton6->Size = System::Drawing::Size(69, 33);
+			this->radioButton6->Size = System::Drawing::Size(153, 33);
 			this->radioButton6->TabIndex = 61;
-			this->radioButton6->Text = L"rub";
+			this->radioButton6->Text = L"bronzecoin";
 			this->radioButton6->UseVisualStyleBackColor = true;
 			this->radioButton6->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton6_CheckedChanged);
 			// 
@@ -374,11 +380,11 @@ namespace casinowinForms {
 			this->radioButton5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->radioButton5->ForeColor = System::Drawing::SystemColors::Window;
-			this->radioButton5->Location = System::Drawing::Point(6, 51);
+			this->radioButton5->Location = System::Drawing::Point(6, 81);
 			this->radioButton5->Name = L"radioButton5";
-			this->radioButton5->Size = System::Drawing::Size(81, 33);
+			this->radioButton5->Size = System::Drawing::Size(127, 33);
 			this->radioButton5->TabIndex = 62;
-			this->radioButton5->Text = L"evro";
+			this->radioButton5->Text = L"goldcoin";
 			this->radioButton5->UseVisualStyleBackColor = true;
 			this->radioButton5->CheckedChanged += gcnew System::EventHandler(this, &MyForm9::radioButton5_CheckedChanged);
 			// 
@@ -422,6 +428,9 @@ namespace casinowinForms {
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->label16);
+			this->groupBox3->Controls->Add(this->label15);
+			this->groupBox3->Controls->Add(this->label6);
 			this->groupBox3->Controls->Add(this->label12);
 			this->groupBox3->Controls->Add(this->label11);
 			this->groupBox3->Controls->Add(this->label10);
@@ -431,7 +440,7 @@ namespace casinowinForms {
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::Window;
 			this->groupBox3->Location = System::Drawing::Point(777, 236);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(287, 120);
+			this->groupBox3->Size = System::Drawing::Size(312, 120);
 			this->groupBox3->TabIndex = 63;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Курсы  :";
@@ -443,9 +452,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label12->Location = System::Drawing::Point(213, 60);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(48, 29);
+			this->label12->Size = System::Drawing::Size(87, 29);
 			this->label12->TabIndex = 67;
-			this->label12->Text = L"rub";
+			this->label12->Text = L"bronze";
 			// 
 			// label11
 			// 
@@ -454,31 +463,31 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label11->Location = System::Drawing::Point(213, 31);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(48, 29);
+			this->label11->Size = System::Drawing::Size(87, 29);
 			this->label11->TabIndex = 66;
-			this->label11->Text = L"rub";
+			this->label11->Text = L"bronze";
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label10->Location = System::Drawing::Point(168, 60);
+			this->label10->Location = System::Drawing::Point(154, 60);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(39, 29);
+			this->label10->Size = System::Drawing::Size(52, 29);
 			this->label10->TabIndex = 65;
-			this->label10->Text = L"75";
+			this->label10->Text = L"100";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label9->Location = System::Drawing::Point(169, 31);
+			this->label9->Location = System::Drawing::Point(142, 31);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(39, 29);
+			this->label9->Size = System::Drawing::Size(65, 29);
 			this->label9->TabIndex = 64;
-			this->label9->Text = L"80";
+			this->label9->Text = L"1000";
 			// 
 			// label8
 			// 
@@ -487,9 +496,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(6, 60);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(139, 29);
+			this->label8->Size = System::Drawing::Size(115, 29);
 			this->label8->TabIndex = 1;
-			this->label8->Text = L"1 доллар = ";
+			this->label8->Text = L"1 silver = ";
 			// 
 			// label7
 			// 
@@ -498,9 +507,9 @@ namespace casinowinForms {
 				static_cast<System::Byte>(204)));
 			this->label7->Location = System::Drawing::Point(6, 31);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(113, 29);
+			this->label7->Size = System::Drawing::Size(106, 29);
 			this->label7->TabIndex = 0;
-			this->label7->Text = L"1 евро = ";
+			this->label7->Text = L"1 gold = ";
 			// 
 			// label13
 			// 
@@ -552,6 +561,39 @@ namespace casinowinForms {
 			this->button26->Text = L"Назад";
 			this->button26->UseVisualStyleBackColor = false;
 			this->button26->Click += gcnew System::EventHandler(this, &MyForm9::button26_Click);
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(6, 88);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(106, 29);
+			this->label6->TabIndex = 68;
+			this->label6->Text = L"1 gold = ";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label15->Location = System::Drawing::Point(167, 88);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(39, 29);
+			this->label15->TabIndex = 69;
+			this->label15->Text = L"10";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label16->Location = System::Drawing::Point(213, 89);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(70, 29);
+			this->label16->TabIndex = 70;
+			this->label16->Text = L"silver";
 			// 
 			// MyForm9
 			// 
@@ -657,12 +699,12 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	delete_image_first_group();
 	pictureBox8->Visible = true;
-	label5->Text = "Максимум : " + label2->Text;
+	label5->Text = "Максимум : " + label3->Text;
 }
 private: System::Void radioButton3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	delete_image_first_group();
 	pictureBox6->Visible = true;
-	label5->Text = "Максимум : " + label3->Text;
+	label5->Text = "Максимум : " + label2->Text;
 }
 private: System::Void radioButton6_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	delete_image_second_group();
@@ -771,12 +813,32 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 						label13->ForeColor = Color::Red;
 					}
 				}
-				else if (radioButton5->Checked)
-				{
-					label13->Text = "Обмен невозможен";
-					label13->ForeColor = Color::Red;
-				}
 				else if (radioButton4->Checked)
+				{
+					balance = Convert::ToInt32(label3->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum * Convert::ToInt32(label15->Text);
+						second_balance = Convert::ToInt32(label2->Text);
+						second_balance += result_convert;
+						label2->Text = Convert::ToString(second_balance);
+						label3->Text = Convert::ToString(balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
+					else
+					{
+						label13->Text = "Недостаточно средств";
+						label13->ForeColor = Color::Red;
+					}
+				}
+				else if (radioButton5->Checked)
 				{
 					label13->Text = "Обмен невозможен";
 					label13->ForeColor = Color::Red;
@@ -811,8 +873,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				}
 				else if (radioButton5->Checked)
 				{
-					label13->Text = "Обмен невозможен";
-					label13->ForeColor = Color::Red;
+					balance = Convert::ToInt32(label2->Text);
+					sum = Convert::ToInt32(textBox1->Text);
+					if (sum < balance)
+					{
+						balance -= sum;
+						result_convert = sum / Convert::ToInt32(label15->Text);
+						second_balance = Convert::ToInt32(label3->Text);
+						second_balance += result_convert;
+						label3->Text = Convert::ToString(second_balance);
+						label2->Text = Convert::ToString(balance);
+						label13->Text = "Успешно";
+						label13->ForeColor = Color::Green;
+						balance = 0;
+						sum = 0;
+						result_convert = 0;
+						second_balance = 0;
+					}
 				}
 				else if (radioButton4->Checked)
 				{

@@ -9,6 +9,8 @@
 #include "MyForm8.h"
 #include "MyForm9.h"
 #include "MyForm10.h"
+#include "MyForm11.h"
+#include "MyForm12.h"
 #include <string>
 namespace casinowinForms {
 
@@ -382,6 +384,7 @@ namespace casinowinForms {
 			this->button4->TabIndex = 21;
 			this->button4->Text = L"\?";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button5
 			// 
@@ -398,6 +401,7 @@ namespace casinowinForms {
 			this->button5->TabIndex = 22;
 			this->button5->Text = L"Промокод";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
 			// MyForm
 			// 
@@ -519,6 +523,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	file->Close();
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	Console::WriteLine("egjgskkskgggg");
 	String^ fileName = "balance.txt";
 	String^ path = "Nick.txt";
 	StreamReader^ name = gcnew StreamReader(path);
@@ -539,6 +544,14 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	MyForm10^ eleven_form = gcnew MyForm10();
 	eleven_form->Show();
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm11^ twelve_form = gcnew MyForm11();
+	twelve_form->Show();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm12^ thirdteen_form = gcnew MyForm12();
+	thirdteen_form->Show();
 }
 };
 }
