@@ -9,6 +9,8 @@
 #include "MyForm8.h"
 #include "MyForm9.h"
 #include "MyForm10.h"
+#include "MyForm11.h"
+#include "MyForm12.h"
 #include <string>
 namespace casinowinForms {
 
@@ -66,6 +68,7 @@ namespace casinowinForms {
 	private: System::Windows::Forms::PictureBox^ pictureBox12;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button5;
 
 	private: System::Windows::Forms::Button^ button2;
 	protected: 
@@ -115,6 +118,7 @@ namespace casinowinForms {
 			this->pictureBox12 = (gcnew System::Windows::Forms::PictureBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -257,7 +261,7 @@ namespace casinowinForms {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label5->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->label5->Location = System::Drawing::Point(667, 17);
+			this->label5->Location = System::Drawing::Point(555, 17);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(393, 46);
 			this->label5->TabIndex = 11;
@@ -380,6 +384,24 @@ namespace casinowinForms {
 			this->button4->TabIndex = 21;
 			this->button4->Text = L"\?";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(74)), static_cast<System::Int32>(static_cast<System::Byte>(74)),
+				static_cast<System::Int32>(static_cast<System::Byte>(74)));
+			this->button5->FlatAppearance->BorderSize = 0;
+			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button5->ForeColor = System::Drawing::SystemColors::Window;
+			this->button5->Location = System::Drawing::Point(1073, 12);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(186, 49);
+			this->button5->TabIndex = 22;
+			this->button5->Text = L"Промокод";
+			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
 			// MyForm
 			// 
@@ -388,6 +410,7 @@ namespace casinowinForms {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(1396, 771);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->pictureBox12);
@@ -483,6 +506,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ fileName = "balance.txt";
+	String^ path = "Nick.txt";
+	StreamReader^ name = gcnew StreamReader(path);
+	String^ Name_nick;
+	Name_nick = name->ReadLine();
+	label1->Text = Name_nick;
+	name->Close();
 	StreamReader^ file = gcnew StreamReader(fileName);
 	String^ line;
 	line = file->ReadLine();
@@ -514,6 +543,14 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	MyForm10^ eleven_form = gcnew MyForm10();
 	eleven_form->Show();
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm11^ twelve_form = gcnew MyForm11();
+	twelve_form->Show();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm12^ thirdteen_form = gcnew MyForm12();
+	thirdteen_form->Show();
 }
 };
 }
