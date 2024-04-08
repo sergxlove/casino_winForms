@@ -1,4 +1,13 @@
 # casino_winForms
+
+![Static Badge](https://img.shields.io/badge/language-C%2B%2B-red)
+![Static Badge](https://img.shields.io/badge/powered_by-NET_Framework_4.7.2-blue)
+![Static Badge](https://img.shields.io/badge/platforms-Windows-purple)
+![Static Badge](https://img.shields.io/badge/version-1.0-orange)
+![Static Badge](https://img.shields.io/badge/developer-sergxlove-green)
+![Static Badge](https://img.shields.io/badge/year-2023-green)
+
+
 Казино онлайн - это виртуальный игорный дом, который предлагает широкий ассортимент азартных игр через Интернет. Игроки могуттвыбрать игры и участвовать в различных акциях, используя свои компьютеры, смартфоны или другие устройства с доступом в интернет.
 В данной игре доступны 8 различных режимов:
 
